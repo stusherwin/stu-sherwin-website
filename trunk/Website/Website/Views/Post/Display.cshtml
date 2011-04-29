@@ -1,0 +1,11 @@
+﻿@using Website.Models
+@model Post
+
+@{
+    ViewBag.Title = "Display";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Html.ActionLink("Posts", "Index")
+<h2>@Model.Title</h2>
+@Html.Raw(Model.Body)
+
