@@ -5,65 +5,14 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="container">
-    <div class="header">
-        <div class="header-inner menu">
-            <h2>Categories</h2>
-            <ul>
-                <li><a href="#">Code</a></li>
-                <li><a href="#">Philosophy</a></li>
-                <li><a href="#">Music</a></li>
-            </ul>   
-            <h2>External</h2>
-            <ul>
-                <li><a href="#">Twitter</a></li>
-                <li><a href="#">StackOverflow</a></li>
-            </ul>  
-            <h2>Display</h2>
-            <ul>
-                <li><a href="#">Full</a></li>
-            </ul>  
-            <h2>Timeline</h2>
-            <div class="timeline">
-                <ul>
-                    <li>2011</li>
-                    <li>2010</li>
-                    <li>2009</li>
-                    <li>2008</li>
-                    <li>2007</li>
-                </ul>
-            </div> 
-        </div>
-        <div class="header-inner banner">
-            <h2>&nbsp;</h2>
-            <ul>
-                <li><a href="#"><img src="" /></a></li>
-                <li><a href="#"><img src="" /></a></li>
-                <li><a href="#"><img src="" /></a></li>
-            </ul>
-            <h2>&nbsp;</h2>
-            <ul>
-                <li><a href="#"><img src="/Content/Twitter.png" /></a></li>
-                <li><a href="#"><img src="/content/stackoverflow.png" /></a></li>
-            </ul>
-            <h2>&nbsp;</h2>
-            <ul>
-                <li><a href="#"><img src="" /></a></li>
-            </ul>
-        </div>
-    </div>
+@Html.ActionLink("New Post", "Create")
 
-    <div class="content">
-        @Html.ActionLink("New Post", "Create")
-
-        @foreach (var post in Model) {
-            <div>
-                <h2>@Html.ActionLink(post.Title, "Display", new { id = post.Id })</h2>
-                @Html.ActionLink("Edit", "Edit", new { id = post.Id }) 
-                <text>&nbsp;</text>
-                @Html.ActionLink("Delete", "Delete", new { id = post.Id })
-                @Html.Raw(post.Body)
-            </div>
-        }
+@foreach (var post in Model) {
+    <div>
+        <h2>@Html.ActionLink(post.Title, "Display", new { id = post.Id })</h2>
+        @Html.ActionLink("Edit", "Edit", new { id = post.Id }) 
+        <text>&nbsp;</text>
+        @Html.ActionLink("Delete", "Delete", new { id = post.Id })
+        @Html.Raw(post.Body)
     </div>
-</div>
+}
