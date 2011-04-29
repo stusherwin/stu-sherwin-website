@@ -15,6 +15,38 @@
 </head>
 
 <body>
-    @RenderBody()
+    <div class="container">
+        <div class="header">
+            <div class="header-inner">
+                <div class="banner">
+                </div>
+                <ul>
+                    <li><a href="#"><img src="" /><div class="link-text">Code</div></a></li>
+                    <li><a href="#"><img src="" /><div class="link-text">Music</div></a></li>
+                    <li><a href="#"><img src="" /><div class="link-text">Philosophy</div></a></li>
+                </ul>
+                <ul>
+                    <li><a href="#"><img src="/Content/Twitter.png" /><div class="link-text">Twitter</div></a></li>
+                    <li><a href="#"><img src="/Content/StackOverflow.png" /><div class="link-text">StackOverflow</div></a></li>
+                </ul>
+                <ul>
+                    <li><a href="#"><img src="" /><div class="link-text">Full</div></a></li>
+                </ul>
+                <div class="timeline">
+                    <ul>
+                        <li>2011</li>
+                        <li>2010</li>
+                        <li>2009</li>
+                        <li>2008</li>
+                        <li>2007</li>
+                    </ul>
+                </div> 
+          </div>
+        </div>
+
+        <div class="content">
+            @RenderBody()
+        </div>
+    </div>
 </body>
 </html>
