@@ -3,7 +3,11 @@
 <head>
     <title>@ViewBag.Title</title>
     <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
-    
+    <link  href="http://fonts.googleapis.com/css?family=Quattrocento:regular" rel="stylesheet" type="text/css" >
+    <link  href="http://fonts.googleapis.com/css?family=Vollkorn:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css" >
+    <link  href="http://fonts.googleapis.com/css?family=Didact+Gothic:regular" rel="stylesheet" type="text/css" >
+    <link  href="http://fonts.googleapis.com/css?family=Quattrocento+Sans:regular" rel="stylesheet" type="text/css" >
+<link  href="http://fonts.googleapis.com/css?family=Arvo:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css" >
     <script src="@Url.Content("~/Scripts/jquery-1.4.1.min.js")" type="text/javascript"></script>
     @*<script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.min.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
@@ -16,9 +20,11 @@
 
 <body>
     <div class="container">
-        <div class="header">
+        <!--<div style="height:80px;background:#000;"></div>-->
+        @*<div class="header">
             <div class="header-inner">
                 <div class="banner">
+                    Stu Sherwin
                 </div>
                 <ul>
                     <li><a href="#"><img src="" /><div class="link-text">Code</div></a></li>
@@ -32,7 +38,7 @@
                 <ul>
                     <li><a href="#"><img src="" /><div class="link-text">Full</div></a></li>
                 </ul>
-                <div class="timeline">
+                <!--div class="timeline">
                     <ul>
                         <li>2011</li>
                         <li>2010</li>
@@ -40,9 +46,9 @@
                         <li>2008</li>
                         <li>2007</li>
                     </ul>
-                </div> 
+                </div--> 
           </div>
-        </div>
+        </div>*@
 
         <div class="content">
             @RenderBody()
