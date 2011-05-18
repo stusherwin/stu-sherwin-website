@@ -4,15 +4,21 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-@Html.ActionLink("New Post", "Create")
+<!--@Html.ActionLink("New Post", "Create")-->
+<h1>Some stuff</h1>
+<p>Some text</p>
 
 @foreach (var post in Model) {
-    <div>
-        <h2>@Html.ActionLink(post.Title, "Display", new { id = post.Id })</h2>
-        @Html.ActionLink("Edit", "Edit", new { id = post.Id }) 
-        <text>&nbsp;</text>
-        @Html.ActionLink("Delete", "Delete", new { id = post.Id })
-        @Html.Raw(post.Body)
+    <h1>@post.Title</h1>
+    <div class="clear-fix">
+    <div style="text-align:right;margin-top:5px;">15th April 2010, <a href="#">23 comments</a></div>
+    <!--<div class="comments"><a href="#">23 comments</a></div>
+    <div class="date">15th April 2010</div>-->
     </div>
+    <!--@Html.ActionLink("View", "Display", new { id = post.Id }) 
+    <text>&nbsp;</text>
+    @Html.ActionLink("Edit", "Edit", new { id = post.Id }) 
+    <text>&nbsp;</text>
+    @Html.ActionLink("Delete", "Delete", new { id = post.Id })-->
+    @Html.Raw(post.Body)
 }
