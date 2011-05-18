@@ -149,7 +149,6 @@ li
 .header
 {
     margin-top:31px;
-    margin-bottom:1em;
 }
 
 .header h1
@@ -199,6 +198,12 @@ li
 {
     font-size:12px;
     text-transform:uppercase;
+    margin-bottom:2em;
+}
+
+.nav
+{
+    margin-top:30px;
 }
 
 .contact
