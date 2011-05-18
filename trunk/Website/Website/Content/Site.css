@@ -136,7 +136,7 @@ li
 
 .sidebar
 {
-    color:#ddd;
+    color:#aaa;
     position:fixed;
     margin-top:31px;
 }
@@ -148,7 +148,7 @@ li
 
 .header
 {
-    margin-bottom:30px;
+    margin-bottom:1em;
 }
 
 .header h1
@@ -160,17 +160,29 @@ li
 .sidebar h2
 {
     font-size:20px;
+    color:#aaa;
 }
 
-.sidebar h2.expanded
+.sidebar h2:hover, .sidebar li:hover, .header .tagline span:hover
+{
+    color:#fff;
+    cursor:pointer;
+}
+
+.sidebar .selected
+{
+    color:#fff;
+}
+
+.sidebar h2.selected
 {
     margin-bottom:5px;
 }
 
 .sidebar ul
 {
-    border-top:1px dashed #ddd;
-    border-bottom:1px dashed #ddd;
+    border-top:1px dashed #fff;
+    border-bottom:1px dashed #fff;
     padding: 5px 0;
     margin-bottom:10px;
 }
