@@ -7,12 +7,9 @@
     <link  href="http://fonts.googleapis.com/css?family=Vollkorn:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css" >
     <link  href="http://fonts.googleapis.com/css?family=Didact+Gothic:regular" rel="stylesheet" type="text/css" >
     <link  href="http://fonts.googleapis.com/css?family=Quattrocento+Sans:regular" rel="stylesheet" type="text/css" >
-<link  href="http://fonts.googleapis.com/css?family=Arvo:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css" >
+    <link  href="http://fonts.googleapis.com/css?family=Arvo:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css" >
     <script src="@Url.Content("~/Scripts/jquery-1.4.1.min.js")" type="text/javascript"></script>
-    @*<script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.min.js")" type="text/javascript"></script>
-    <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
-    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
-    *@
+
     <script type="text/javascript" src="/ckeditor/ckeditor.js"></script>
     <script type="text/javascript" src="/ckeditor/adapters/jquery.js"></script>
     <script type="text/javascript" src="/Scripts/HtmlContent.js"></script>
@@ -20,36 +17,19 @@
 
 <body>
     <div class="container">
-        <!--<div style="height:80px;background:#000;"></div>-->
-        @*<div class="header">
-            <div class="header-inner">
-                <div class="banner">
-                    Stu Sherwin
-                </div>
+        <div class="sidebar">
+            <div class="header">
+                <h1>Stu Sherwin</h1>
+                <div class="tagline">Developer, musician, atheist</div>
+            </div>
+            <h2 class="expanded">Code</h2>
                 <ul>
-                    <li><a href="#"><img src="" /><div class="link-text">Code</div></a></li>
-                    <li><a href="#"><img src="" /><div class="link-text">Music</div></a></li>
-                    <li><a href="#"><img src="" /><div class="link-text">Philosophy</div></a></li>
+                    <li>About me</li>
+                    <li>Curriculum Vitae</li>
                 </ul>
-                <ul>
-                    <li><a href="#"><img src="/Content/Twitter.png" /><div class="link-text">Twitter</div></a></li>
-                    <li><a href="#"><img src="/Content/StackOverflow.png" /><div class="link-text">StackOverflow</div></a></li>
-                </ul>
-                <ul>
-                    <li><a href="#"><img src="" /><div class="link-text">Full</div></a></li>
-                </ul>
-                <!--div class="timeline">
-                    <ul>
-                        <li>2011</li>
-                        <li>2010</li>
-                        <li>2009</li>
-                        <li>2008</li>
-                        <li>2007</li>
-                    </ul>
-                </div--> 
-          </div>
-        </div>*@
-
+            <h2>Music</h2>
+            <h2>Philosophy</h2>
+        </div>
         <div class="content">
             @RenderBody()
         </div>
