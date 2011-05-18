@@ -138,7 +138,7 @@ li
 {
     color:#aaa;
     position:fixed;
-    margin-top:31px;
+    height:100%;
 }
 
 .sidebar h1, .sidebar h2
@@ -148,6 +148,7 @@ li
 
 .header
 {
+    margin-top:31px;
     margin-bottom:1em;
 }
 
@@ -163,7 +164,8 @@ li
     color:#aaa;
 }
 
-.sidebar h2:hover, .sidebar li:hover, .header .tagline span:hover
+.sidebar h2:hover, .sidebar li:hover, .header .tagline span:hover,
+.contact span:hover
 {
     color:#fff;
     cursor:pointer;
@@ -194,6 +196,27 @@ li
 }
 
 .header .tagline
+{
+    font-size:12px;
+    text-transform:uppercase;
+}
+
+.contact
+{
+    position:absolute;
+    bottom:30px;
+    height:50px;
+}
+
+.contact h2
+{
+    color:#fff;
+    xmargin:0;
+    xborder-bottom:1px dashed #fff;
+    xmargin-bottom:5px;
+}
+
+.contact .links
 {
     font-size:12px;
     text-transform:uppercase;
