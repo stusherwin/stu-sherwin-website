@@ -16,38 +16,56 @@
 </head>
 
 <body>
-    <div class="container">
-        <div class="sidebar">
-            <div class="header">
-                <h1>Stu Sherwin</h1>
-                <div class="tagline">
-                    <span class="selected">Developer</span> : 
-                    <span>musician</span> :
-                    <span>atheist</span>
+    <div id="container">
+            <div id="sidebar">
+                <div id="header">
+                    <h1>Stu Sherwin</h1>
+                    <div class="tagline">
+                        <span class="selected">Developer</span> : 
+                        <span>musician</span> :
+                        <span>atheist</span>
+                    </div>
+                    <p>Who am I?</p>
                 </div>
-                <p>Who am I?</p>
-            </div>
-            <div class="nav">
-                <h2 class="selected">Code</h2>
-                    <ul>
-                        <li>About me</li>
-                        <li>Curriculum Vitae</li>
-                    </ul>
-                <h2>Music</h2>
-                <h2>Philosophy</h2>
-            </div>
-            <div class="contact">
-                <h2>Get in touch</h2>
-                <div class="links">
-                    <span>Email</span> : 
-                    <span>Twitter</span> :
-                    <span>Facebook</span>
+                <div id="nav">
+                    <h2 class="selected">Code</h2>
+                        <ul>
+                            <li>About me</li>
+                            <li>Curriculum Vitae</li>
+                        </ul>
+                    <h2>Music</h2>
+                    <h2>Philosophy</h2>
+                    <a id="finder" href="#3">Find</a>
+                </div>
+                <div id="contact">
+                    <!--<h2>Get in touch</h2>-->
+                    <a id="facebook" class="contact-link" href="#">&nbsp;</a>
+                    <a id="twitter" class="contact-link" href="#">&nbsp;</a>
+                    <a id="stackoverflow" class="contact-link" href="#">&nbsp;</a>
+                    <a id="email" class="contact-link" href="#">&nbsp;</a>
+                    <a id="google-code" class="contact-link" href="#">&nbsp;</a>
+                    <!--<div class="links">
+                        <span>Email</span> : 
+                        <span>Twitter</span> :
+                        <span>Facebook</span>
+                    </div>-->
                 </div>
             </div>
-        </div>
-        <div class="content">
-            @RenderBody()
-        </div>
+            <div id="content">
+                <div class="margin-fix">
+                    @RenderBody()
+                </div>
+            </div>
+            <div id="scroll">
+                <a id="previous-post" href="#"><img src="/Content/up.png" /></a>
+                <a id="next-post" href="#"><img src="/Content/down.png" /></a>
+            </div>
     </div>
+    <script type="text/javascript">
+        $('#finder').click(function (e) {
+            
+            //e.PreventDefault();
+        });
+    </script>
 </body>
 </html>
