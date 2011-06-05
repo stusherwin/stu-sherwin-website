@@ -72,7 +72,7 @@ html, body
 }
 
 body {
-  background:#333;
+  background:#191919;
   color:#555;
   font-family: 'Quattrocento Sans', serif;
   font-size: 15px;
@@ -128,6 +128,7 @@ li
 
 #container
 {
+    background:#191919;
     width:924px;
     margin:0 auto;
     padding:0px;
@@ -189,7 +190,8 @@ li
 {
     border:none;
     margin:0;
-    color:#f1f1f1;
+    color:#fff;
+    xcolor:#FA8211;
     text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 3px rgba(0,0,0,.7);
 }
 
@@ -197,6 +199,8 @@ li
 {
     font-size:20px;
     color:#aaa;
+    float:left;
+    margin-top:10px;
 }
 
 #sidebar h2:hover, #sidebar li:hover, #header .tagline span:hover,
@@ -206,22 +210,70 @@ li
     cursor:pointer;
 }
 
+.x 
+{
+    width:30px;
+    height:30px;
+    border-radius:5px;
+    margin:5px;
+    margin-right:10px;
+    float:left;
+}
+
+.x2
+{
+    width:100%;
+    border-radius:8px;
+    border:1px solid #333;
+    min-height:40px;
+    margin-bottom:10px;
+}
+
+#code
+{
+    background:#aaa url(/content/code.png) no-repeat 2px 2px;
+    xpadding:3px 0 0 35px;
+    xheight:30px;
+}
+
+#music
+{
+    background:#aaa url(/content/music.png) no-repeat 8px 2px;
+    xpadding:4px 0 0 35px;
+    xheight:30px;
+}
+
+#philosophy
+{
+    background:#aaa url(/content/philosophy.png) no-repeat 8px 2px;
+    xpadding:4px 0 0 35px;
+    xheight:30px;
+}
+
 #sidebar .selected
 {
     color:#fff;
 }
 
-#sidebar h2.selected
+#sidebar .selected h2
 {
     margin-bottom:5px;
+    color:#fff;
+}
+
+#sidebar .selected .x
+{
+    background-color:#fff;
 }
 
 #sidebar ul
 {
-    border-top:1px dashed #fff;
-    border-bottom:1px dashed #fff;
+    clear:both;
+    xborder-top:1px dashed #fff;
+    xborder-bottom:1px dashed #fff;
     padding: 5px 0;
     margin-bottom:10px;
+    margin-left:45px;
 }
 
 #sidebar li
