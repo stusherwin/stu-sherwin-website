@@ -69,7 +69,6 @@ html, body
     height:100%;
     margin:0;
     padding:0;
-    overflow:auto;
 }
 
 body {
@@ -103,6 +102,7 @@ h1
 {
     font-size: 36px;
     margin-top:70px;
+    padding-top:30px;
 }
 
 h2
@@ -112,7 +112,7 @@ h2
 
 h1:first-child
 {
-    margin-top:30px;
+    margin-top:0px;
 }
 
 p, ul, ol
@@ -126,61 +126,97 @@ li
     list-style-type:disc;
 }
 
-.container
+#container
 {
-    width:850px;
+    width:924px;
     margin:0 auto;
     padding:0px;
     height:100%;
+    position:relative;
+    min-height:400px;
 }
 
-.sidebar
+#sidebar
 {
+    position:absolute;
+    left:10px;
     color:#aaa;
-    position:fixed;
     height:100%;
+    width:192px;
 }
 
-.sidebar h1, .sidebar h2
+#scroll {
+    width:26px;
+    position:absolute;
+    height:100%;
+    right:10px;
+    top:0px;
+}
+
+#content
+{
+    background: #fff;
+    width:600px;
+    border-left: 1px solid #ccc;
+    border-right:1px solid #ccc;
+    padding:0px 20px 0px 20px;
+    height:100%;
+    position:absolute;
+    left:230px;
+    overflow:auto;
+}
+
+#previous-post {
+    position:absolute;
+    top:16px;
+}
+
+#next-post {
+    position:absolute;
+    bottom:16px;
+}
+
+#sidebar h1, #sidebar h2
 {
     color: #fff;
 }
 
-.header
+#header
 {
-    margin-top:31px;
 }
 
-.header h1
+#header h1
 {
     border:none;
     margin:0;
+    color:#f1f1f1;
+    text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 3px rgba(0,0,0,.7);
 }
 
-.sidebar h2
+#sidebar h2
 {
     font-size:20px;
     color:#aaa;
 }
 
-.sidebar h2:hover, .sidebar li:hover, .header .tagline span:hover,
-.contact span:hover
+#sidebar h2:hover, #sidebar li:hover, #header .tagline span:hover,
+#contact span:hover
 {
     color:#fff;
     cursor:pointer;
 }
 
-.sidebar .selected
+#sidebar .selected
 {
     color:#fff;
 }
 
-.sidebar h2.selected
+#sidebar h2.selected
 {
     margin-bottom:5px;
 }
 
-.sidebar ul
+#sidebar ul
 {
     border-top:1px dashed #fff;
     border-bottom:1px dashed #fff;
@@ -188,53 +224,116 @@ li
     margin-bottom:10px;
 }
 
-.sidebar li
+#sidebar li
 {
     list-style:none;
     margin:0;
 }
 
-.header .tagline
+#header .tagline
 {
     font-size:12px;
     text-transform:uppercase;
     margin-bottom:2em;
 }
 
-.nav
+#nav
 {
     margin-top:30px;
 }
 
-.contact
+#contact
 {
     position:absolute;
     bottom:30px;
-    height:50px;
+    height:30px;
+    xborder:1px solid red;
+    width:100%;
 }
 
-.contact h2
+#contact h2
 {
     color:#fff;
-    xmargin:0;
-    xborder-bottom:1px dashed #fff;
-    xmargin-bottom:5px;
 }
 
-.contact .links
+#contact .links
 {
     font-size:12px;
     text-transform:uppercase;
 }
 
-.content
+.contact-link 
 {
-    background: #fff;
-    margin-left:230px;
-    width:600px;
-    border-left: 1px solid #ccc;
-    border-right:1px solid #ccc;
-    padding:1px 20px 1px 20px;
+    width:30px;
+    height:30px;
+    border-radius:5px;
+    margin-right:10px;
+    float:left;
+    text-decoration:none;
+    background:#aaa 2px 2px no-repeat;
+}
+
+.contact-link:hover
+{
+    background:#fff 2px 2px no-repeat;    
+}
+
+#facebook 
+{
+    background-position:4px 4px;
+    background-image: url(/Content/facebook-grey.png);
+}
+
+#facebook:hover 
+{
+    background-image: url(/Content/facebook.png);
+}
+
+#twitter 
+{
+    background-image: url(/Content/twitter-grey.png);
+}
+
+#twitter:hover 
+{
+    background-image: url(/Content/twitter.png);
+}
+
+#stackoverflow 
+{
+    background-image: url(/Content/stackoverflow-grey.png);
+}
+
+#stackoverflow:hover 
+{
+    background-image: url(/Content/stackoverflow.png);
+}
+
+#google-code 
+{
+    background-image: url(/Content/googlecode-grey.png);
+    margin-right:0;
+}
+
+#google-code:hover 
+{
+    background-image: url(/Content/googlecode.png);
+}
+
+#email 
+{
+    background-position:4px 7px;
+    background-image: url(/Content/gmail-grey.png);
+}
+
+#email:hover 
+{
+    background-image: url(/Content/gmail.png);
+}
+
+.margin-fix
+{
+    padding:1px 0px;
 }
 
 .post-info
