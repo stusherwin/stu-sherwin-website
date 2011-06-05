@@ -1,0 +1,19 @@
+﻿@model StuSherwin.Poco
+
+@{
+    ViewBag.Title = "Edit Post";
+    Layout = "~/Views/Admin/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(m => m.Title)<br />
+    @Html.EditorFor(m => m.Title)<br />
+
+    @Html.LabelFor(m => m.Body)<br />
+    @Html.EditorFor(m => m.Body)<br />
+
+    <input type="submit" value="Save" />
+}

@@ -1,0 +1,9 @@
+﻿@{
+    ViewBag.Title = "_Layout";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h1>Site Administration</h1>
+@if(User.Identity.IsAuthenticated) { 
+    <p>@Html.ActionLink("Log out", "Logout")</p>
+}
+@RenderBody()

@@ -1,0 +1,23 @@
+﻿@using StuSherwin.Poco 
+@model IEnumerable<Post>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Admin/_Layout.cshtml";
+}
+
+<h2>Actions</h2>
+
+@Html.ActionLink("New Post", "Create")
+
+@Html.ActionLink("Import blog from XML file", "Import")
+
+@foreach (var post in Model) {
+    <h2>@post.Title</h2>
+    <div class="post-date">15th April 2010</div>
+    @Html.ActionLink("View", "Display", new { id = post.Id }) 
+    <text>&nbsp;</text>
+    @Html.ActionLink("Edit", "Edit", new { id = post.Id }) 
+    <text>&nbsp;</text>
+    @Html.ActionLink("Delete", "Delete", new { id = post.Id })
+}
+
