@@ -1,0 +1,16 @@
+﻿@using Website.ViewModels.Admin
+@model LoginModel
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Admin/_Layout.cshtml";
+}
+
+<h2>Login</h2>
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(m => m.Username)
+    @Html.EditorFor(m => m.Username)
+    @Html.LabelFor(m => m.Password)
+    @Html.EditorFor(m => m.Password)
+    <input type="submit" value="Log in" />
+}
