@@ -225,27 +225,34 @@ li
     width:100%;
     border-radius:8px;
     border:1px solid #333;
-    min-height:40px;
     margin-bottom:10px;
+}
+
+.x3
+{
+    border-radius:8px 8px 0 0;
+    background:#222;
+    height:40px;
+    
 }
 
 #code
 {
-    background:#aaa url(/content/code.png) no-repeat 2px 2px;
+    background:#fff url(/content/code.png) no-repeat 2px 2px;
     xpadding:3px 0 0 35px;
     xheight:30px;
 }
 
 #music
 {
-    background:#aaa url(/content/music.png) no-repeat 8px 2px;
+    background:#fff url(/content/music.png) no-repeat 8px 2px;
     xpadding:4px 0 0 35px;
     xheight:30px;
 }
 
 #philosophy
 {
-    background:#aaa url(/content/philosophy.png) no-repeat 8px 2px;
+    background:#fff url(/content/philosophy.png) no-repeat 8px 2px;
     xpadding:4px 0 0 35px;
     xheight:30px;
 }
@@ -257,7 +264,7 @@ li
 
 #sidebar .selected h2
 {
-    margin-bottom:5px;
+    margin-bottom:0px;
     color:#fff;
 }
 
@@ -272,8 +279,9 @@ li
     xborder-top:1px dashed #fff;
     xborder-bottom:1px dashed #fff;
     padding: 5px 0;
-    margin-bottom:10px;
+    margin-bottom:0px;
     margin-left:45px;
+    padding-top:5px;
 }
 
 #sidebar li
