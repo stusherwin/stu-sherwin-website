@@ -73,6 +73,7 @@ html, body
 
 body {
   background:#191919;
+  xbackground:#090909;
   color:#555;
   font-family: 'Quattrocento Sans', serif;
   font-size: 15px;
@@ -200,7 +201,7 @@ li
     font-size:20px;
     color:#aaa;
     float:left;
-    margin-top:10px;
+    xmargin-top:5px;
 }
 
 #sidebar h2:hover, #sidebar li:hover, #header .tagline span:hover,
@@ -215,56 +216,105 @@ li
     width:30px;
     height:30px;
     border-radius:5px;
-    margin:5px;
     margin-right:10px;
     float:left;
 }
 
 .x2
 {
-    width:100%;
-    border-radius:8px;
-    border:1px solid #333;
+    xwidth:100%;
+    xborder-radius:8px;
+    xborder:1px solid #333;
+    xmargin-bottom:10px;
+    xbackground:#000;
+    padding:3px;
+    min-height:30px;
+    Xbackground:#090909;
+    xpadding-top:10px;
+    padding-bottom:10px;
+    border-bottom:1px solid #333;
+    xborder-top:1px solid #fff;
+}
+
+.x2.selected
+{
     margin-bottom:10px;
+}
+
+
+.summary 
+{
+    clear:both;
+    font-size:0.8em;
+    display:block;
+    margin: 5px;
+    xcolor:#fff;
 }
 
 .x3
 {
-    border-radius:8px 8px 0 0;
-    background:#222;
-    height:40px;
-    
+    xborder-radius:5px; /*8px 0 0;*/
+    height:25px;
+    padding:5px;
+    padding-top:10px;
+    padding-left:40px;
+    background-color:#191919;    
+    margin-bottom:10px;
+    border-bottom:1px solid #333;
+    padding-bottom:10px;
+}
+
+.selected .x3
+{
+    background-color:#191919; 
+    margin-bottom:0;   
 }
 
 #code
 {
     background:#fff url(/content/code.png) no-repeat 2px 2px;
-    xpadding:3px 0 0 35px;
-    xheight:30px;
+}
+
+#code1
+{
+    background: /*#333*/ url(/content/code1.png) no-repeat 5px 5px;
+    margin-bottom:0;
+    padding-bottom:5px;
+    color:#fff;
+    Xborder-bottom:none;
+    border-top:1px solid #333;
+    xborder-BOTTOM:1px solid #FFF;
+    padding-top:15px;
+}
+
+#code1 h2
+{
+    color:#fff;
 }
 
 #music
 {
     background:#fff url(/content/music.png) no-repeat 8px 2px;
-    xpadding:4px 0 0 35px;
-    xheight:30px;
+}
+
+#music1
+{
+    background:url(/content/music1-grey.png) no-repeat 2px 2px;
 }
 
 #philosophy
 {
     background:#fff url(/content/philosophy.png) no-repeat 8px 2px;
-    xpadding:4px 0 0 35px;
-    xheight:30px;
 }
 
-#sidebar .selected
+#philosophy1
 {
-    color:#fff;
+    background: url(/content/philosophy1-grey.png) no-repeat 2px 2px;
+    xborder-bottom:none;
 }
 
 #sidebar .selected h2
 {
-    margin-bottom:0px;
     color:#fff;
 }
 
@@ -275,19 +325,20 @@ li
 
 #sidebar ul
 {
+    xfont-size:0.8em;
     clear:both;
-    xborder-top:1px dashed #fff;
-    xborder-bottom:1px dashed #fff;
-    padding: 5px 0;
+    xpadding: 5px 0;
+    margin-top:0px;
     margin-bottom:0px;
-    margin-left:45px;
-    padding-top:5px;
+    xmargin-left:5px;
+    xpadding-top:5px;
 }
 
 #sidebar li
 {
-    list-style:none;
+    list-style-type:disc;
     margin:0;
+    margin-left:33px;
 }
 
 #header .tagline
@@ -295,7 +346,16 @@ li
     font-size:12px;
     text-transform:uppercase;
     margin-bottom:2em;
+    margin-left:2px;
 }
+
+/*#about
+{
+    height:100px;
+    border-radius:5px;
+    border:1px solid #333;
+    background:#000;
+}*/
 
 #nav
 {
