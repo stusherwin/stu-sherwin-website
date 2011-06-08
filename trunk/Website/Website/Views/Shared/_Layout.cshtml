@@ -17,68 +17,69 @@
 
 <body>
     <div id="container">
-            <div id="sidebar">
-                <div id="header">
-                    <h1>Stu Sherwin</h1>
-                    <div class="tagline">
-                        <span class="selected">Developer</span> : 
-                        <span>musician</span> :
-                        <span>atheist</span>
-                    </div>
-                    <div id="about"></div>
+        <div id="sidebar">
+            <div id="header">
+                <h1><a href="#">Stu Sherwin</a></h1>
+                <div id="tagline">
+                    <span class="selected">Developer</span> : 
+                    <a href="#">musician</a> :
+                    <a href="#">atheist</a>
                 </div>
-                <div id="nav">
-                    
-                    
-                    <div id="code1" class="x3">
-                        <!--div class="x" id="code"></div-->
-                        <h2>Code</h2>
-                    </div>
-                <div class="x2 selected">
-                        <p class="summary">I write a lot of code because I am a code god and coding is what I do.</p>
+            </div>
+            <ul id="nav">
+                <li class="selected" id="code">
+                    <h2>Code</h2>
+                    <div class="subnav">
+                        <div class="summary">A bit of text here about what it means to be writing code all of the time yo.</div>
                         <ul>
-                            <li>All posts (24)</li>
-                            <li>Curriculum Vitae</li>
+                            <li class="selected">All posts (24)</li>
+                            <li><a href="#">Curriculum vitae</a></li>
+                            <li><a href="#">Download this website</a></li>
                         </ul>
-                </div>
-                    <div id="music1" class="x3">
-                    <!--div class="x" id="music"></div-->
-                    <h2>Music</h2>
                     </div>
-                    <div id="philosophy1" class="x3">
-                    <!--div class="x" id="philosophy"></div-->
-                    <h2>Philosophy</h2>
-                    </div>
-                </div>
-                <div id="contact">
-                    <!--<h2>Get in touch</h2>-->
-                    <a id="facebook" class="contact-link" href="#">&nbsp;</a>
-                    <a id="twitter" class="contact-link" href="#">&nbsp;</a>
-                    <a id="stackoverflow" class="contact-link" href="#">&nbsp;</a>
-                    <a id="email" class="contact-link" href="#">&nbsp;</a>
-                    <a id="google-code" class="contact-link" href="#">&nbsp;</a>
-                    <!--<div class="links">
-                        <span>Email</span> : 
-                        <span>Twitter</span> :
-                        <span>Facebook</span>
-                    </div>-->
-                </div>
+                </li>
+                <li id="music">
+                    <h2><a href="#">Music</a></h2>
+                </li>
+                <li id="philosophy">
+                    <h2><a href="#">Philosophy</a></h2>
+                </li>
+            </ul>
+
+            <div id="contact">
+                <h3>Contact (or stalk) me here:</h3>
+                <ul>
+                    <li>
+                        <a id="email" href="#">&nbsp;</a>
+                    </li>
+                    <li>
+                        <a id="twitter" href="#">&nbsp;</a>
+                    </li>
+                    <li>
+                        <a id="facebook" href="#">&nbsp;</a>
+                    </li>
+                    <li>
+                        <a id="stackoverflow" href="#">&nbsp;</a>
+                    </li>
+                    <li>
+                        <a id="google-code" href="#">&nbsp;</a>
+                    </li>
+                </ul>
             </div>
-            <div id="content">
-                <div class="margin-fix">
-                    @RenderBody()
-                </div>
+        </div>
+        <div id="content">
+            <div class="margin-fix">
+                @RenderBody()
             </div>
-            <div id="scroll">
-                <a id="previous-post" href="#"><img src="/Content/up.png" /></a>
-                <a id="next-post" href="#"><img src="/Content/down.png" /></a>
-            </div>
+        </div>
+        <div id="scroll">
+            <a id="previous-post" href="#">
+                <img src="/Content/up.png" />
+            </a>
+            <a id="next-post" href="#">
+                <img src="/Content/down.png" />
+            </a>
+        </div>
     </div>
-    <script type="text/javascript">
-        $('#finder').click(function (e) {
-            
-            //e.PreventDefault();
-        });
-    </script>
 </body>
 </html>
