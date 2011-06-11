@@ -8,7 +8,7 @@
             background:black;
             margin:0;
             padding:0;
-            overflow:auto;
+            xoverflow:auto;
         }
         
         #container {
@@ -25,9 +25,9 @@
             background:yellow;
         }
         
-        #f2 {
+        /*#f2 {
             height:100%;
-        }
+        }*/
         
         #sidebar {
             width:50px;
@@ -40,12 +40,12 @@
         
         #content {
             width:500px;
-            height:100%;
+            min-height:100%;
             background:white;
             position:absolute;
             left:150px;
             top:0;
-            overflow:auto;
+            xoverflow:auto;
         }
         
         #scroll {
@@ -61,99 +61,99 @@
 <body>
     <div id="container">
         <div id="fixed">
-        <div id="f2">
-            <div id="sidebar">Sidebar</div>
-            <div id="content">
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
-                <p>Content</p>
+            <div id="f2">
+                <div id="sidebar">Sidebar</div>
+                <div id="scroll">Scroll</div>
             </div>
-            <div id="scroll">Scroll</div>
         </div>
+        <div id="content">
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
+            <p>Content</p>
         </div>
     </div>
 </body>

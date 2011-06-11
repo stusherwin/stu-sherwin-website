@@ -7,7 +7,7 @@
 
 @foreach (var post in Model) {
     <h1 id="@post.Id">@post.Title</h1>
-    <div class="post-date">@post.Published</div>
+    <div class="post-date">@(post.Published.HasValue? post.Published.Value.ToLongDateString() : "")</div>
     @Html.Raw(post.Body)
     <div class="post-info">@Html.ActionLink(post.Comments.Count() + " comments", "Display", new { id = post.Id })</div>
 }
