@@ -676,10 +676,26 @@
     <Content Include="Content\blog-05-22-2011.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Content\Twitter.png" />
+    <Content Include="Content\code.png" />
+    <Content Include="Content\down.png" />
+    <Content Include="Content\facebook-grey.png" />
+    <Content Include="Content\facebook.png" />
+    <Content Include="Content\gmail-grey.png" />
+    <Content Include="Content\gmail.png" />
+    <Content Include="Content\googlecode-grey.png" />
+    <Content Include="Content\googlecode.png" />
+    <Content Include="Content\music.png" />
+    <Content Include="Content\pattern1.png" />
+    <Content Include="Content\philosophy.png" />
+    <Content Include="Content\stackoverflow-grey.png" />
+    <Content Include="Content\stackoverflow.png" />
+    <Content Include="Content\twitter-grey.png" />
+    <Content Include="Content\twitter.png" />
+    <Content Include="Content\up.png" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\HtmlContent.js" />
+    <Content Include="test.htm" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
