@@ -1,0 +1,34 @@
+﻿@if (ViewBag.Category == "Music")
+{
+    <li id="music" class="selected">
+        <h2><span></span>Music</h2>
+        <div class="subnav">
+            <div class="summary">I do some music stuff and all.</div>
+            <ul>
+                @if (ViewBag.Page == null && ViewBag.PostId == null)
+                {
+                    <li class="selected">All posts (24)</li>
+                }
+                else
+                {
+                    <li>@Html.ActionLink("All posts (24)", "Index", "Post", new { category = "Music" }, new { })</li>
+                }
+                @if (ViewBag.Page == "Page1")
+                {
+                    <li class="selected">Page 1</li>
+                }
+                else
+                {
+                    <li>@Html.ActionLink("Page 1", "Page1", "Music")</li>
+                }
+            </ul>
+        </div>
+    </li>
+}
+else
+{
+    <li id="music">
+        <h2><a href="@Url.Action("Index", "Post", new { category = "Music" })"><span></span>Music</a></h2>
+    </li>
+}
+

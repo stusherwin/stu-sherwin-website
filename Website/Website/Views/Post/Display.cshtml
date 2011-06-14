@@ -5,7 +5,6 @@
     ViewBag.Title = "Display";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@Html.ActionLink("Posts", "Index")
-<h2>@Model.Title</h2>
+<h1>@Model.Title</h1>
 @Html.Raw(Model.Body)
 
