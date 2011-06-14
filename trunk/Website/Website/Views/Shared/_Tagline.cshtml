@@ -1,0 +1,32 @@
+﻿<div id="tagline">
+    @if (ViewBag.Category == "Code")
+    {
+        <span class="selected">Developer</span>
+    }
+    else 
+    {
+        @Html.ActionLink("Developer", "Index", "Post", new { category = "Code" }, new { })
+    }
+
+    :
+
+    @if (ViewBag.Category == "Music")
+    {
+        <span class="selected">Musician</span>
+    }
+    else 
+    {
+        @Html.ActionLink("Musician", "Index", "Post", new { category = "Music" }, new { })
+    }
+
+    :
+
+    @if (ViewBag.Category == "Philosophy")
+    {
+        <span class="selected">Atheist</span>
+    }
+    else 
+    {
+        @Html.ActionLink("Atheist", "Index", "Post", new { category = "Philosophy" }, new { })
+    }
+</div>

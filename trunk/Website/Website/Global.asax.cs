@@ -22,11 +22,22 @@ namespace Website
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-                "Default", // Route name
-                "{controller}/{action}/{id}", // URL with parameters
-                new { controller = "Post", action = "Index", id = UrlParameter.Optional } // Parameter defaults
+                "Category", 
+                "{category}", 
+                new { controller = "Post", action = "Index", category = "Code" } 
             );
 
+            routes.MapRoute(
+                "Post",
+                "{category}/Post/{id}",
+                new { controller = "Post", action = "Display" }
+            );
+
+            routes.MapRoute(
+                "Default",
+                "{controller}/{action}/{id}",
+                new { id = UrlParameter.Optional }
+            );
         }
 
         protected void Application_Start()
