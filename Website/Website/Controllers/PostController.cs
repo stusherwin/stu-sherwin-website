@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using System.Data;
 using Data;
 using Website.Filters;
-using StuSherwin.Poco;
+using StuSherwin.Model;
 
 namespace Website.Controllers
 {
