@@ -20,17 +20,10 @@
                 <h1><a href="/">Stu Sherwin</a></h1>
                 @Html.Partial("_Tagline")
             </div>
-            @Html.Partial("_Navigation")
+            @Html.Partial("Navigation\\_Navigation")
+            @Html.Partial("_Contact")
         </div>
-        <div id="content">
-            <div class="margin-fix">
-                @RenderBody()
-            </div>
-        </div>
-        @Html.Partial("_Contact")
-        <div class="shadow-left"></div>
-        <div class="shadow-right"></div>
-        @Html.Partial("_Scroll")
+        @RenderBody()
     </div>
     <script type="text/javascript" src="/js/Scrolling.js"></script>
 </body>

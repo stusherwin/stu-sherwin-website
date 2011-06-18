@@ -43,6 +43,7 @@
     <Compile Include="PostImporter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="LinqToXmlExtensions.cs" />
+    <Compile Include="XElementFinder.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Data\StuSherwin.Data.csproj">

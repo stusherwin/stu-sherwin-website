@@ -1,0 +1,23 @@
+﻿<li id="music" class="selected">
+    <div></div>
+    <h2>Music</h2>
+    <p>Experiments in playing and writing music</p>
+    <ul>
+        @if (ViewBag.Page == null && ViewBag.PostId == null)
+        {
+            <li class="selected">All posts (24)</li>
+        }
+        else
+        {
+            <li>@Html.ActionLink("All posts (24)", "Index", "Post", new { category = "Music" }, new { })</li>
+        }
+        @if (ViewBag.Page == "Page1")
+        {
+            <li class="selected">Page 1</li>
+        }
+        else
+        {
+            <li>@Html.ActionLink("Page 1", "Page1", "Music")</li>
+        }
+    </ul>
+</li>

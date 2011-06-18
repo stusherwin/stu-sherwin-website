@@ -69,6 +69,7 @@
   <ItemGroup>
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CodeController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MusicController.cs" />
     <Compile Include="Controllers\PhilosophyController.cs" />
     <Compile Include="Controllers\PostController.cs" />
@@ -691,6 +692,13 @@
     </Content>
     <Content Include="css\Site.css" />
     <Content Include="Global.asax" />
+    <Content Include="img\me.jpg" />
+    <Content Include="img\PB-05.jpg" />
+    <Content Include="img\pic13.jpg" />
+    <Content Include="img\shadow-left.png" />
+    <Content Include="img\shadow-right.png" />
+    <Content Include="img\shadow-top.png" />
+    <Content Include="img\shadow.png" />
     <Content Include="img\sprites.png" />
     <Content Include="js\HtmlContent.js" />
     <Content Include="js\lib\jquery-1.4.1-vsdoc.js" />
@@ -709,6 +717,7 @@
     <Content Include="js\lib\MicrosoftMvcAjax.js" />
     <Content Include="js\lib\MicrosoftMvcValidation.debug.js" />
     <Content Include="js\lib\MicrosoftMvcValidation.js" />
+    <Content Include="js\Scrolling.js" />
     <Content Include="Scripts\HtmlContent.js" />
     <Content Include="test.htm" />
     <Content Include="Web.config" />
@@ -776,13 +785,20 @@
     <Content Include="Views\Code\CV.cshtml" />
     <Content Include="Views\Code\Download.cshtml" />
     <Content Include="packages.config" />
-    <Content Include="Views\Shared\_Navigation.cshtml" />
-    <Content Include="Views\Shared\_Code.cshtml" />
-    <Content Include="Views\Shared\_Music.cshtml" />
-    <Content Include="Views\Shared\_Philosophy.cshtml" />
+    <Content Include="Views\Shared\Navigation\_Navigation.cshtml" />
+    <Content Include="Views\Shared\Navigation\_Code.cshtml" />
+    <Content Include="Views\Shared\Navigation\_Music.cshtml" />
+    <Content Include="Views\Shared\Navigation\_Philosophy.cshtml" />
     <Content Include="Views\Music\Page1.cshtml" />
     <Content Include="Views\Philosophy\Page1.cshtml" />
     <Content Include="Views\Shared\_Tagline.cshtml" />
+    <Content Include="Views\Shared\_Contact.cshtml" />
+    <Content Include="Views\Shared\_Scroll.cshtml" />
+    <Content Include="Views\Shared\Navigation\_CodeSelected.cshtml" />
+    <Content Include="Views\Shared\Navigation\_MusicSelected.cshtml" />
+    <Content Include="Views\Shared\Navigation\_PhilosophySelected.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\_Post.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BusinessLogic\StuSherwin.csproj">

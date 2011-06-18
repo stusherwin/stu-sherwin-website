@@ -2,13 +2,13 @@
 @model IEnumerable<Post>
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_Post.cshtml";
 }
 
 @foreach (var post in Model) {
     <h1 id="@post.Id">@post.Title</h1>
     <div class="post-date">@(post.Published.HasValue? post.Published.Value.ToLongDateString() : "")</div>
-    @Html.Raw(post.Body)
+    <div class="post-body">@Html.Raw(post.Body)</div>
     <div class="post-info">@Html.ActionLink(post.Comments.Count() + " comments", "Display", new { id = post.Id })</div>
 }
 

@@ -24,7 +24,7 @@ namespace Website
             routes.MapRoute(
                 "Category", 
                 "{category}", 
-                new { controller = "Post", action = "Index", category = "Code" } 
+                new { controller = "Post", action = "Index" } 
             );
 
             routes.MapRoute(
@@ -36,7 +36,7 @@ namespace Website
             routes.MapRoute(
                 "Default",
                 "{controller}/{action}/{id}",
-                new { id = UrlParameter.Optional }
+                new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
         }
 
