@@ -809,13 +809,13 @@
     <Content Include="Views\Shared\_Post.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BusinessLogic\StuSherwin.Model.csproj">
-      <Project>{821A4D24-9C7A-49A8-9205-742967F7CE2F}</Project>
-      <Name>StuSherwin.Model</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Data\StuSherwin.Data.csproj">
+    <ProjectReference Include="..\StuSherwin.Data\StuSherwin.Data.csproj">
       <Project>{A07BE3B3-D6B9-4EEB-A669-E62AF6343449}</Project>
       <Name>StuSherwin.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\StuSherwin.Model\StuSherwin.Model.csproj">
+      <Project>{821A4D24-9C7A-49A8-9205-742967F7CE2F}</Project>
+      <Name>StuSherwin.Model</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
