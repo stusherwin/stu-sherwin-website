@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Web Developer Express 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StuSherwin.Mvc", "Website\StuSherwin.Mvc.csproj", "{78FA919F-CF37-494C-9D52-8932C4CA8EE1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StuSherwin.Mvc", "StuSherwin.Mvc\StuSherwin.Mvc.csproj", "{78FA919F-CF37-494C-9D52-8932C4CA8EE1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StuSherwin.Model", "BusinessLogic\StuSherwin.Model.csproj", "{821A4D24-9C7A-49A8-9205-742967F7CE2F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StuSherwin.Model", "StuSherwin.Model\StuSherwin.Model.csproj", "{821A4D24-9C7A-49A8-9205-742967F7CE2F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StuSherwin.Data", "Data\StuSherwin.Data.csproj", "{A07BE3B3-D6B9-4EEB-A669-E62AF6343449}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StuSherwin.Data", "StuSherwin.Data\StuSherwin.Data.csproj", "{A07BE3B3-D6B9-4EEB-A669-E62AF6343449}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
