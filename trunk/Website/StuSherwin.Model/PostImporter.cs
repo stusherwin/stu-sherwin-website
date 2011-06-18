@@ -5,9 +5,9 @@ using System.Text;
 using System.IO;
 using System.Xml.Linq;
 using System.Text.RegularExpressions;
-using StuSherwin.Poco;
+using StuSherwin.Model;
 
-namespace BusinessLogic
+namespace StuSherwin.Model
 {
     public class PostImporter
     {

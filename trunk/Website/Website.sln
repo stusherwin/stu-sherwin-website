@@ -3,11 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Web Developer Express 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StuSherwin.Mvc", "Website\StuSherwin.Mvc.csproj", "{78FA919F-CF37-494C-9D52-8932C4CA8EE1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StuSherwin", "BusinessLogic\StuSherwin.csproj", "{821A4D24-9C7A-49A8-9205-742967F7CE2F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StuSherwin.Model", "BusinessLogic\StuSherwin.Model.csproj", "{821A4D24-9C7A-49A8-9205-742967F7CE2F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StuSherwin.Data", "Data\StuSherwin.Data.csproj", "{A07BE3B3-D6B9-4EEB-A669-E62AF6343449}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StuSherwin.Poco", "StuSherwin.Poco\StuSherwin.Poco.csproj", "{D93FDB17-91D9-427A-B5D5-8A848AD6178D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,10 +25,6 @@ Global
 		{A07BE3B3-D6B9-4EEB-A669-E62AF6343449}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A07BE3B3-D6B9-4EEB-A669-E62AF6343449}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A07BE3B3-D6B9-4EEB-A669-E62AF6343449}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D93FDB17-91D9-427A-B5D5-8A848AD6178D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D93FDB17-91D9-427A-B5D5-8A848AD6178D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D93FDB17-91D9-427A-B5D5-8A848AD6178D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D93FDB17-91D9-427A-B5D5-8A848AD6178D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

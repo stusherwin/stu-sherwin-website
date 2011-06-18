@@ -692,8 +692,16 @@
     </Content>
     <Content Include="css\Site.css" />
     <Content Include="Global.asax" />
+    <Content Include="img\code-back.png" />
+    <Content Include="img\home-code-arrow.png" />
+    <Content Include="img\home-me-arrow.png" />
+    <Content Include="img\home-music-arrow.png" />
+    <Content Include="img\home-philosophy-arrow.png" />
     <Content Include="img\me.jpg" />
+    <Content Include="img\music-back.png" />
+    <Content Include="img\music-back1.png" />
     <Content Include="img\PB-05.jpg" />
+    <Content Include="img\philosophy-back.png" />
     <Content Include="img\pic13.jpg" />
     <Content Include="img\shadow-left.png" />
     <Content Include="img\shadow-right.png" />
@@ -801,17 +809,13 @@
     <Content Include="Views\Shared\_Post.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BusinessLogic\StuSherwin.csproj">
+    <ProjectReference Include="..\BusinessLogic\StuSherwin.Model.csproj">
       <Project>{821A4D24-9C7A-49A8-9205-742967F7CE2F}</Project>
-      <Name>StuSherwin</Name>
+      <Name>StuSherwin.Model</Name>
     </ProjectReference>
     <ProjectReference Include="..\Data\StuSherwin.Data.csproj">
       <Project>{A07BE3B3-D6B9-4EEB-A669-E62AF6343449}</Project>
       <Name>StuSherwin.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\StuSherwin.Poco\StuSherwin.Poco.csproj">
-      <Project>{D93FDB17-91D9-427A-B5D5-8A848AD6178D}</Project>
-      <Name>StuSherwin.Poco</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

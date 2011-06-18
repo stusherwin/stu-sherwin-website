@@ -40,20 +40,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Category.cs" />
+    <Compile Include="Comment.cs" />
+    <Compile Include="Post.cs" />
     <Compile Include="PostImporter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="LinqToXmlExtensions.cs" />
     <Compile Include="XElementFinder.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Data\StuSherwin.Data.csproj">
-      <Project>{A07BE3B3-D6B9-4EEB-A669-E62AF6343449}</Project>
-      <Name>StuSherwin.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\StuSherwin.Poco\StuSherwin.Poco.csproj">
-      <Project>{D93FDB17-91D9-427A-B5D5-8A848AD6178D}</Project>
-      <Name>StuSherwin.Poco</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

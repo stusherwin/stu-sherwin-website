@@ -9,9 +9,8 @@ using System.Data;
 using System.IO;
 using System.Xml.Linq;
 using System.Text.RegularExpressions;
-using BusinessLogic;
 using Data;
-using StuSherwin.Poco;
+using StuSherwin.Model;
 
 namespace Website.Controllers
 {
