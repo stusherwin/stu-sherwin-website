@@ -21,17 +21,19 @@
     function setPreviousAndNextPosts() {
         previousPost = getPreviousPost();
         if (previousPost.length) {
-            $('#previous-post').fadeIn();
+            $('#previous').attr('title', previousPost.html());
+            $('#previous').fadeIn();
         }
         else {
-            $('#previous-post').fadeOut();
+            $('#previous').fadeOut();
         }
         nextPost = getNextPost();
         if (nextPost.length) {
-            $('#next-post').fadeIn();
+            $('#next').attr('title', nextPost.html());
+            $('#next').fadeIn();
         }
         else {
-            $('#next-post').fadeOut();
+            $('#next').fadeOut();
         }
     }
 
@@ -41,7 +43,7 @@
         setPreviousAndNextPosts();
     });
 
-    $('#previous-post').click(function (e) {
+    $('#previous').click(function (e) {
         if (previousPost.length) {
             (function (scrollTo) {
                 $('#content').animate({
@@ -52,7 +54,7 @@
         e.preventDefault();
     });
 
-    $('#next-post').click(function (e) {
+    $('#next').click(function (e) {
         if (nextPost.length) {
             (function (scrollTo) {
                 $('#content').animate({

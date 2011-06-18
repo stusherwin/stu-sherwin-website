@@ -1,3 +1,7 @@
+/*************************\
+         CSS Reset 
+\*************************/
+
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0b1 | 201101 
    NOTE: WORK IN PROGRESS
@@ -62,10 +66,14 @@ table {
 }
 
 
-/* ------------------- */
 
-html, body
-{
+
+
+/*************************\
+         Defaults 
+\*************************/
+
+html, body {
     height:100%;
     margin:0;
     padding:0;
@@ -73,7 +81,7 @@ html, body
 
 body {
   background:#191919;
-  xbackground:#090909;
+  background:#090909;
   color:#555;
   font-family: /*Georgia,*/ 'Quattrocento Sans', serif;
   font-size: 15px;
@@ -86,20 +94,26 @@ body {
   line-height: 21px;
 }
 
-::selection 
-{
-    background:#E52427; /* Safari */
-    color:#fff;
+#container {
+    width:924px;
+    margin:0 auto;
+    padding:0px;
+    height:100%;
+    position:relative;
+    min-height:550px;
 }
 
-::-moz-selection 
-{
+::selection {
     background:#A84345; /* Safari */
     color:#fff;
 }
 
-h1, h2, h3, h4
-{
+::-moz-selection {
+    background:#A84345; /* Firefox */
+    color:#fff;
+}
+
+h1, h2, h3, h4 {
     font-family: 'Vollkorn', serif;
     font-style: normal;
     font-weight: 400;
@@ -112,55 +126,42 @@ h1, h2, h3, h4
     color:#771314;
     color:#5E0909;
     xcolor:#fff;
+}
+
+h1 {
+    font-size: 36px;
     text-shadow:0 0 1px #916E6E;
 }
 
-h1
-{
-    font-size: 36px;
-    margin-top:70px;
-}
-
-h2
-{
+h2 {
     font-size:22px;
+    text-shadow:0 0 1px #D8C5C5;
 }
 
-h1:first-child
-{
-    margin-top:0px;
-}
-
-p, ul, ol
-{
+p, ul, ol {
     margin-bottom:1em;
 }
 
-li
-{
+li {
     margin-left:30px;
     list-style-type:disc;
 }
 
-a
-{
+a {
     color:#aa1b1f;
 }
 
-a:hover
-{
+a:hover {
     color:#E52427;
 }
 
-strong
-{
+strong {
     font-weight:bold;
     color:#191919;
     xfont-family:'Volkorn';
 }
 
-em
-{
+em {
     font-style:oblique;
     font-family:'Volkorn';
     xfont-size:smaller;
@@ -168,490 +169,9 @@ em
     xcolor:#191919;
 }
 
-#container
-{
-    width:924px;
-    margin:0 auto;
-    padding:0px;
-    height:100%;
-    position:relative;
-    min-height:400px;
-}
-
-#sidebar
-{
-    position:absolute;
-    left:10px;
-    color:#aaa;
-    height:100%;
-    width:192px;
-    line-height:1.2;
-    xtext-shadow: 0px 0px 3px #000;
-}
-
-#scroll {
-    width:96px;
-    position:absolute;
-    height:100%;
-    right:-60px;
-    top:0px;
-}
-
-#content
-{
-    background: #fff;
-    width:600px;
-    border-left: 1px solid #333;
-    border-right:1px solid #fff;
-    padding:0px 20px 0px 20px;
-    height:100%;
-    position:absolute;
-    left:230px;
-    overflow-x:auto;
-    overflow-y:scroll;
-    background:#fff url(/img/pb-05.jpg);
-}
-
-#content img
-{
-    max-width:100%;
-    border:10px solid white;
-    border-radius:5px;
-    box-shadow:0 0 5px 0 #000;
-    margin:20px;
-}
-
-#content img.right
-{
-    float:right;
-}
-
-#content img.left
-{
-    float:left;
-}
-
-#content img.full
-{
-    margin:20px auto;
-    display:block;    
-}
-
-.shadow-left
-{
-    background:url(/img/shadow-left.png) repeat-y;
-    position:absolute;
-    left:231px;
-    width:20px;
-    height:100%;
-}
-
-.shadow-right
-{
-    background:url(/img/shadow-right.png) repeat-y;
-    position:absolute;
-    left:834px;
-    width:20px;
-    height:100%;
-}
-
-a#previous-post {
-    position:absolute;
-    top:16px;
-    font-size:12px;
-    text-transform:uppercase;
-    color:#aaa;
-    text-decoration:none;
-    display:block;
-    display:none;
-}
-
-a#previous-post span {
-    display:block;
-    width:26px;
-    height:16px;
-    background-image:url(/img/sprites.png);
-    background-position:-120px -40px;
-}
-
-a#previous-post:hover {
-    color:#fff;
-}
-
-a#previous-post:hover span {
-    background-image:url(/img/sprites.png);
-    background-position:-120px 0px;
-}
-
-a#next-post {
-    position:absolute;
-    bottom:16px;
-    font-size:12px;
-    text-transform:uppercase;
-    color:#aaa;
-    text-decoration:none;
-    display:block;
-    display:none;
-}
-
-a#next-post span {
-    display:block;
-    width:26px;
-    height:16px;
-    background-image:url(/img/sprites.png);
-    background-position:-160px -40px;
-}
-
-a#next-post:hover {
-    color:#fff;
-}
-
-a#next-post:hover span {
-    background-image:url(/img/sprites.png);
-    background-position:-160px 0px;
-}
-
-
-#header
-{
-    margin-top:30px;
-}
-
-#header h1
-{
-    border:none;
-    margin:0;
-    color:#fff;
-    text-shadow: 0px 0px 1px #fff, 0px 0px 3px #000;
-}
-
-#header h1 a
-{
-    color:#fff;
-    text-decoration:none;
-}
-
-#tagline
-{
-    font-size:12px;
-    text-transform:uppercase;
-    margin-bottom:2em;
-    margin-left:2px;
-    text-shadow: 0px 0px 3px #000;
-}
-
-#tagline a
-{
-    color:#aaa;
-    text-decoration:none;
-}
-
-#tagline a:hover
-{
-    color:#fff;
-}
-
-#tagline .selected
-{
-    color:#fff;
-}
-
-#nav
-{
-    margin:0;
-    margin-top:50px;
-    padding:0;
-    border-top:1px solid #333;
-}
-
-ul#nav > li
-{
-    list-style:none;
-    margin:0;
-    padding:0;
-}
-
-#nav h2
-{
-    border-bottom:1px solid #333;
-    font-size:20px;
-    color:#fff;
-    height:50px;
-    line-height:50px;
-}
-
-#nav a
-{
-    color:#aaa;
-}
-
-#nav a:hover
-{
-    color:#fff;
-}
-
-#nav h2 a
-{
-    display:block;
-    height:50px;
-    text-decoration:none;
-}
-
-#nav h2 span
-{
-    display:block;
-    height:30px;
-    width:30px;
-    background-position:0 0;
-    background-repeat:no-repeat;
-    float:left;
-    margin-top:10px;
-    margin-right:10px;
-}
-
-ul#nav > li ul
-{
-    margin:0;
-    margin-top:15px;
-    padding:0;
-}
-
-ul#nav > li ul > li
-{
-    list-style:none;
-    margin-left:5px;
-    padding-left:15px;
-    background-image:url(/img/sprites.png);
-    background-position:-200px -37px;
-    background-repeat:no-repeat;
-}
-
-ul#nav > li ul > li > a
-{
-    display:block;
-    text-decoration:none;
-}
-
-ul#nav > li ul > li.selected, ul#nav > li ul > li:hover
-{
-    color:#fff;
-    background-position:-200px 3px;
-}
-
-/*ul#nav > li .xxx
-{
-    background:#931919;/*#af1d1d;
-    margin:-5px;
-    border:1px solid #A81E1E;
-    padding:5px;
-}
-
-ul#nav > li .xxx h2
-{
-    border-bottom:none;
-    border: 1px solid #BC6262;
-    xborder-top:1px solid #191919;
-    padding-left:50px;
-    background-position:10px 10px;
-}*/
-
-.subnav
-{
-    padding-top:15px;
-    padding-bottom:35px;
-    border-bottom:1px solid #333;
-}
-
-.summary
-{
-    font-size:0.8em;
-    color:#fff;
-    margin:0 5px;
-}
-
-#code h2 span
-{
-    background-image:url(/img/sprites.png);
-    background-position:0 -40px;
-}
-
-#code.selected h2 span, #code h2:hover span
-{
-    background-image:url(/img/sprites.png);
-    background-position:0 0;
-}
-
-#music h2 span
-{
-    background-image:url(/img/sprites.png);
-    background-position:-40px -40px;
-}
-
-#music.selected h2 span, #music h2:hover span
-{
-    background-image:url(/img/sprites.png);
-    background-position:-40px 0;
-}
-
-#philosophy h2 span
-{
-    background-image:url(/img/sprites.png);
-    background-position:-80px -40px;
-}
-
-#philosophy.selected h2 span, #philosophy h2:hover span
-{
-    background-image:url(/img/sprites.png);
-    background-position:-80px 0px;
-}
-
-#contact h3
-{
-    font-family: 'Quattrocento Sans', serif;
-    font-size:12px;
-    text-transform:uppercase;
-    color:#aaa;
-    margin-bottom:10px;
-}
-
-#contact
-{
-    position:absolute;
-    bottom:30px;
-    margin:0;
-    padding:0;
-}
-
-#contact ul > li
-{
-    margin:0;
-    padding:0;
-    margin-left:10px;
-    float:left;
-    list-style:none;
-}
-
-#contact ul > li:first-child
-{
-    margin-left:0;
-}
-
-#contact a
-{
-    display:block;
-    width:30px;
-    height:30px;
-    border-radius:5px;
-    text-decoration:none;
-    background-position:0px 0px;
-    background-repeat: no-repeat;
-    background-color:#aaa;
-    text-indent:-3000em;
-}
-
-#contact a:hover
-{
-    background-color:#fff;
-    box-shadow: 0px 0px 5px 0 #000;
-}
-
-#contact #email 
-{
-    background-image: url(/img/sprites.png);
-    background-position:0px -120px;
-}
-
-#contact #email:hover 
-{
-    background-image: url(/img/sprites.png);
-    background-position:0px -80px;
-}
-
-#contact #twitter 
-{
-    background-image: url(/img/sprites.png);
-    background-position:-40px -120px;
-}
-
-#contact #twitter:hover 
-{
-    background-image: url(/img/sprites.png);
-    background-position:-40px -80px;
-}
-
-#contact #facebook 
-{
-    background-image: url(/img/sprites.png);
-    background-position:-80px -120px;
-}
-
-#contact #facebook:hover 
-{
-    background-image: url(/img/sprites.png);
-    background-position:-80px -80px;
-}
-
-#contact #stackoverflow 
-{
-    background-image: url(/img/sprites.png);
-    background-position:-120px -120px;
-}
-
-#contact #stackoverflow:hover 
-{
-    background-image: url(/img/sprites.png);
-    background-position:-120px -80px;
-}
-
-#contact #google-code 
-{
-    background-image: url(/img/sprites.png);
-    background-position:-160px -120px;
-}
-
-#contact #google-code:hover 
-{
-    background-image: url(/img/sprites.png);
-    background-position:-160px -80px;
-}
-
-.margin-fix
-{
-    padding:1px 0px;
-    padding-top:30px;
-}
-
-.post-info
-{
-    color:#999;
-    text-align:right;
-    padding-top:10px;
-    text-transform:uppercase;
-    font-size:12px;
-    border-top:1px dashed #771314;
-    margin-bottom:10px;
-    margin-top:20px;
-}
-
-.post-info a
-{
-    xcolor:#999;
-}
-
-.post-date
-{
-    xcolor:#999;
-    color:#A57878;
-    text-align:left;
-    text-transform:uppercase;
-    font-size:12px;
-    margin-bottom:2em;
-}
-
-.post-body
-{
-    clear:both;
-    margin-top:10px;
+abbr, acronym {
+    border-bottom:1px dotted;
+    cursor:help;
 }
 
 .clear-fix:after {
@@ -663,25 +183,702 @@ ul#nav > li .xxx h2
 }
 
 
-/* HTML editor */
 
-.html-content
-{
+
+/*************************\
+         Content 
+\*************************/
+
+#content {
+    width:600px;
+    padding:0px 20px 0px 20px;
+    height:100%;
+    position:absolute;
+    left:230px;
+    overflow:auto;
+    border-left: 1px solid #333;
+    border-right:1px solid #fff;
+    overflow-y:scroll;
+    background:#fff url(/img/pb-05.jpg);
+}
+
+.margin-fix {
+    padding:1px 0px;
+    padding-top:30px;
+}
+
+.shadow-left {
+    background:url(/img/shadow-left.png) repeat-y;
+    position:absolute;
+    left:231px;
+    width:20px;
+    height:100%;
+}
+
+.shadow-right {
+    background:url(/img/shadow-right.png) repeat-y;
+    position:absolute;
+    left:834px;
+    width:20px;
+    height:100%;
+}
+
+#content img {
+    max-width:100%;
+    border:10px solid white;
+    border-radius:5px;
+    box-shadow:0 0 5px 0 #000;
+    margin:20px;
+}
+
+#content img.right {
+    float:right;
+    margin-right:0px;
+}
+
+#content img.left {
+    float:left;
+    margin-left:0px;
+}
+
+#content img.full {
+    margin:20px auto;
+    display:block;    
+}
+
+
+
+
+/*************************\
+          Scroll 
+\*************************/
+
+#scroll {
+    width:30px;
+    position:absolute;
+    height:100%;
+    right:0px;
+    top:0px;
+}
+
+#scroll a  {
+    position:absolute;    
+    font-size:12px;
+    text-transform:uppercase;
+    color:#aaa;
+    text-decoration:none;
+    display:block;
+    display:none;
+    line-height:16px;
+    width:26px;
+    height:16px;
+    background-image:url(/img/sprites.png);    
+}
+
+#scroll a:hover {
+    color:#fff;
+}
+
+#scroll a#previous {
+    background-position:-120px -40px;
+    top:16px;
+}
+
+#scroll a#previous:hover {
+    background-position:-120px 0px;
+}
+
+#scroll a#next {
+    background-position:-160px -40px;
+    bottom:16px;
+}
+
+#scroll a#next:hover {
+    background-position:-160px 0px;
+}
+
+#scroll a:after, #scroll a:before {
+    -webkit-transform-origin: 0 0;
+    -webkit-transform:rotate(90deg);
+    -moz-transform-origin: 0 0;
+	-moz-transform:rotate(90deg);	
+    -o-transform-origin: 0 0;
+	-o-transform: rotate(90deg);
+	width:100px;
+	display:block;
+	position:absolute;
+	height:14px;
+	left:21px;  
+}
+
+#scroll a#previous:after {
+	top:20px;  
+    content:'Previous post';
+}
+
+#scroll a#next:before {
+    bottom:104px;
+    text-align:right;
+    content:'Next post';
+}
+
+
+
+
+/*************************\
+          Sidebar          
+\*************************/
+
+#sidebar {
+    position:absolute;
+    left:10px;
+    color:#aaa;
+    height:100%;
+    width:192px;
+    line-height:1.2;
+    xtext-shadow: 0px 0px 3px #000;
+}
+
+/* Header */
+
+#header {
+    margin-top:30px;
+}
+
+#header h1 {
+    border:none;
+    margin:0;
+    color:#fff;
+    text-shadow: 0px 0px 1px #fff, 0px 0px 3px #000;
+}
+
+#header h1 a {
+    color:#fff;
+    text-decoration:none;
+}
+
+#tagline {
+    font-size:12px;
+    text-transform:uppercase;
+    margin-left:2px;
+    text-shadow: 0px 0px 3px #000;
+}
+
+#tagline a {
+    color:#aaa;
+    text-decoration:none;
+}
+
+#tagline a:hover {
+    color:#fff;
+}
+
+#tagline .selected {
+    color:#fff;
+}
+
+/* Navigation */
+
+#nav {
+    margin-top:30px;
+}
+
+#nav > li {
+    list-style:none;
+    border-bottom:1px solid #333;
+    margin:0px 0px;
+    position:relative;
+}
+
+#nav > li:first-child {
+    border-top:1px solid #333;
+}
+
+#nav > li > a {
+    display:block;
+    padding:10px;
+    color:#aaa;
+    text-decoration:none;
+    position:relative;
+}
+
+#nav > li.selected, 
+#nav > li > a:hover, 
+#nav li > a.hover {
+    background:#050505;
+    padding:10px;
+}
+
+#nav h2 {
+    color:#aaa;
+    font-size:20px;
+    font-weight:normal;
+    margin-right:30px;
+}
+
+#nav > li.selected h2, 
+#nav > li > a:hover h2,
+#nav li > a.hover h2 {
+    color:#fff;
+}
+
+#nav p {
+    font-size:12px;
+    color:#888;
+    margin-bottom:0;
+    margin-right:30px;
+}
+
+#nav > li.selected p, 
+#nav > li > a:hover p,
+#nav li > a.hover p {
+    color:#aaa;
+}
+
+#nav > li div {
+    position:absolute;
+    right:10px;
+    top:21px;
+    height:30px;
+    width:20px;
+    background:url(/img/sprites.png) 0 0 no-repeat;
+}
+
+#nav > li#code div {
+   background-position:0 -40px; 
+}
+
+#nav > li#code.selected div, 
+#nav > li#code a:hover div,
+#nav > li#code a.hover div {
+   background-position:0 0; 
+}
+
+#nav > li#music div {
+   background-position:-40px -40px; 
+}
+
+#nav > li#music.selected div, 
+#nav > li#music a:hover div,
+#nav > li#music a.hover div {
+   background-position:-40px 0; 
+}
+
+#nav > li#philosophy div {
+   background-position:-80px -40px; 
+}
+
+#nav > li#philosophy.selected div, 
+#nav > li#philosophy a:hover div,
+#nav > li#philosophy a.hover div {
+   background-position:-80px 0; 
+}
+
+#nav > li > ul {
+    padding:0;
+    margin:0;
+    padding-top:0px;
+    color:#aaa;
+    margin-top:10px;
+    padding-top:10px;
+    padding-bottom:0;
+    padding-left:0px;
+    border-top:1px dashed #333;
+}
+
+#nav > li > ul > li {
+    margin:0;
+    padding:0;
+    list-style:none;
+    background:url(/img/sprites.png) -200px -36px no-repeat;
+    margin-left:0px;
+    padding-left:10px;
+}
+
+#nav > li > ul > li a {
+    display:block;
+    color:#aaa;
+    text-decoration:none; 
+}
+
+#nav > li > ul > li a:hover {
+    color:#fff;
+}
+
+#nav > li > ul > li.selected, 
+#nav > li > ul > li:hover {
+    color:#fff;
+    background-position:-200px 4px;
+}
+
+/* Contact */
+
+#contact h3 {
+    font-family: 'Quattrocento Sans', serif;
+    font-size:12px;
+    text-transform:uppercase;
+    color:#aaa;
+    margin-bottom:10px;
+}
+
+#contact {
+    position:absolute;
+    bottom:30px;
+    margin:0;
+    padding:0;
+}
+
+#contact ul > li {
+    margin:0;
+    padding:0;
+    margin-left:10px;
+    float:left;
+    list-style:none;
+}
+
+#contact ul > li:first-child {
+    margin-left:0;
+}
+
+#contact a {
+    display:block;
+    width:30px;
+    height:30px;
+    border-radius:5px;
+    text-decoration:none;
+    background-image: url(/img/sprites.png);
+    background-position:0px 0px;
+    background-repeat: no-repeat;
+    background-color:#aaa;
+    text-indent:-3000em;
+}
+
+#contact a:hover {
+    background-color:#fff;
+    box-shadow: 0px 0px 5px 0 #000;
+}
+
+#contact #email  {
+    background-position:0px -120px;
+}
+
+#contact #email:hover {
+    background-position:0px -80px;
+}
+
+#contact #twitter {
+    background-position:-40px -120px;
+}
+
+#contact #twitter:hover {
+    background-position:-40px -80px;
+}
+
+#contact #facebook {
+    background-position:-80px -120px;
+}
+
+#contact #facebook:hover {
+    background-position:-80px -80px;
+}
+
+#contact #stackoverflow {
+    background-position:-120px -120px;
+}
+
+#contact #stackoverflow:hover {
+    background-position:-120px -80px;
+}
+
+#contact #google-code {
+    background-position:-160px -120px;
+}
+
+#contact #google-code:hover {
+    background-position:-160px -80px;
+}
+
+
+
+ 
+/*************************\
+           Post 
+\*************************/
+
+#content.post h1 {
+    margin-top:70px;
+}
+
+#content.post h1:first-child {
+    margin-top:0px;
+}
+
+.post-body {
+    padding-bottom:20px;
+    border-bottom:1px dashed #771314;
+    margin-bottom:10px;
+}
+
+.post-info {
+    color:#999;
+    text-align:right;
+    text-transform:uppercase;
+    font-size:12px;
+}
+
+.post-date {
+    color:#A57878;
+    text-align:left;
+    text-transform:uppercase;
+    font-size:12px;
+    margin-bottom:2em;
+}
+
+#comments-h2 {
+    margin-top:20px;
+}
+
+#comments {
+    margin:0;
+    padding:0;
+    counter-reset:comments 0;
+    padding-bottom:10px;
+    border-bottom:1px dashed #771314;
+    margin-bottom:20px;
+}
+
+#comments > li {
+    margin:0;
+    padding:0;
+    list-style:none;
+    padding:10px;
+    margin-top:20px;
+    background:rgba(225, 225, 225, 0.5);
+    margin-bottom:20px;
+    counter-increment:comments 1;
+    position:relative;
+    min-height:50px;
+}
+
+#comments > li:nth-child(odd) {
+    background:rgba(190, 190, 190, 0.5);
+}
+
+#comments > li:before {
+    float:right;
+    margin:10px;
+    margin-right:0px;
+    content: counter(comments, decimal);
+    color:#fff;
+    font-family: 'Vollkorn', serif;
+    font-size:50px;
+}
+
+.comment-date {
+    color:#912424;
+    text-align:left;
+    font-size:12px;
+    margin-bottom:1em;
+}
+
+#comments > li:nth-child(6) {
+    background:rgba(0, 0, 0, 0.8);
+    color:#fff;
+}
+
+#comments > li:nth-child(6) h3 {
+    color:#fff;
+}
+
+#comments > li:nth-child(6) .comment-date {
+    color:#aaa;
+}
+
+#comments > li:nth-child(6) a {
+    color:#aaa;
+}
+
+#comments > li:nth-child(6) a:hover {
+    color:#fff;
+}
+
+#comment-form {
+    background:rgba(225, 225, 225, 0.5);
+    padding:10px;   
+    margin-bottom:20px;
+    display:block;
+    margin-top:10px;
+    position:relative;
+}
+
+#comment-form label {
+    display:block;
+    margin-top:10px;
+}
+
+#comment-form label:first-child {
+    margin-top:0;
+}
+
+#comment-form input, #comment-form textarea {
+    width:300px;
+    margin:0px;
+    margin-left:0;
+    margin-top:0;
+    border-top:1px solid #bbb;
+    border-left:1px solid #bbb;
+    border-right:1px solid #eee;
+    border-bottom:1px solid #eee;
+}
+
+#comment-form textarea {
+    height:200px;
+    width:100%;
+}
+
+#comment-form .long {
+    width:100%;
+}
+
+#comment-form .button {
+    margin:0;
+    margin-top:10px;
+    padding:3px 10px;
+    width:auto;
+    clear:both;
+    float:right;
+    background:#f9f9f9;
+    color:#912424;
+    border-radius:2px;
+    font-family: 'Quattrocento Sans', Georgia, serif;
+    font-size: 15px;
+    border:1px solid #ccc;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+#comment-form .button:hover,
+#comment-form .button:active {
+    background:#ecdbdb;   
+    background:#fff; 
+}
+
+#recaptcha_widget_div {
+    border-top:1px solid #bbb;
+    border-left:1px solid #bbb;
+    border-right:1px solid #eee;
+    border-bottom:1px solid #eee;
+    background:#fff;
+    width:318px;
+    height:130px;
+}
+
+.mandatory:after {
+    content:'*';
+    color:#5e0909;
+    margin-left:5px;
+}
+
+#mandatory-key {
+    margin-top:15px;
+    margin-bottom:0;
+}
+
+#mandatory-key span {
+    color:#5e0909;    
+    margin-right:5px;
+}
+
+/*************************\
+           Home 
+\*************************/
+
+#home-code {
+    width:300px;
+    position:absolute;
+    top:120px;
+    left:40px;
+    text-align:justify;
+    background:url(/img/code-back.png) 100px 10px no-repeat;
+}
+
+#home-philosophy {
+    width:300px;
+    position:absolute;
+    top:330px;
+    left:40px;
+    text-align:justify;
+    background:url(/img/philosophy-back.png) 100px 20px no-repeat;
+}
+
+#home-music {
+    width:200px;
+    position:absolute;
+    top:375px;
+    right:40px;
+    text-align:justify;
+    background:url(/img/music-back.png) 60px 20px no-repeat;
+}
+
+#home-philosophy:hover, 
+#home-philosophy.hover, 
+#home-music:hover, 
+#home-music.hover, 
+#home-code:hover,
+#home-code.hover {
+    color:#191919;
+}
+
+#content #home-photo {
+    margin:0;
+    float:right;
+    position:absolute;
+    top:125px;
+    right:40px;
+}
+
+#home-me-arrow {
+    background:url(/img/home-me-arrow.png) no-repeat;
+    width:64px;
+    height:59px;
+    position:absolute;
+    top:100px;
+    right:50px;
+}
+
+#me {
+    position:absolute;
+    top:85px;
+    right:55px;
+    color:#aa1b1f;
+}
+
+#content.home h1, #content.home #intro {
+    margin-left:20px;
+}
+
+
+
+
+
+/*************************\
+        HTML Editor 
+\*************************/
+
+.html-content {
     margin:10px 0;
     position:relative;    
     width:100%;
     height:337px;
 }
 
-.html-content-text
-{
+.html-content-text {
     xdisplay:none;
     width:100%;
     height:337px;
 }
 
-.html-content-loader
-{
+.html-content-loader {
     border:1px solid #d3d3d3;
     -moz-border-radius:5px;    
     position:absolute;
@@ -692,7 +889,6 @@ ul#nav > li .xxx h2
     z-index:-1;
 }
 
-.html-content-loader-text
-{
+.html-content-loader-text {
     margin:20px;
 }

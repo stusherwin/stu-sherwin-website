@@ -1,0 +1,23 @@
+﻿<li id="philosophy" class="selected">
+    <div></div>
+    <h2>Philosophy</h2>
+    <p>Ponderings on religion and the meaning of life</p>
+    <ul>
+        @if (ViewBag.Page == null && ViewBag.PostId == null)
+        {
+            <li class="selected">All posts (24)</li>
+        }
+        else
+        {
+            <li>@Html.ActionLink("All posts (24)", "Index", "Post", new { category = "Philosophy" }, new { })</li>
+        }
+        @if (ViewBag.Page == "Page1")
+        {
+            <li class="selected">Page 1</li>
+        }
+        else
+        {
+            <li>@Html.ActionLink("Page 1", "Page1", "Philosophy")</li>
+        }
+    </ul>
+</li>

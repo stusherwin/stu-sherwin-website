@@ -1,0 +1,31 @@
+﻿<ul id="nav">
+
+    @if (ViewBag.Category == "Code")
+    {
+        @Html.Partial("Navigation\\_CodeSelected")
+    }
+    else
+    {
+        @Html.Partial("Navigation\\_Code")
+    }
+
+    @if (ViewBag.Category == "Music")
+    {
+        @Html.Partial("Navigation\\_MusicSelected")
+    }
+    else
+    {
+        @Html.Partial("Navigation\\_Music")
+    }
+
+    @if (ViewBag.Category == "Philosophy")
+    {
+        @Html.Partial("Navigation\\_PhilosophySelected")
+    }
+    else
+    {
+        @Html.Partial("Navigation\\_Philosophy")
+    }
+
+</ul>
+ 

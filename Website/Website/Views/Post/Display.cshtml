@@ -3,8 +3,59 @@
 
 @{
     ViewBag.Title = "Display";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_Post.cshtml";
 }
 <h1>@Model.Title</h1>
-@Html.Raw(Model.Body)
-
+<div class="post-date">@(Model.Published.HasValue ? Model.Published.Value.ToLongDateString() : "")</div>
+<div class="post-body">@Html.Raw(Model.Body)</div>
+<h2 id="comments-h2">Comments</h2>
+<ol id="comments">
+@foreach (var comment in Model.Comments)
+{
+    <li>
+        <h3>@comment.Title</h3>
+        <div class="comment-date">
+            by 
+            @if(comment.Website != null) {
+                <a href="@(comment.Website)">@(comment.Author != null? comment.Author.ToUpper() : "")</a>        
+            }
+            else {
+                @(comment.Author != null? comment.Author.ToUpper() : "") 
+            }
+            on 
+            @comment.Date.ToLongDateString().ToUpper() 
+            at 
+            @comment.Date.ToString("h:mmtt")
+        </div>
+        @Html.Raw(comment.Body) Another sentence with a <a href="#">link or two</a>
+    </li>
+}
+</ol>
+<h2>Contribute your words of wisdom</h2>
+<p>Don't just stand there ... say something!</p>
+@using (Html.BeginForm("AddComment", "Post", FormMethod.Post, new { id = "comment-form", @class = "clear-fix" }))
+{
+    <label for="name">Your name</label>
+    @Html.TextBox("Name", "", new { id = "name" })
+    <label for="website">Your website (if you have one)</label>
+    @Html.TextBox("Website", "http://", new { id = "website" })
+    <label for="body" class="mandatory">Now let fly with the good stuff!</label>
+    @Html.TextArea("Body", "", new { id = "body" })
+    <label for="title">Can you summarise that in 10 words or less? (for the attention-deficit among us)</label>
+    @Html.TextBox("Title", "", new { id = "title", @class="long" })
+    <label class="mandatory">Finally, until robots attain sentience we must discriminate against them by posing little puzzles that only humans can solve. Are you a robot?</label>
+    <script type="text/javascript"
+        src="http://www.google.com/recaptcha/api/challenge?k=6LcdYMUSAAAAANgpoWgPiLCvm-9XbBmffgnnI7rN">
+    </script>
+    <noscript>
+        <iframe src="http://www.google.com/recaptcha/api/noscript?k=6LcdYMUSAAAAANgpoWgPiLCvm-9XbBmffgnnI7rN"
+            height="300" width="500" frameborder="0"></iframe><br>
+        <textarea name="recaptcha_challenge_field" rows="3" cols="40">
+        </textarea>
+        <input type="hidden" name="recaptcha_response_field"
+            value="manual_challenge">
+    </noscript>
+    @Html.Hidden("PostId", Model.Id);
+    <input class="button" type="submit" value="Join the discussion" />
+    <p id="mandatory-key"><span>*</span>denotes a required field</p>
+}

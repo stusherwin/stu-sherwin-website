@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Data;
 using Data;
 using Website.Filters;
+using StuSherwin.Poco;
 
 namespace Website.Controllers
 {
@@ -29,8 +30,32 @@ namespace Website.Controllers
         public ActionResult Display(int id)
         {
             var context = new Entities();
-            var post = context.Posts.FirstOrDefault(p => p.Id == id);
+            var post = context.Posts
+                .Include("Comments")
+                .FirstOrDefault(p => p.Id == id);
             return View(post);
+        }
+
+        [HttpPost]
+        public ActionResult AddComment(int postId, string name, string website, string title, string body)
+        {
+            var context = new Entities();
+            var post = context.Posts
+                .Include("Comments")
+                .FirstOrDefault(p => p.Id == postId);
+
+            var comment = new Comment
+            {
+                Author = name,
+                Title = title,
+                Website = website,
+                Body = body,
+                Date = DateTime.Now
+            };
+
+            post.Comments.Add(comment);
+            context.SaveChanges();
+            return RedirectToAction("Display", new { id = postId });
         }
     }
 }
