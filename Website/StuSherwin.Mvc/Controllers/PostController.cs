@@ -4,11 +4,15 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Data;
-using Data;
-using Website.Filters;
+using StuSherwin.Mvc.Filters;
 using StuSherwin.Model;
+using System.Net;
+using System.Text;
+using System.IO;
+using StuSherwin.Data;
+using System.Configuration;
 
-namespace Website.Controllers
+namespace StuSherwin.Mvc.Controllers
 {
     [MasterPageDataFilter]
     public class PostController : Controller
@@ -33,29 +37,49 @@ namespace Website.Controllers
             var post = context.Posts
                 .Include("Comments")
                 .FirstOrDefault(p => p.Id == id);
+            ViewBag.AddComment = false;
             return View(post);
         }
 
         [HttpPost]
-        public ActionResult AddComment(int postId, string name, string website, string title, string body)
+        public ActionResult AddComment(int postId, Comment comment, string recaptcha_challenge_field, string recaptcha_response_field)
         {
             var context = new Entities();
+
             var post = context.Posts
                 .Include("Comments")
                 .FirstOrDefault(p => p.Id == postId);
 
-            var comment = new Comment
-            {
-                Author = name,
-                Title = title,
-                Website = website,
-                Body = body,
-                Date = DateTime.Now
-            };
+            var recaptchaService = new RecaptchaService(ConfigurationManager.AppSettings["RecaptchaVerificationUrl"], ConfigurationManager.AppSettings["RecaptchaPrivateKey"]);
 
-            post.Comments.Add(comment);
-            context.SaveChanges();
-            return RedirectToAction("Display", new { id = postId });
+            if (!recaptchaService.ValidateResponse(recaptcha_challenge_field, recaptcha_response_field, Request.UserHostAddress))
+            {
+                ModelState.AddModelError("captcha", "You appear to be a robot!");
+            }
+
+            if (ModelState.IsValid)
+            {
+                comment.Date = DateTime.Now;
+                if (String.IsNullOrWhiteSpace(comment.Author))
+                {
+                    comment.Author = "Anonymous";
+                }
+                if (String.IsNullOrWhiteSpace(comment.Title))
+                {
+                    comment.Title = "Some title";
+                }
+
+                post.Comments.Add(comment);
+                context.SaveChanges();
+                ViewBag.AddComment = false;
+                return RedirectToAction("Display", new { id = postId });
+            }
+            else
+            {
+                ViewBag.AddComment = true;
+                return View("Display", post);
+            }
         }
+
     }
 }

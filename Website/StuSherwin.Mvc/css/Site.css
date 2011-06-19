@@ -390,7 +390,7 @@ abbr, acronym {
     position:relative;
 }
 
-#nav > li:first-child {
+#nav > li:first-of-type {
     border-top:1px solid #333;
 }
 
@@ -536,7 +536,7 @@ abbr, acronym {
     list-style:none;
 }
 
-#contact ul > li:first-child {
+#contact ul > li:first-of-type {
     margin-left:0;
 }
 
@@ -609,7 +609,7 @@ abbr, acronym {
     margin-top:70px;
 }
 
-#content.post h1:first-child {
+#content.post h1:first-of-type {
     margin-top:0px;
 }
 
@@ -642,8 +642,6 @@ abbr, acronym {
     margin:0;
     padding:0;
     counter-reset:comments 0;
-    padding-bottom:10px;
-    border-bottom:1px dashed #771314;
     margin-bottom:20px;
 }
 
@@ -702,6 +700,11 @@ abbr, acronym {
     color:#fff;
 }
 
+#add-comment {
+    border-top:1px dashed #771314;
+    padding-top:20px;
+}
+
 #comment-form {
     background:rgba(225, 225, 225, 0.5);
     padding:10px;   
@@ -713,10 +716,10 @@ abbr, acronym {
 
 #comment-form label {
     display:block;
-    margin-top:10px;
+    margin-top:20px;
 }
 
-#comment-form label:first-child {
+#comment-form label:first-of-type {
     margin-top:0;
 }
 
@@ -787,6 +790,25 @@ abbr, acronym {
 #mandatory-key span {
     color:#5e0909;    
     margin-right:5px;
+}
+
+.validation-summary-valid {
+    display:none;
+}
+
+.validation-summary-errors, .field-validation-error {
+    background:#e5c5c5;
+    padding:5px;
+}
+
+.validation-summary-errors ul {
+    margin-top:10px;
+    margin-bottom:0;
+}
+
+.field-validation-error {
+    margin-top:5px;
+    display:block;
 }
 
 /*************************\
