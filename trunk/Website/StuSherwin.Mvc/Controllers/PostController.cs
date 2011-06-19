@@ -17,6 +17,13 @@ namespace StuSherwin.Mvc.Controllers
     [MasterPageDataFilter]
     public class PostController : Controller
     {
+        IRecaptchaService _recaptchaService;
+
+        public PostController(IRecaptchaService recaptchaService)
+        {
+            _recaptchaService = recaptchaService;
+        }
+
         //
         // GET: /Post/
 
@@ -50,9 +57,9 @@ namespace StuSherwin.Mvc.Controllers
                 .Include("Comments")
                 .FirstOrDefault(p => p.Id == postId);
 
-            var recaptchaService = new RecaptchaService(ConfigurationManager.AppSettings["RecaptchaVerificationUrl"], ConfigurationManager.AppSettings["RecaptchaPrivateKey"]);
+            var validationResponse = _recaptchaService.ValidateResponse(recaptcha_challenge_field, recaptcha_response_field, Request.UserHostAddress);
 
-            if (!recaptchaService.ValidateResponse(recaptcha_challenge_field, recaptcha_response_field, Request.UserHostAddress))
+            if (validationResponse == RecaptchaValidationResponse.Failure)
             {
                 ModelState.AddModelError("captcha", "You appear to be a robot!");
             }

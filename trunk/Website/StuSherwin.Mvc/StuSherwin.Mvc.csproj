@@ -40,6 +40,9 @@
     <Reference Include="Glimpse.Mvc3">
       <HintPath>..\packages\Glimpse.Mvc3.0.82\lib\net40\Glimpse.Mvc3.dll</HintPath>
     </Reference>
+    <Reference Include="StructureMap">
+      <HintPath>..\Libraries\StructureMap\StructureMap.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -79,6 +82,7 @@
     </Compile>
     <Compile Include="Helpers\HtmlExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Controllers\StructureMapControllerFactory.cs" />
     <Compile Include="ViewModels\Admin\LoginModel.cs" />
   </ItemGroup>
   <ItemGroup>
