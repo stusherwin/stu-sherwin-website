@@ -7,7 +7,7 @@ using System.IO;
 
 namespace StuSherwin.Model
 {
-    public class RecaptchaService
+    public class RecaptchaService : IRecaptchaService
     {
         private string _verificationUrl;
         private string _privateKey;
@@ -18,12 +18,14 @@ namespace StuSherwin.Model
             _privateKey = privateKey;
         }
 
-        public bool ValidateResponse(string challenge, string response, string ipAddress)
+        public RecaptchaValidationResponse ValidateResponse(string challenge, string response, string ipAddress)
         {
             var verificationRequestContent = CreateRequestContent(challenge, response, ipAddress);
             var verificationRequest = CreateWebRequest(verificationRequestContent);
             var verificationResponse = verificationRequest.GetResponse();
-            return VerificationResponseIsValid(verificationResponse);
+            return VerificationResponseIsValid(verificationResponse)
+                ? RecaptchaValidationResponse.Success
+                : RecaptchaValidationResponse.Failure;
         }
 
         private string CreateRequestContent(string challenge, string response, string ipAddress)

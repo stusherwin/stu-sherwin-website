@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using StructureMap;
+using StuSherwin.Model;
 
 namespace StuSherwin.Mvc
 {
@@ -46,6 +48,25 @@ namespace StuSherwin.Mvc
 
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
+            RegisterDependencies();
+        }
+
+        private void RegisterDependencies()
+        {
+            ObjectFactory.Initialize(x =>
+            {
+                x.For<IRecaptchaService>()
+                    .Use<RecaptchaService>()
+                    .Ctor<string>("verificationUrl")
+                    .EqualToAppSetting("RecaptchaVerificationUrl")
+                    .Ctor<string>("privateKey")
+                    .EqualToAppSetting("RecaptchaPrivateKey");
+            });
+
+            // Set controller factory
+            ControllerBuilder.Current.SetControllerFactory(
+                new StructureMapControllerFactory()
+            );
         }
     }
 }

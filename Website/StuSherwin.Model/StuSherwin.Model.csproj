@@ -42,12 +42,14 @@
   <ItemGroup>
     <Compile Include="Category.cs" />
     <Compile Include="Comment.cs" />
+    <Compile Include="IRecaptchaService.cs" />
     <Compile Include="Post.cs" />
     <Compile Include="PostImporter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="LinqToXmlExtensions.cs" />
     <Compile Include="QueryStringBuilder.cs" />
     <Compile Include="RecaptchaService.cs" />
+    <Compile Include="RecaptchaValidationResponse.cs" />
     <Compile Include="XElementFinder.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
