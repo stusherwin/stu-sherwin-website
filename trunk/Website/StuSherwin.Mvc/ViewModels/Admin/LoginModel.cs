@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
 
-namespace Website.ViewModels.Admin
+namespace StuSherwin.Mvc.ViewModels.Admin
 {
     public class LoginModel
     {

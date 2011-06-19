@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Website.ViewModels.Admin;
+using StuSherwin.Mvc.ViewModels.Admin;
 using System.Web.Security;
 using System.Data;
 using System.IO;
 using System.Xml.Linq;
 using System.Text.RegularExpressions;
-using Data;
 using StuSherwin.Model;
+using StuSherwin.Data;
 
-namespace Website.Controllers
+namespace StuSherwin.Mvc.Controllers
 {
     public class AdminController : Controller
     {

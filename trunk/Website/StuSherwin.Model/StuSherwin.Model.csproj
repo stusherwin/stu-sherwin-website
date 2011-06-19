@@ -8,8 +8,8 @@
     <ProjectGuid>{821A4D24-9C7A-49A8-9205-742967F7CE2F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BusinessLogic</RootNamespace>
-    <AssemblyName>BusinessLogic</AssemblyName>
+    <RootNamespace>StuSherwin.Model</RootNamespace>
+    <AssemblyName>StuSherwin.Model</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -46,6 +46,8 @@
     <Compile Include="PostImporter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="LinqToXmlExtensions.cs" />
+    <Compile Include="QueryStringBuilder.cs" />
+    <Compile Include="RecaptchaService.cs" />
     <Compile Include="XElementFinder.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
