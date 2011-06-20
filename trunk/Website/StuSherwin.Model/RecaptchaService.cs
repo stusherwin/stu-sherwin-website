@@ -20,10 +20,12 @@ namespace StuSherwin.Model
 
         public RecaptchaValidationResponse ValidateResponse(string challenge, string response, string ipAddress)
         {
-            var verificationRequestContent = CreateRequestContent(challenge, response, ipAddress);
-            var verificationRequest = CreateWebRequest(verificationRequestContent);
+            var requestContent = CreateRequestContent(challenge, response, ipAddress);
+            var verificationRequest = CreateWebRequest(requestContent);
+
             var verificationResponse = verificationRequest.GetResponse();
-            return VerificationResponseIsValid(verificationResponse)
+
+            return IsValid(verificationResponse)
                 ? RecaptchaValidationResponse.Success
                 : RecaptchaValidationResponse.Failure;
         }
@@ -52,9 +54,10 @@ namespace StuSherwin.Model
             return verificationRequest;
         }
 
-        private bool VerificationResponseIsValid(WebResponse verificationResponse)
+        private bool IsValid(WebResponse verificationResponse)
         {
-            string responseContent = new StreamReader(verificationResponse.GetResponseStream()).ReadToEnd();
+            string responseContent = new System.IO.StreamReader(verificationResponse.GetResponseStream())
+                .ReadToEnd();
             string[] responseLines = responseContent.Split('\n');
 
             return responseLines[0] == "true";
