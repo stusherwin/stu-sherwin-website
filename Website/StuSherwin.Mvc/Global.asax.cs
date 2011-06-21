@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using StructureMap;
-using StuSherwin.Model;
+using StuSherwin.Domain;
 using StuSherwin.Mvc.Core;
 
 namespace StuSherwin.Mvc
@@ -24,25 +24,25 @@ namespace StuSherwin.Mvc
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            /*routes.MapRoute(
+            routes.MapRoute(
                 "OldPostUrl",
                 "{year}/{month}/{title}.html",
                 new { controller = "Post", action = "Redirect" },
-                new { year = @"\d{4}", month = @"\d{2}" });*/
+                new { year = @"\d{4}", month = @"\d{2}" });
 
-            /*routes.MapRoute(
+            routes.MapRoute(
                 "Admin",
                 "Admin/{action}/{id}",
                 new { controller = "Admin", action = "Index", id = UrlParameter.Optional }
-            );*/
+            );
 
-            /*routes.MapRoute(
+            routes.MapRoute(
                 "Category", 
                 "{category}", 
                 new { controller = "Post", action = "Index" } 
-            );*/
+            );
 
-            /*routes.MapRoute(
+            routes.MapRoute(
                 "Post",
                 "{category}/Post/{id}",
                 new { controller = "Post", action = "Display" }
@@ -52,7 +52,7 @@ namespace StuSherwin.Mvc
                 "Default",
                 "{controller}/{action}/{id}",
                 new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-            );*/
+            );
         }
 
         protected void Application_Start()

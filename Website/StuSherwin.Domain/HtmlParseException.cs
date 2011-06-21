@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace StuSherwin.Model
+namespace StuSherwin.Domain
 {
     public class HtmlParseException : Exception
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Xunit;
 
-namespace StuSherwin.Model.Tests
+namespace StuSherwin.Domain.Tests
 {
     public class HtmlConverterTests
     {

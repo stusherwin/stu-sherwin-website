@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using StuSherwin.Mvc.ViewModels.Admin;
+using StuSherwin.Mvc.Models.Admin;
 using System.Web.Security;
 using System.Data;
 using System.IO;
 using System.Xml.Linq;
 using System.Text.RegularExpressions;
-using StuSherwin.Model;
+using StuSherwin.Domain;
 using StuSherwin.Data;
 
 namespace StuSherwin.Mvc.Controllers
