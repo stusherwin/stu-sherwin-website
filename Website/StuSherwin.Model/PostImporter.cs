@@ -6,6 +6,7 @@ using System.IO;
 using System.Xml.Linq;
 using System.Text.RegularExpressions;
 using StuSherwin.Model;
+using HtmlAgilityPack;
 
 namespace StuSherwin.Model
 {
@@ -41,12 +42,24 @@ namespace StuSherwin.Model
                     OldUrl = postElement.PostUri
                 };
 
+                FixBodyHtml(post);
+
                 post.Comments = CreateCommentsForPost(entryElements, postElement.ElementId);
 
                 posts.Add(post);
             }
 
             return posts;
+        }
+
+        private void FixBodyHtml(Post post)
+        {
+            HtmlConverter converter = new HtmlConverter();
+            converter.LoadHtml(post.Body);
+            converter.ConvertBoldSpanTagsToStrongTags();
+            converter.ConvertItalicSpanTagsToEmTags();
+            converter.ConvertDoubleBrTagsToParagraphTags();
+            post.Body = converter.GetConvertedHtml();
         }
 
         private ICollection<Comment> CreateCommentsForPost(IEnumerable<EntryElement> entryElements, string postElementId)

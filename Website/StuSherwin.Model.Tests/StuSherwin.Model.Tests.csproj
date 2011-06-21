@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{821A4D24-9C7A-49A8-9205-742967F7CE2F}</ProjectGuid>
+    <ProjectGuid>{07D4B0F8-0015-458D-AEB6-F0782309BE09}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>StuSherwin.Model</RootNamespace>
-    <AssemblyName>StuSherwin.Model</AssemblyName>
+    <RootNamespace>StuSherwin.Model.Tests</RootNamespace>
+    <AssemblyName>StuSherwin.Model.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,9 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="HtmlAgilityPack">
-      <HintPath>..\Libraries\HtmlAgilityPack\HtmlAgilityPack.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -41,24 +38,19 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="xunit">
+      <HintPath>..\packages\xunit.1.8.0.1545\lib\xunit.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Category.cs" />
-    <Compile Include="Comment.cs" />
-    <Compile Include="HtmlConverter.cs" />
-    <Compile Include="HtmlParseException.cs" />
-    <Compile Include="IRecaptchaService.cs" />
-    <Compile Include="Post.cs" />
-    <Compile Include="PostImporter.cs" />
+    <Compile Include="HtmlConverterTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="LinqToXmlExtensions.cs" />
-    <Compile Include="QueryStringBuilder.cs" />
-    <Compile Include="RecaptchaService.cs" />
-    <Compile Include="RecaptchaValidationResponse.cs" />
-    <Compile Include="XElementFinder.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EntryElement.cs" />
+    <ProjectReference Include="..\StuSherwin.Model\StuSherwin.Model.csproj">
+      <Project>{821A4D24-9C7A-49A8-9205-742967F7CE2F}</Project>
+      <Name>StuSherwin.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

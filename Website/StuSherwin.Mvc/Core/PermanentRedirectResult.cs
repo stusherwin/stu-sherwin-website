@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
-namespace StuSherwin.Mvc
+namespace StuSherwin.Mvc.Core
 {
     public class PermanentRedirectResult : ActionResult
     {

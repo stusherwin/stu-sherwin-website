@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StuSherwin.Model", "StuSher
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StuSherwin.Data", "StuSherwin.Data\StuSherwin.Data.csproj", "{A07BE3B3-D6B9-4EEB-A669-E62AF6343449}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StuSherwin.Model.Tests", "StuSherwin.Model.Tests\StuSherwin.Model.Tests.csproj", "{07D4B0F8-0015-458D-AEB6-F0782309BE09}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{A07BE3B3-D6B9-4EEB-A669-E62AF6343449}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A07BE3B3-D6B9-4EEB-A669-E62AF6343449}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A07BE3B3-D6B9-4EEB-A669-E62AF6343449}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07D4B0F8-0015-458D-AEB6-F0782309BE09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07D4B0F8-0015-458D-AEB6-F0782309BE09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07D4B0F8-0015-458D-AEB6-F0782309BE09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07D4B0F8-0015-458D-AEB6-F0782309BE09}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
