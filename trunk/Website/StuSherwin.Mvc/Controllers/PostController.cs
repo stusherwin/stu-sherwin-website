@@ -4,7 +4,6 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Data;
-using StuSherwin.Mvc.Filters;
 using StuSherwin.Model;
 using System.Net;
 using System.Text;
@@ -12,6 +11,7 @@ using System.IO;
 using StuSherwin.Data;
 using System.Configuration;
 using StuSherwin.Mvc.ViewModels.Post;
+using StuSherwin.Mvc.Core;
 
 namespace StuSherwin.Mvc.Controllers
 {
@@ -31,10 +31,11 @@ namespace StuSherwin.Mvc.Controllers
         public ActionResult Index(string category)
         {
             var context = new Entities();
+            var cat = context.Categories.FirstOrDefault(c => c.Code == category);
             var posts = context.Posts
                 .Include("Comments")
                 .Include("Category")
-                .Where(p => p.Category.Code == category)
+                .Where(p => p.Category == cat)
                 .ToArray();
             return View(posts);
         }
@@ -111,7 +112,15 @@ namespace StuSherwin.Mvc.Controllers
             if (post == null)
                 throw new HttpException(404, "Page not found");
             
-            return RedirectToAction("Display", new { id = post.Id });
+            return new PermanentRedirectResult(Url.Action("Display", new { id = post.Id }));
+        }
+
+        public ActionResult Test()
+        {
+            var converter = new HtmlConverter();
+            converter.LoadHtml("This is some text.<br /><br />This is some more text.");
+            converter.ConvertDoubleBrTagsToParagraphTags();
+            return new RedirectResult("/");
         }
 
     }

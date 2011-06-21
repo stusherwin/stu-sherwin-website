@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace StuSherwin.Mvc.Helpers
+namespace StuSherwin.Mvc.Core
 {
     public static class HtmlExtensions
     {

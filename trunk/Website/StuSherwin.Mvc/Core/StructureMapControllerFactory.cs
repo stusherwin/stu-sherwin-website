@@ -5,7 +5,7 @@ using System.Text;
 using System.Web.Mvc;
 using StructureMap;
 
-namespace StuSherwin.Mvc
+namespace StuSherwin.Mvc.Core
 {
     public class StructureMapControllerFactory : DefaultControllerFactory
     {
