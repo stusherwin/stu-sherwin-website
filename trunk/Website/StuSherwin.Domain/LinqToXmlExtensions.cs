@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Xml.Linq;
 
-namespace StuSherwin.Model
+namespace StuSherwin.Domain
 {
     public static class LinqToXmlExtensions
     {

@@ -4,13 +4,13 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Data;
-using StuSherwin.Model;
+using StuSherwin.Domain;
 using System.Net;
 using System.Text;
 using System.IO;
 using StuSherwin.Data;
 using System.Configuration;
-using StuSherwin.Mvc.ViewModels.Post;
+using StuSherwin.Mvc.Models.Post;
 using StuSherwin.Mvc.Core;
 
 namespace StuSherwin.Mvc.Controllers
@@ -31,11 +31,10 @@ namespace StuSherwin.Mvc.Controllers
         public ActionResult Index(string category)
         {
             var context = new Entities();
-            var cat = context.Categories.FirstOrDefault(c => c.Code == category);
             var posts = context.Posts
                 .Include("Comments")
                 .Include("Category")
-                .Where(p => p.Category == cat)
+                .Where(p => p.Category.Code == category)
                 .ToArray();
             return View(posts);
         }

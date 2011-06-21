@@ -5,10 +5,10 @@ using System.Text;
 using System.IO;
 using System.Xml.Linq;
 using System.Text.RegularExpressions;
-using StuSherwin.Model;
+using StuSherwin.Domain;
 using HtmlAgilityPack;
 
-namespace StuSherwin.Model
+namespace StuSherwin.Domain
 {
     public class PostImporter
     {

@@ -5,7 +5,7 @@ using System.Text;
 using System.Net;
 using System.IO;
 
-namespace StuSherwin.Model
+namespace StuSherwin.Domain
 {
     public class RecaptchaService : IRecaptchaService
     {

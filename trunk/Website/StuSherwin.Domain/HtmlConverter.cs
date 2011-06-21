@@ -5,7 +5,7 @@ using System.Text;
 using HtmlAgilityPack;
 using System.IO;
 
-namespace StuSherwin.Model
+namespace StuSherwin.Domain
 {
     public class HtmlConverter
     {

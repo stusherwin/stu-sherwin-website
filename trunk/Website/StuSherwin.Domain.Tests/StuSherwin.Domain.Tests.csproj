@@ -8,8 +8,8 @@
     <ProjectGuid>{07D4B0F8-0015-458D-AEB6-F0782309BE09}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>StuSherwin.Model.Tests</RootNamespace>
-    <AssemblyName>StuSherwin.Model.Tests</AssemblyName>
+    <RootNamespace>StuSherwin.Domain.Tests</RootNamespace>
+    <AssemblyName>StuSherwin.Domain.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -47,7 +47,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\StuSherwin.Model\StuSherwin.Model.csproj">
+    <ProjectReference Include="..\StuSherwin.Domain\StuSherwin.Domain.csproj">
       <Project>{821A4D24-9C7A-49A8-9205-742967F7CE2F}</Project>
       <Name>StuSherwin.Model</Name>
     </ProjectReference>

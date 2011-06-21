@@ -8,8 +8,8 @@
     <ProjectGuid>{821A4D24-9C7A-49A8-9205-742967F7CE2F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>StuSherwin.Model</RootNamespace>
-    <AssemblyName>StuSherwin.Model</AssemblyName>
+    <RootNamespace>StuSherwin.Domain</RootNamespace>
+    <AssemblyName>StuSherwin.Domain</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
