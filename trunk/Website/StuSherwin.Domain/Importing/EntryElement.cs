@@ -5,7 +5,7 @@ using System.Text;
 using System.Xml.Linq;
 using System.Text.RegularExpressions;
 
-namespace StuSherwin.Domain
+namespace StuSherwin.Domain.Importing
 {
     public class EntryElement
     {

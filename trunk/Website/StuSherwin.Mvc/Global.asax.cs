@@ -7,6 +7,9 @@ using System.Web.Routing;
 using StructureMap;
 using StuSherwin.Domain;
 using StuSherwin.Mvc.Core;
+using StuSherwin.Domain.Recaptcha;
+using StuSherwin.Domain.Repositories;
+using StuSherwin.Data;
 
 namespace StuSherwin.Mvc
 {
@@ -74,6 +77,9 @@ namespace StuSherwin.Mvc
                     .EqualToAppSetting("RecaptchaVerificationUrl")
                     .Ctor<string>("privateKey")
                     .EqualToAppSetting("RecaptchaPrivateKey");
+
+                x.For<IPostRepository>()
+                    .Use<PostRepository>();
             });
 
             ControllerBuilder.Current.SetControllerFactory(
