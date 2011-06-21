@@ -24,6 +24,18 @@ namespace StuSherwin.Mvc
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                "OldPostUrl",
+                "{year}/{month}/{title}.html",
+                new { controller = "Post", action = "Redirect" },
+                new { year = @"\d{4}", month = @"\d{2}" });
+
+            routes.MapRoute(
+                "Admin",
+                "Admin/{action}/{id}",
+                new { controller = "Admin", action = "Index", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
                 "Category", 
                 "{category}", 
                 new { controller = "Post", action = "Index" } 
@@ -63,7 +75,6 @@ namespace StuSherwin.Mvc
                     .EqualToAppSetting("RecaptchaPrivateKey");
             });
 
-            // Set controller factory
             ControllerBuilder.Current.SetControllerFactory(
                 new StructureMapControllerFactory()
             );

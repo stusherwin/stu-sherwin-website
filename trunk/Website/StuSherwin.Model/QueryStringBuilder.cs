@@ -15,9 +15,15 @@ namespace StuSherwin.Model
             {
                 _queryString.Append("&");
             }
+
             _queryString.Append(key);
             _queryString.Append("=");
-            _queryString.Append(Uri.EscapeDataString(value));
+
+            var escapedValue = value != null
+                ? Uri.EscapeDataString(value)
+                : "";
+
+            _queryString.Append(escapedValue);
         }
 
         public override string ToString()

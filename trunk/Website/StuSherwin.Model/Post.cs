@@ -15,5 +15,6 @@ namespace StuSherwin.Model
         public DateTime? Updated { get; set; }
         public ICollection<Comment> Comments { get; set; }
         public Category Category { get; set; }
+        public string OldUrl { get; set; }
     }
 }
