@@ -11,6 +11,8 @@ using System.Xml.Linq;
 using System.Text.RegularExpressions;
 using StuSherwin.Domain;
 using StuSherwin.Data;
+using StuSherwin.Domain.Entities;
+using StuSherwin.Domain.Importing;
 
 namespace StuSherwin.Mvc.Controllers
 {

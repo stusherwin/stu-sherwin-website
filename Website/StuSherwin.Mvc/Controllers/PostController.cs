@@ -12,6 +12,10 @@ using StuSherwin.Data;
 using System.Configuration;
 using StuSherwin.Mvc.Models.Post;
 using StuSherwin.Mvc.Core;
+using StuSherwin.Domain.Recaptcha;
+using StuSherwin.Domain.Entities;
+using StuSherwin.Domain.Importing;
+using StuSherwin.Domain.Repositories;
 
 namespace StuSherwin.Mvc.Controllers
 {
@@ -19,10 +23,12 @@ namespace StuSherwin.Mvc.Controllers
     public class PostController : Controller
     {
         IRecaptchaService _recaptchaService;
+        IPostRepository _postRepository;
 
-        public PostController(IRecaptchaService recaptchaService)
+        public PostController(IPostRepository postRepository, IRecaptchaService recaptchaService)
         {
             _recaptchaService = recaptchaService;
+            _postRepository = postRepository;
         }
 
         //
@@ -30,21 +36,13 @@ namespace StuSherwin.Mvc.Controllers
 
         public ActionResult Index(string category)
         {
-            var context = new Entities();
-            var posts = context.Posts
-                .Include("Comments")
-                .Include("Category")
-                .Where(p => p.Category.Code == category)
-                .ToArray();
+            var posts = _postRepository.FindAllByCategoryCode(category);
             return View(posts);
         }
 
         public ActionResult Display(int id)
         {
-            var context = new Entities();
-            var post = context.Posts
-                .Include("Comments")
-                .FirstOrDefault(p => p.Id == id);
+            var post = _postRepository.FindById(id);
             ViewBag.AddComment = false;
             return View(post);
         }
@@ -52,11 +50,7 @@ namespace StuSherwin.Mvc.Controllers
         [HttpPost]
         public ActionResult AddComment(AddCommentModel addComment)
         {
-            var context = new Entities();
-
-            var post = context.Posts
-                .Include("Comments")
-                .FirstOrDefault(p => p.Id == addComment.PostId);
+            var post = _postRepository.FindById(addComment.PostId);
 
             var validationResponse = _recaptchaService.ValidateResponse(addComment.recaptcha_challenge_field, addComment.recaptcha_response_field, Request.UserHostAddress);
 
@@ -84,7 +78,8 @@ namespace StuSherwin.Mvc.Controllers
                 }
 
                 post.Comments.Add(comment);
-                context.SaveChanges();
+                _postRepository.SaveChanges();
+
                 ViewBag.AddComment = false;
                 return RedirectToAction("Display", new { id = post.Id });
             }
@@ -97,10 +92,7 @@ namespace StuSherwin.Mvc.Controllers
 
         public ActionResult Redirect(string year, string month, string title)
         {
-            var context = new Entities();
-            var post = context.Posts.FirstOrDefault(p =>
-                p.OldUrl ==
-                    "http://blog.stusherwin.com/"
+            var post = _postRepository.FindByOldUrl("http://blog.stusherwin.com/"
                     + year
                     + "/"
                     + month
@@ -114,13 +106,12 @@ namespace StuSherwin.Mvc.Controllers
             return new PermanentRedirectResult(Url.Action("Display", new { id = post.Id }));
         }
 
-        public ActionResult Test()
+        /*public ActionResult Test()
         {
             var converter = new HtmlConverter();
             converter.LoadHtml("This is some text.<br /><br />This is some more text.");
             converter.ConvertDoubleBrTagsToParagraphTags();
             return new RedirectResult("/");
-        }
-
+        }*/
     }
 }

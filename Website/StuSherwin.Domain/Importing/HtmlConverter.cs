@@ -5,7 +5,7 @@ using System.Text;
 using HtmlAgilityPack;
 using System.IO;
 
-namespace StuSherwin.Domain
+namespace StuSherwin.Domain.Importing
 {
     public class HtmlConverter
     {

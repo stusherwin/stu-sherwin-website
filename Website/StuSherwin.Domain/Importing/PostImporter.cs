@@ -7,8 +7,9 @@ using System.Xml.Linq;
 using System.Text.RegularExpressions;
 using StuSherwin.Domain;
 using HtmlAgilityPack;
+using StuSherwin.Domain.Entities;
 
-namespace StuSherwin.Domain
+namespace StuSherwin.Domain.Importing
 {
     public class PostImporter
     {

@@ -43,23 +43,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Category.cs" />
-    <Compile Include="Comment.cs" />
-    <Compile Include="HtmlConverter.cs" />
-    <Compile Include="HtmlParseException.cs" />
-    <Compile Include="IRecaptchaService.cs" />
-    <Compile Include="Post.cs" />
-    <Compile Include="PostImporter.cs" />
+    <Compile Include="Entities\Category.cs" />
+    <Compile Include="Entities\Comment.cs" />
+    <Compile Include="Importing\HtmlConverter.cs" />
+    <Compile Include="Importing\HtmlParseException.cs" />
+    <Compile Include="Repositories\ICategoryRepository.cs" />
+    <Compile Include="Repositories\ICommentRepository.cs" />
+    <Compile Include="Repositories\IPostRepository.cs" />
+    <Compile Include="Recaptcha\IRecaptchaService.cs" />
+    <Compile Include="Entities\Post.cs" />
+    <Compile Include="Importing\PostImporter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="LinqToXmlExtensions.cs" />
-    <Compile Include="QueryStringBuilder.cs" />
-    <Compile Include="RecaptchaService.cs" />
-    <Compile Include="RecaptchaValidationResponse.cs" />
-    <Compile Include="XElementFinder.cs" />
+    <Compile Include="Importing\LinqToXmlExtensions.cs" />
+    <Compile Include="Recaptcha\QueryStringBuilder.cs" />
+    <Compile Include="Recaptcha\RecaptchaService.cs" />
+    <Compile Include="Recaptcha\RecaptchaValidationResponse.cs" />
+    <Compile Include="Importing\XElementFinder.cs" />
+    <Compile Include="Repositories\IRepository.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EntryElement.cs" />
+    <Compile Include="Importing\EntryElement.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
