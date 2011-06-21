@@ -10,25 +10,50 @@ namespace StuSherwin.Model
     {
         public static IEnumerable<XElement> GetDescendants(this XDocument document, string name)
         {
-            return from d in document.Descendants()
-                   where d.Name.LocalName == name
-                   select d;
+            return from descendent in document.Descendants()
+                   where descendent.Name.LocalName == name
+                   select descendent;
         }
 
-        public static XElement GetElement(this XElement element, string name)
+        public static XElement GetElement(this XElement parentElement, string name)
         {
-            return (from id in element.Elements()
+            return (from element in parentElement.Elements()
+                    where element.Name.LocalName == name
+                    select element)
+                   .FirstOrDefault();
+        }
+
+        public static IEnumerable<XElement> GetElements(this XElement parentElement, string name)
+        {
+            return (from element in parentElement.Elements()
+                    where element.Name.LocalName == name
+                    select element);
+        }
+
+        public static XAttribute GetAttribute(this XElement parentElement, string name)
+        {
+            return (from id in parentElement.Attributes()
                     where id.Name.LocalName == name
                     select id)
                    .FirstOrDefault();
         }
 
-        public static XAttribute GetAttribute(this XElement element, string name)
+        public static string GetElementValue(this XElement parentElement, string name)
         {
-            return (from id in element.Attributes()
-                    where id.Name.LocalName == name
-                    select id)
-                   .FirstOrDefault();
+            var element = parentElement.GetElement(name);
+            if (element == null)
+                return null;
+
+            return element.Value;
+        }
+
+        public static string GetAttributeValue(this XElement parentElement, string name)
+        {
+            var element = parentElement.GetAttribute(name);
+            if (element == null)
+                return null;
+
+            return element.Value;
         }
     }
 }

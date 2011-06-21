@@ -2,8 +2,15 @@
     ViewBag.Title = "_Layout";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h1>Site Administration</h1>
-@if(User.Identity.IsAuthenticated) { 
-    <p>@Html.ActionLink("Log out", "Logout")</p>
-}
-@RenderBody()
+<div id="content" class="post">
+    <div class="margin-fix">
+        <h1>Site Administration</h1>
+        @if(User.Identity.IsAuthenticated) { 
+            <p>@Html.ActionLink("Log out", "Logout")</p>
+        }
+        @RenderBody()
+    </div>
+</div>
+<div class="shadow-left"></div>
+<div class="shadow-right"></div>
+@Html.Partial("_Scroll")

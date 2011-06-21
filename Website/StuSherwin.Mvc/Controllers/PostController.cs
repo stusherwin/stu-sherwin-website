@@ -11,6 +11,7 @@ using System.Text;
 using System.IO;
 using StuSherwin.Data;
 using System.Configuration;
+using StuSherwin.Mvc.ViewModels.Post;
 
 namespace StuSherwin.Mvc.Controllers
 {
@@ -49,15 +50,15 @@ namespace StuSherwin.Mvc.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddComment(int postId, Comment comment, string recaptcha_challenge_field, string recaptcha_response_field)
+        public ActionResult AddComment(AddCommentModel addComment)
         {
             var context = new Entities();
 
             var post = context.Posts
                 .Include("Comments")
-                .FirstOrDefault(p => p.Id == postId);
+                .FirstOrDefault(p => p.Id == addComment.PostId);
 
-            var validationResponse = _recaptchaService.ValidateResponse(recaptcha_challenge_field, recaptcha_response_field, Request.UserHostAddress);
+            var validationResponse = _recaptchaService.ValidateResponse(addComment.recaptcha_challenge_field, addComment.recaptcha_response_field, Request.UserHostAddress);
 
             if (validationResponse == RecaptchaValidationResponse.Failure)
             {
@@ -66,6 +67,12 @@ namespace StuSherwin.Mvc.Controllers
 
             if (ModelState.IsValid)
             {
+                Comment comment = new Comment();
+                comment.Post = post;
+                comment.Author = addComment.Author;
+                comment.Title = addComment.Title;
+                comment.Body = addComment.Body;
+                comment.Website = addComment.Website;
                 comment.Date = DateTime.Now;
                 if (String.IsNullOrWhiteSpace(comment.Author))
                 {
@@ -79,13 +86,32 @@ namespace StuSherwin.Mvc.Controllers
                 post.Comments.Add(comment);
                 context.SaveChanges();
                 ViewBag.AddComment = false;
-                return RedirectToAction("Display", new { id = postId });
+                return RedirectToAction("Display", new { id = post.Id });
             }
             else
             {
                 ViewBag.AddComment = true;
                 return View("Display", post);
             }
+        }
+
+        public ActionResult Redirect(string year, string month, string title)
+        {
+            var context = new Entities();
+            var post = context.Posts.FirstOrDefault(p =>
+                p.OldUrl ==
+                    "http://blog.stusherwin.com/"
+                    + year
+                    + "/"
+                    + month
+                    + "/"
+                    + title
+                    + ".html");
+
+            if (post == null)
+                throw new HttpException(404, "Page not found");
+            
+            return RedirectToAction("Display", new { id = post.Id });
         }
 
     }

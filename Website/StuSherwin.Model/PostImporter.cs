@@ -11,35 +11,23 @@ namespace StuSherwin.Model
 {
     public class PostImporter
     {
-        private Stream _inputFileStream;
-
-        public PostImporter(Stream inputFileStream)
+        public PostImporter()
         {
-            _inputFileStream = inputFileStream;
         }
 
-        public IEnumerable<Post> GetPosts()
+        public IEnumerable<Post> ImportPosts(Stream inputFileStream, Category category)
         {
-            XDocument document = XDocument.Load(_inputFileStream);
-            var elements = 
-                from d in document.GetDescendants("entry")
-                let idMatch = Regex.Match(d.GetElement("id").Value, @"post\-([0-9]+)$")
-                where idMatch.Success
-                let category = Regex.Match(d.GetElement("category").GetAttribute("term").Value, "kind#(post|comment)$").Groups[1].Value
-                select new
-                {
-                    Id = idMatch.Groups[1].Value,
-                    Published = DateTime.Parse(d.GetElement("published").Value),
-                    Updated = DateTime.Parse(d.GetElement("updated").Value),
-                    Category = category,
-                    Title = d.GetElement("title").Value,
-                    Content = d.GetElement("content").Value,
-                    PostId = GetPostId(d)
-                };
+            XDocument document = XDocument.Load(inputFileStream);
+            var entryElements = EntryElement.GetAllEntries(document);
+            var posts = CreatePosts(entryElements, category);
+            return posts;
+        }
 
+        private IEnumerable<Post> CreatePosts(IEnumerable<EntryElement> entryElements, Category category)
+        {
             List<Post> posts = new List<Post>();
 
-            foreach (var postElement in elements
+            foreach (var postElement in entryElements
                 .Where(e => e.Category == "post"))
             {
                 var post = new Post
@@ -47,22 +35,13 @@ namespace StuSherwin.Model
                     Title = postElement.Title,
                     Body = postElement.Content,
                     Published = postElement.Published,
-                    Updated = postElement.Updated
+                    Updated = postElement.Updated,
+                    Category = category,
+                    Code = CreateCodeFromTitle(postElement.Title),
+                    OldUrl = postElement.PostUri
                 };
 
-
-                var comments = elements
-                    .Where(e => e.Category == "comment" && e.PostId == postElement.Id)
-                    .Select(e => new Comment
-                    {
-                        Title = e.Title,
-                        Body = e.Content,
-                        Date = e.Published,
-                        Post = post
-                    })
-                    .ToArray();
-
-                post.Comments = comments;
+                post.Comments = CreateCommentsForPost(entryElements, postElement.ElementId);
 
                 posts.Add(post);
             }
@@ -70,17 +49,27 @@ namespace StuSherwin.Model
             return posts;
         }
 
-        private string GetPostId(XElement element)
+        private ICollection<Comment> CreateCommentsForPost(IEnumerable<EntryElement> entryElements, string postElementId)
         {
-            var inReplyToElement = element.GetElement("in-reply-to");
-            if(inReplyToElement == null)
+            var comments = entryElements
+                .Where(e => e.Category == "comment" && e.PostElementId == postElementId)
+                .Select(e => new Comment
+                {
+                    Title = e.Title,
+                    Body = e.Content,
+                    Date = e.Published,
+                    Author = e.Author,
+                    Website = e.AuthorUri
+                });
+            return comments.ToArray();
+        }
+
+        private string CreateCodeFromTitle(string title)
+        {
+            if (title == null)
                 return null;
 
-            var postIdMatch = Regex.Match(inReplyToElement.GetAttribute("ref").Value, @"post\-([0-9]+)$");
-            if (!postIdMatch.Success)
-                return null;
-
-            return postIdMatch.Groups[1].Value;
+            return Regex.Replace(title.Replace(' ', '-'), "^[A-Za-z\\-0-9]", "");
         }
     }
 }

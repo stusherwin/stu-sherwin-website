@@ -116,8 +116,9 @@ namespace StuSherwin.Mvc.Controllers
             if (ModelState.IsValid && file != null && file.ContentLength > 0)
             {
                 var context = new Entities();
-                var importer = new PostImporter(file.InputStream);
-                foreach (var post in importer.GetPosts())
+                var importer = new PostImporter();
+                var category = context.Categories.FirstOrDefault(c => c.Code == "Music");
+                foreach (var post in importer.ImportPosts(file.InputStream, category))
                 {
                     context.Posts.Add(post);
                 }

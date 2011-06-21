@@ -199,7 +199,7 @@ abbr, acronym {
     border-left: 1px solid #333;
     border-right:1px solid #fff;
     overflow-y:scroll;
-    background:#fff url(/img/pb-05.jpg);
+    background:#fff url(/Content/img/pb-05.jpg);
 }
 
 .margin-fix {
@@ -208,7 +208,7 @@ abbr, acronym {
 }
 
 .shadow-left {
-    background:url(/img/shadow-left.png) repeat-y;
+    background:url(/Content/img/shadow-left.png) repeat-y;
     position:absolute;
     left:231px;
     width:20px;
@@ -216,7 +216,7 @@ abbr, acronym {
 }
 
 .shadow-right {
-    background:url(/img/shadow-right.png) repeat-y;
+    background:url(/Content/img/shadow-right.png) repeat-y;
     position:absolute;
     left:834px;
     width:20px;
@@ -272,7 +272,7 @@ abbr, acronym {
     line-height:16px;
     width:26px;
     height:16px;
-    background-image:url(/img/sprites.png);    
+    background-image:url(/Content/img/sprites.png);    
 }
 
 #scroll a:hover {
@@ -441,7 +441,7 @@ abbr, acronym {
     top:21px;
     height:30px;
     width:20px;
-    background:url(/img/sprites.png) 0 0 no-repeat;
+    background:url(/Content/img/sprites.png) 0 0 no-repeat;
 }
 
 #nav > li#code div {
@@ -490,7 +490,7 @@ abbr, acronym {
     margin:0;
     padding:0;
     list-style:none;
-    background:url(/img/sprites.png) -200px -36px no-repeat;
+    background:url(/Content/img/sprites.png) -200px -36px no-repeat;
     margin-left:0px;
     padding-left:10px;
 }
@@ -546,7 +546,7 @@ abbr, acronym {
     height:30px;
     border-radius:5px;
     text-decoration:none;
-    background-image: url(/img/sprites.png);
+    background-image: url(/Content/img/sprites.png);
     background-position:0px 0px;
     background-repeat: no-repeat;
     background-color:#aaa;
@@ -801,6 +801,10 @@ abbr, acronym {
     padding:5px;
 }
 
+.validation-summary-errors {
+    margin-bottom:10px;
+}
+
 .validation-summary-errors ul {
     margin-top:10px;
     margin-bottom:0;
@@ -821,7 +825,7 @@ abbr, acronym {
     top:120px;
     left:40px;
     text-align:justify;
-    background:url(/img/code-back.png) 100px 10px no-repeat;
+    background:url(/Content/img/code-back.png) 100px 10px no-repeat;
 }
 
 #home-philosophy {
@@ -830,7 +834,7 @@ abbr, acronym {
     top:330px;
     left:40px;
     text-align:justify;
-    background:url(/img/philosophy-back.png) 100px 20px no-repeat;
+    background:url(/Content/img/philosophy-back.png) 100px 20px no-repeat;
 }
 
 #home-music {
@@ -839,7 +843,7 @@ abbr, acronym {
     top:375px;
     right:40px;
     text-align:justify;
-    background:url(/img/music-back.png) 60px 20px no-repeat;
+    background:url(/Content/img/music-back.png) 60px 20px no-repeat;
 }
 
 #home-philosophy:hover, 
@@ -860,7 +864,7 @@ abbr, acronym {
 }
 
 #home-me-arrow {
-    background:url(/img/home-me-arrow.png) no-repeat;
+    background:url(/Content/img/home-me-arrow.png) no-repeat;
     width:64px;
     height:59px;
     position:absolute;
