@@ -119,7 +119,7 @@ namespace StuSherwin.Mvc.Controllers
             {
                 var context = new Entities();
                 var importer = new PostImporter();
-                var category = context.Categories.FirstOrDefault(c => c.Code == "Music");
+                var category = context.Categories.FirstOrDefault(c => c.Code == "Philosophy");
                 foreach (var post in importer.ImportPosts(file.InputStream, category))
                 {
                     context.Posts.Add(post);
