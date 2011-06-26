@@ -46,6 +46,7 @@
     <Compile Include="Entities\Category.cs" />
     <Compile Include="Entities\Comment.cs" />
     <Compile Include="Importing\HtmlConverter.cs" />
+    <Compile Include="Importing\HtmlNodeWalker.cs" />
     <Compile Include="Importing\HtmlParseException.cs" />
     <Compile Include="Repositories\ICategoryRepository.cs" />
     <Compile Include="Repositories\ICommentRepository.cs" />

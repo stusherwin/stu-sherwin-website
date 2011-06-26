@@ -169,7 +169,7 @@ namespace StuSherwin.Domain.Tests
             var converter = new HtmlConverter();
             converter.LoadHtml(html);
             converter.ConvertDoubleBrTagsToParagraphTags();
-            var expectedHtml = "<p>This is some text.</p>This is some more text.</p><blockquote>This is a blockquote</blockquote><p>Some more text.</p><ul><li>List item</li></ul><p>Some more text.</p>";
+            var expectedHtml = "<p>This is some text.</p><p>This is some more text.</p><blockquote>This is a blockquote</blockquote><p>Some more text.</p><ul><li>List item</li></ul><p>Some more text.</p>";
             Assert.Equal(expectedHtml, converter.GetConvertedHtml());
         }
     }

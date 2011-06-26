@@ -57,9 +57,7 @@ namespace StuSherwin.Domain.Importing
         {
             HtmlConverter converter = new HtmlConverter();
             converter.LoadHtml(post.Body);
-            converter.ConvertBoldSpanTagsToStrongTags();
-            converter.ConvertItalicSpanTagsToEmTags();
-            converter.ConvertDoubleBrTagsToParagraphTags();
+            converter.ConvertHtml();
             post.Body = converter.GetConvertedHtml();
         }
 

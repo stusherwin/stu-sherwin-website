@@ -40,6 +40,14 @@ namespace StuSherwin.Domain.Importing
             return htmlWithFixedBreakTags;
         }
 
+        public void ConvertHtml()
+        {
+            ConvertBoldSpanTagsToStrongTags();
+            ConvertItalicSpanTagsToEmTags();
+            ConvertItalicAndBoldSpanTagsToStrongEmTags();
+            ConvertDoubleBrTagsToParagraphTags();
+        }
+
         public int GetNumberOfTagsOfType(string tagType)
         {
             return _htmlDocument.DocumentNode.SelectNodes("//" + tagType).Count();
@@ -104,54 +112,89 @@ namespace StuSherwin.Domain.Importing
 
         private void WrapPreviousTextOfConsecutiveBrs(List<HtmlNode> brsToRemove)
         {
-            var firstBrs = FindAllFirstNodesFromConsecutiveTags("br");
+            var firstBrs = FindAllFirstNodesFromConsecutiveTags("br").ToArray();
             if (firstBrs == null)
                 return;
 
-            foreach (var br in firstBrs)
+            for (int i = 0; i < firstBrs.Length; i++)
             {
-                WrapPrecedingNodeInTag(br, "p");
+                var br = firstBrs[i];
+                var previousBr = i > 0
+                    ? firstBrs[i - 1].NextSibling
+                    : null;
+
                 if (!brsToRemove.Contains(br))
                     brsToRemove.Add(br);
                 if (!brsToRemove.Contains(br.NextSibling))
                     brsToRemove.Add(br.NextSibling);
+
+                WrapPrecedingNodesInTag(br, previousBr, "p");
             }
         }
 
         private void WrapNextTextOfConsecutiveBrs(List<HtmlNode> brsToRemove)
         {
-            var lastBrs = FindAllLastNodesFromConsecutiveTags("br");
+            var lastBrs = FindAllLastNodesFromConsecutiveTags("br").ToArray();
             if (lastBrs == null)
                 return;
 
-            foreach (var br in lastBrs)
+            for (int i = 0; i < lastBrs.Length; i++)
             {
-                WrapNextNodeInTag(br, "p");
+                var br = lastBrs[i];
+                var nextBr = i < lastBrs.Length - 1
+                    ? lastBrs[i + 1].PreviousSibling
+                    : null;
+
                 if (!brsToRemove.Contains(br))
                     brsToRemove.Add(br);
                 if (!brsToRemove.Contains(br.PreviousSibling))
                     brsToRemove.Add(br.PreviousSibling);
+
+                WrapNextNodesInTag(br, nextBr, "p");
             }
         }
 
-        private void WrapPrecedingNodeInTag(HtmlNode node, string wrappingTagName)
+        private void WrapPrecedingNodesInTag(HtmlNode node, HtmlNode untilNode, string wrappingTagName)
         {
-            if (node.PreviousSibling.Name != wrappingTagName)
-            {
-                var wrappingTag = _htmlDocument.CreateElement(wrappingTagName);
-                wrappingTag.InnerHtml = node.PreviousSibling.OuterHtml;
-                ReplaceNode(node.PreviousSibling, wrappingTag);
+            var nodeWalker = new HtmlNodeWalker();
+            HtmlNode previousTopLevelNode = nodeWalker.GetPreviousTopLevelSiblingBefore(node, untilNode);
+            List<HtmlNode> previousNodes;
+            HtmlNode wrappingTag;
+            HtmlNode currentNode = node;
+            while(previousTopLevelNode != null) {
+                previousNodes = nodeWalker.GetAllPreviousSiblingsUntilNode(currentNode, previousTopLevelNode);
+                wrappingTag = _htmlDocument.CreateElement(wrappingTagName);
+                wrappingTag.InnerHtml = nodeWalker.GetNodesHtml(previousNodes);
+                ReplaceNodes(previousNodes, wrappingTag);
+                currentNode = previousTopLevelNode;
+                previousTopLevelNode = nodeWalker.GetPreviousTopLevelSiblingBefore(previousTopLevelNode, untilNode);
             }
+            previousNodes = nodeWalker.GetAllPreviousSiblingsUntilNode(currentNode, untilNode);
+            wrappingTag = _htmlDocument.CreateElement(wrappingTagName);
+            wrappingTag.InnerHtml = nodeWalker.GetNodesHtml(previousNodes);
+            ReplaceNodes(previousNodes, wrappingTag);
         }
 
-        private void WrapNextNodeInTag(HtmlNode node, string wrappingTagName)
+        private void WrapNextNodesInTag(HtmlNode node, HtmlNode untilNode, string wrappingTagName)
         {
-            if (node.NextSibling.Name != wrappingTagName)
+            var nodeWalker = new HtmlNodeWalker();
+            HtmlNode nextTopLevelNode = nodeWalker.GetNextTopLevelSiblingBefore(node, untilNode);
+            List<HtmlNode> nextNodes;
+            HtmlNode wrappingTag;
+            HtmlNode currentNode = node;
+            while (nextTopLevelNode != null)
             {
-                var wrappingTag = _htmlDocument.CreateElement(wrappingTagName);
-                wrappingTag.InnerHtml = node.NextSibling.OuterHtml;
-                ReplaceNode(node.NextSibling, wrappingTag);
+                nextNodes = nodeWalker.GetAllNextSiblingsUntilNode(currentNode, nextTopLevelNode);
+                wrappingTag = _htmlDocument.CreateElement(wrappingTagName);
+                wrappingTag.InnerHtml = nodeWalker.GetNodesHtml(nextNodes);
+                ReplaceNodes(nextNodes, wrappingTag);
+                currentNode = nextTopLevelNode;
+                nextTopLevelNode = nodeWalker.GetNextTopLevelSiblingBefore(nextTopLevelNode, untilNode);
             }
+            nextNodes = nodeWalker.GetAllNextSiblingsUntilNode(currentNode, untilNode);
+            wrappingTag = _htmlDocument.CreateElement(wrappingTagName);
+            wrappingTag.InnerHtml = nodeWalker.GetNodesHtml(nextNodes);
+            ReplaceNodes(nextNodes, wrappingTag);
         }
 
         private IEnumerable<HtmlNode> FindAllFirstNodesFromConsecutiveTags(string tagName)
@@ -179,6 +222,19 @@ namespace StuSherwin.Domain.Importing
             var parentNode = originalNode.ParentNode;
             parentNode.InsertAfter(replacementNode, originalNode);
             parentNode.RemoveChild(originalNode, false);
+        }
+
+        private void ReplaceNodes(IEnumerable<HtmlNode> originalNodes, HtmlNode replacementNode)
+        {
+            if (originalNodes.Count() == 0)
+                return;
+
+            var parentNode = originalNodes.First().ParentNode;
+            parentNode.InsertAfter(replacementNode, originalNodes.Last());
+            foreach (var node in originalNodes)
+            {
+                parentNode.RemoveChild(node, false);
+            }
         }
     }
 }
