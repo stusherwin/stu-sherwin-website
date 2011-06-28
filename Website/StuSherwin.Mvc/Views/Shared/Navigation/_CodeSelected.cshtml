@@ -5,11 +5,11 @@
     <ul>
         @if (ViewBag.Page == null && ViewBag.PostId == null)
         {
-            <li class="selected">All posts (24)</li>
+            <li class="selected">All posts</li>
         }
         else
         {
-            <li>@Html.ActionLink("All posts (24)", "Index", "Post", new { category = "Code" }, new { })</li>
+            <li>@Html.ActionLink("All posts", "Index", "Post", new { category = "Code" }, new { })</li>
         }
         @*@if (ViewBag.Page == "CV")
         {
