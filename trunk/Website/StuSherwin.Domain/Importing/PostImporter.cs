@@ -81,7 +81,7 @@ namespace StuSherwin.Domain.Importing
             if (title == null)
                 return null;
 
-            return Regex.Replace(title.Replace(' ', '-'), "^[A-Za-z\\-0-9]", "");
+            return Regex.Replace(title.Replace(' ', '-'), "[^A-Za-z\\-0-9]", "");
         }
     }
 }

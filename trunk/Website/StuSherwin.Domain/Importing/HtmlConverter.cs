@@ -45,6 +45,7 @@ namespace StuSherwin.Domain.Importing
             ConvertBoldSpanTagsToStrongTags();
             ConvertItalicSpanTagsToEmTags();
             ConvertItalicAndBoldSpanTagsToStrongEmTags();
+            RemoveSpanTagsKeepingInnerHtml();
             ConvertDoubleBrTagsToParagraphTags();
         }
 
@@ -94,6 +95,19 @@ namespace StuSherwin.Domain.Importing
                 var strong = _htmlDocument.CreateElement("strong");
                 strong.AppendChild(em);
                 ReplaceNode(span, strong);
+            }
+        }
+
+        public void RemoveSpanTagsKeepingInnerHtml()
+        {
+            var spans = _htmlDocument.DocumentNode.SelectNodes("//span");
+            if (spans == null)
+                return;
+
+            foreach (var span in spans)
+            {
+                var text = _htmlDocument.CreateTextNode(span.InnerHtml);
+                ReplaceNode(span, text);
             }
         }
 
@@ -156,65 +170,71 @@ namespace StuSherwin.Domain.Importing
 
         private void WrapPrecedingNodesInTag(HtmlNode node, HtmlNode untilNode, string wrappingTagName)
         {
-            var nodeWalker = new HtmlNodeWalker();
-            HtmlNode previousTopLevelNode = nodeWalker.GetPreviousTopLevelSiblingBefore(node, untilNode);
-            List<HtmlNode> previousNodes;
-            HtmlNode wrappingTag;
+            var nodeWalker = new HtmlNodeWalker(HtmlNodeWalkerDirection.Backwards);
+            HtmlNode previousTopLevelNode = nodeWalker.GetNextTopLevelSiblingBefore(node, untilNode);
             HtmlNode currentNode = node;
             while(previousTopLevelNode != null) {
-                previousNodes = nodeWalker.GetAllPreviousSiblingsUntilNode(currentNode, previousTopLevelNode);
-                wrappingTag = _htmlDocument.CreateElement(wrappingTagName);
-                wrappingTag.InnerHtml = nodeWalker.GetNodesHtml(previousNodes);
-                ReplaceNodes(previousNodes, wrappingTag);
+                WrapPreviousSiblingsInTag(nodeWalker, currentNode, previousTopLevelNode, wrappingTagName);
                 currentNode = previousTopLevelNode;
-                previousTopLevelNode = nodeWalker.GetPreviousTopLevelSiblingBefore(previousTopLevelNode, untilNode);
+                previousTopLevelNode = nodeWalker.GetNextTopLevelSiblingBefore(previousTopLevelNode, untilNode);
             }
-            previousNodes = nodeWalker.GetAllPreviousSiblingsUntilNode(currentNode, untilNode);
-            wrappingTag = _htmlDocument.CreateElement(wrappingTagName);
-            wrappingTag.InnerHtml = nodeWalker.GetNodesHtml(previousNodes);
+            WrapPreviousSiblingsInTag(nodeWalker, currentNode, untilNode, wrappingTagName);
+        }
+
+        private void WrapPreviousSiblingsInTag(HtmlNodeWalker nodeWalker, HtmlNode node, HtmlNode untilNode, string wrappingTagName)
+        {
+            var previousNodes = nodeWalker.GetAllNextSiblingsUntilNode(node, untilNode);
+            var wrappingTag = _htmlDocument.CreateElement(wrappingTagName);
+            wrappingTag.InnerHtml = previousNodes.ToString();
             ReplaceNodes(previousNodes, wrappingTag);
         }
 
         private void WrapNextNodesInTag(HtmlNode node, HtmlNode untilNode, string wrappingTagName)
         {
-            var nodeWalker = new HtmlNodeWalker();
+            var nodeWalker = new HtmlNodeWalker(HtmlNodeWalkerDirection.Forwards);
             HtmlNode nextTopLevelNode = nodeWalker.GetNextTopLevelSiblingBefore(node, untilNode);
-            List<HtmlNode> nextNodes;
-            HtmlNode wrappingTag;
             HtmlNode currentNode = node;
             while (nextTopLevelNode != null)
             {
-                nextNodes = nodeWalker.GetAllNextSiblingsUntilNode(currentNode, nextTopLevelNode);
-                wrappingTag = _htmlDocument.CreateElement(wrappingTagName);
-                wrappingTag.InnerHtml = nodeWalker.GetNodesHtml(nextNodes);
-                ReplaceNodes(nextNodes, wrappingTag);
+                WrapNextSiblingsInTag(nodeWalker, currentNode, nextTopLevelNode, wrappingTagName);
                 currentNode = nextTopLevelNode;
                 nextTopLevelNode = nodeWalker.GetNextTopLevelSiblingBefore(nextTopLevelNode, untilNode);
             }
-            nextNodes = nodeWalker.GetAllNextSiblingsUntilNode(currentNode, untilNode);
-            wrappingTag = _htmlDocument.CreateElement(wrappingTagName);
-            wrappingTag.InnerHtml = nodeWalker.GetNodesHtml(nextNodes);
+            WrapNextSiblingsInTag(nodeWalker, currentNode, untilNode, wrappingTagName);
+        }
+
+        private void WrapNextSiblingsInTag(HtmlNodeWalker nodeWalker, HtmlNode node, HtmlNode untilNode, string wrappingTagName)
+        {
+            var nextNodes = nodeWalker.GetAllNextSiblingsUntilNode(node, untilNode);
+            var wrappingTag = _htmlDocument.CreateElement(wrappingTagName);
+            wrappingTag.InnerHtml = nextNodes.ToString();
             ReplaceNodes(nextNodes, wrappingTag);
         }
 
         private IEnumerable<HtmlNode> FindAllFirstNodesFromConsecutiveTags(string tagName)
         {
-            return _htmlDocument.DocumentNode
-                .SelectNodes("//" + tagName)
-                .Where(n =>
-                    n.NextSibling != null
-                    && n.NextSibling.Name == tagName
-                    && (n.PreviousSibling == null || n.PreviousSibling.Name != tagName));
+            IEnumerable<HtmlNode> nodes = _htmlDocument.DocumentNode
+                    .SelectNodes("//" + tagName)
+                    .AsEnumerable()
+                ?? new HtmlNode[] {};
+
+            return nodes.Where(n =>
+                n.NextSibling != null
+                && n.NextSibling.Name == tagName
+                && (n.PreviousSibling == null || n.PreviousSibling.Name != tagName));
         }
 
         private IEnumerable<HtmlNode> FindAllLastNodesFromConsecutiveTags(string tagName)
         {
-            return _htmlDocument.DocumentNode
-                .SelectNodes("//" + tagName)
-                .Where(n =>
-                    n.PreviousSibling != null
-                    && n.PreviousSibling.Name == tagName
-                    && (n.NextSibling == null || n.NextSibling.Name != tagName));
+            IEnumerable<HtmlNode> nodes = _htmlDocument.DocumentNode
+                    .SelectNodes("//" + tagName)
+                    .AsEnumerable()
+                ?? new HtmlNode[] {};
+
+            return nodes.Where(n =>
+                n.PreviousSibling != null
+                && n.PreviousSibling.Name == tagName
+                && (n.NextSibling == null || n.NextSibling.Name != tagName));
         }
 
         private void ReplaceNode(HtmlNode originalNode, HtmlNode replacementNode)

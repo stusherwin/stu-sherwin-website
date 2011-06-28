@@ -1,15 +1,15 @@
 ﻿@using StuSherwin.Domain.Entities
 @model IEnumerable<Post>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = ViewBag.Category;
     Layout = "~/Views/Shared/_Post.cshtml";
 }
 
 @foreach (var post in Model) {
-    <h1 id="@post.Id">@post.Title</h1>
-    <div class="post-date">@(post.Published.HasValue? post.Published.Value.ToLongDateString() : "")</div>
+    <h1 id="@post.Id">@Html.ActionLink(post.Title, "Display", new { code = post.Code })</h1>
+    <div class="post-date">@(post.Published.HasValue ? post.Published.Value.ToLongDateString() : "")</div>
     <div class="post-body">@Html.Raw(post.Body)</div>
-    <div class="post-info">@Html.ActionLink(post.Comments.Count() + " comments", "Display", new { id = post.Id })</div>
+    <div class="post-info">@Html.ActionLink(post.Comments.Count() + " comments", "Display", new { code = post.Code })</div>
 }
 
 @if (!Model.Any())

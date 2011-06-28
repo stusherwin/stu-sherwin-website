@@ -1,0 +1,20 @@
+﻿@model string
+<script type="text/javascript"
+    src="http://www.google.com/recaptcha/api/challenge?k=6LcdYMUSAAAAANgpoWgPiLCvm-9XbBmffgnnI7rN">
+</script>
+<noscript>
+    <iframe src="http://www.google.com/recaptcha/api/noscript?k=6LcdYMUSAAAAANgpoWgPiLCvm-9XbBmffgnnI7rN"
+        height="300" width="500" frameborder="0"></iframe><br>
+    <textarea name="recaptcha_challenge_field" rows="3" cols="40">
+    </textarea>
+    <input type="hidden" name="recaptcha_response_field"
+        value="manual_challenge">
+</noscript>
+@Html.ValidationMessage(Model + ".recaptcha_response_field")
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('[name="recaptcha_challenge_field"]').attr("name", "@(Model).recaptcha_challenge_field");
+        $('[name="recaptcha_response_field"]').attr("name", "@(Model).recaptcha_response_field");
+    });
+</script>

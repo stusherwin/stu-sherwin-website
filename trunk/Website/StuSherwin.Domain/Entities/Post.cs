@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.ComponentModel.DataAnnotations;
 
 namespace StuSherwin.Domain.Entities
 {
@@ -10,6 +11,7 @@ namespace StuSherwin.Domain.Entities
         public int Id { get; set; }
         public string Code { get; set; }
         public string Title { get; set; }
+        [UIHint("HtmlContent")]
         public string Body { get; set; }
         public DateTime? Published { get; set; }
         public DateTime? Updated { get; set; }

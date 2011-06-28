@@ -40,23 +40,26 @@ namespace StuSherwin.Mvc.Controllers
             return View(posts);
         }
 
-        public ActionResult Display(int id)
+        public ActionResult Display(string code)
         {
-            var post = _postRepository.FindById(id);
-            ViewBag.AddComment = false;
-            return View(post);
+            var post = _postRepository.FindByCode(code);
+            var model = DisplayPost.CreateFromPost(post, false);
+            return View(model);
         }
 
         [HttpPost]
-        public ActionResult AddComment(AddCommentModel addComment)
+        public ActionResult AddComment(AddComment addComment)
         {
             var post = _postRepository.FindById(addComment.PostId);
 
-            var validationResponse = _recaptchaService.ValidateResponse(addComment.recaptcha_challenge_field, addComment.recaptcha_response_field, Request.UserHostAddress);
-
-            if (validationResponse == RecaptchaValidationResponse.Failure)
+            if (!String.IsNullOrEmpty(addComment.recaptcha_response_field))
             {
-                ModelState.AddModelError("captcha", "You appear to be a robot!");
+                var validationResponse = _recaptchaService.ValidateResponse(addComment.recaptcha_challenge_field, addComment.recaptcha_response_field, Request.UserHostAddress);
+
+                if (validationResponse == RecaptchaValidationResponse.Failure)
+                {
+                    ModelState.AddModelError("captcha", "You appear to be a robot!");
+                }
             }
 
             if (ModelState.IsValid)
@@ -80,13 +83,12 @@ namespace StuSherwin.Mvc.Controllers
                 post.Comments.Add(comment);
                 _postRepository.SaveChanges();
 
-                ViewBag.AddComment = false;
-                return RedirectToAction("Display", new { id = post.Id });
+                return RedirectToAction("Display", new { code = post.Code });
             }
             else
             {
-                ViewBag.AddComment = true;
-                return View("Display", post);
+                var model = DisplayPost.CreateFromPost(post, true);
+                return View("Display", model);
             }
         }
 

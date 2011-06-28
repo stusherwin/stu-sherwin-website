@@ -4,9 +4,9 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
 
-namespace StuSherwin.Mvc.Models.Admin
+namespace StuSherwin.Mvc.Models.Account
 {
-    public class LoginModel
+    public class Login
     {
         public string Username { get; set; }
         [UIHint("Password")]

@@ -34,21 +34,17 @@ namespace StuSherwin.Mvc
                 new { year = @"\d{4}", month = @"\d{2}" });
 
             routes.MapRoute(
-                "Admin",
-                "Admin/{action}/{id}",
-                new { controller = "Admin", action = "Index", id = UrlParameter.Optional }
-            );
-
-            routes.MapRoute(
-                "Category", 
-                "{category}", 
-                new { controller = "Post", action = "Index" } 
+                "Category",
+                "{category}",
+                new { controller = "Post", action = "Index" },
+                new { category = @"Code|Music|Philosophy" }
             );
 
             routes.MapRoute(
                 "Post",
-                "{category}/Post/{id}",
-                new { controller = "Post", action = "Display" }
+                "{category}/Post/{code}",
+                new { controller = "Post", action = "Display" },
+                new { category = @"Code|Music|Philosophy" }
             );
 
             routes.MapRoute(
@@ -80,6 +76,9 @@ namespace StuSherwin.Mvc
 
                 x.For<IPostRepository>()
                     .Use<PostRepository>();
+
+                x.For<IUserRepository>()
+                    .Use<UserRepository>();
             });
 
             ControllerBuilder.Current.SetControllerFactory(
