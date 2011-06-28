@@ -23,6 +23,14 @@ namespace StuSherwin.Domain.Importing
                    .FirstOrDefault();
         }
 
+        public static XElement GetDescendant(this XElement parentElement, string name)
+        {
+            return (from element in parentElement.Descendants()
+                    where element.Name.LocalName == name
+                    select element)
+                   .FirstOrDefault();
+        }
+
         public static IEnumerable<XElement> GetElements(this XElement parentElement, string name)
         {
             return (from element in parentElement.Elements()

@@ -16,47 +16,14 @@ using StuSherwin.Domain.Importing;
 
 namespace StuSherwin.Mvc.Controllers
 {
+    [Authorize]
     public class AdminController : Controller
     {
-        //
-        // GET: /Admin/
-        [Authorize]
         public ActionResult Index()
         {
             var context = new Entities();
             var posts = context.Posts.ToArray();
             return View(posts);
-        }
-
-        public ActionResult Login(string username, string password)
-        {
-            var model = new LoginModel
-            {
-                Username = username,
-                Password = password,
-            };
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult Login(LoginModel login, string returnUrl)
-        {
-            if (ModelState.IsValid)
-            {
-                FormsAuthentication.SetAuthCookie("bob", true);
-                if (!String.IsNullOrEmpty(returnUrl))
-                {
-                    return Redirect(returnUrl);
-                }
-                return RedirectToAction("Index");
-            }
-            return Login(login.Username, login.Password);
-        }
-
-        public ActionResult Logout()
-        {
-            FormsAuthentication.SignOut();
-            return RedirectToAction("Index");
         }
 
         public ActionResult Create()

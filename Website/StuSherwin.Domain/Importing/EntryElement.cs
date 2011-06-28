@@ -25,6 +25,8 @@ namespace StuSherwin.Domain.Importing
             return from d in document.GetDescendants("entry")
                    let elementId = GetPostIdValue(d.GetElementValue("id"))
                    where elementId != null
+                   let draft = d.GetDescendant("draft")
+                   where draft == null || draft.Value != "yes"
                    select new EntryElement
                    {
                        ElementId = elementId,
@@ -36,7 +38,7 @@ namespace StuSherwin.Domain.Importing
                        Author = d.GetElement("author").GetElementValue("name"),
                        AuthorUri = d.GetElement("author").GetElementValue("uri"),
                        PostElementId = GetPostId(d),
-                       PostUri = GetPostUri(d)
+                       PostUri = GetPostUri(d),
                    };
         }
 

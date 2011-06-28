@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HtmlConverterTests.cs" />
+    <Compile Include="HtmlNodeListTests.cs" />
     <Compile Include="HtmlNodeWalkerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

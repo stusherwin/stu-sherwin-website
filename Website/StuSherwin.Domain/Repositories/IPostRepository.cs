@@ -10,5 +10,6 @@ namespace StuSherwin.Domain.Repositories
     {
         IEnumerable<Post> FindAllByCategoryCode(string categoryCode);
         Post FindByOldUrl(string oldUrl);
+        Post FindByCode(string code);
     }
 }

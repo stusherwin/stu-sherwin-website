@@ -1,19 +1,18 @@
 ﻿@model StuSherwin.Domain.Entities.Post
 
 @{
-    ViewBag.Title = "Edit Post";
+    ViewBag.Title = "Edit post";
     Layout = "~/Views/Admin/_Layout.cshtml";
 }
 
 <h2>Edit</h2>
 
-@using (Html.BeginForm())
-{
-    @Html.LabelFor(m => m.Title)<br />
-    @Html.EditorFor(m => m.Title)<br />
+<form method="post" action="" class="clear-fix">
+    @Html.LabelFor(m => m.Title)
+    @Html.EditorFor(m => m.Title)
 
-    @Html.LabelFor(m => m.Body)<br />
-    @Html.EditorFor(m => m.Body)<br />
+    @Html.LabelFor(m => m.Body)
+    @Html.EditorFor(m => m.Body)
 
-    <input type="submit" value="Save" />
-}
+    <input type="submit" value="Save" class="button" />
+</form>

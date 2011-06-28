@@ -35,6 +35,7 @@
       <HintPath>..\Libraries\HtmlAgilityPack\HtmlAgilityPack.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -45,8 +46,11 @@
   <ItemGroup>
     <Compile Include="Entities\Category.cs" />
     <Compile Include="Entities\Comment.cs" />
+    <Compile Include="Entities\User.cs" />
     <Compile Include="Importing\HtmlConverter.cs" />
+    <Compile Include="Importing\HtmlNodeList.cs" />
     <Compile Include="Importing\HtmlNodeWalker.cs" />
+    <Compile Include="Importing\HtmlNodeWalkerDirection.cs" />
     <Compile Include="Importing\HtmlParseException.cs" />
     <Compile Include="Repositories\ICategoryRepository.cs" />
     <Compile Include="Repositories\ICommentRepository.cs" />
@@ -61,6 +65,7 @@
     <Compile Include="Recaptcha\RecaptchaValidationResponse.cs" />
     <Compile Include="Importing\XElementFinder.cs" />
     <Compile Include="Repositories\IRepository.cs" />
+    <Compile Include="Repositories\IUserRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Importing\EntryElement.cs" />

@@ -10,104 +10,68 @@ namespace StuSherwin.Domain.Importing
     {
         private string[] _topLevelTags = { "p", "blockquote", "ul", "ol" };
 
-        public HtmlNodeWalker()
+        public HtmlNodeWalkerDirection Direction { get; private set; }
+
+        public HtmlNodeWalker(HtmlNodeWalkerDirection direction)
         {
+            Direction = direction;
         }
 
-        public List<HtmlNode> GetAllPreviousSiblings(HtmlNode currentNode)
+        private HtmlNode GetNextSibling(HtmlNode node)
         {
-            var previousSiblings = new List<HtmlNode>();
-            HtmlNode node = currentNode.PreviousSibling;
+            return Direction == HtmlNodeWalkerDirection.Forwards
+                ? node.NextSibling
+                : node.PreviousSibling;
+        }
+
+        private void AddNodeToList(HtmlNodeList list, HtmlNode node)
+        {
+            list.Add(node);
+        }
+
+        public HtmlNodeList GetAllNextSiblings(HtmlNode currentNode)
+        {
+            var nextSiblings = new HtmlNodeList(Direction);
+            HtmlNode node = GetNextSibling(currentNode);
             while (node != null)
             {
-                previousSiblings.Insert(0, node);
-                node = node.PreviousSibling;
-            }
-            return previousSiblings;
-        }
-
-        public List<HtmlNode> GetAllNextSiblings(HtmlNode currentNode)
-        {
-            var nextSiblings = new List<HtmlNode>();
-            HtmlNode node = currentNode.NextSibling;
-            while (node != null)
-            {
-                nextSiblings.Add(node);
-                node = node.NextSibling;
+                AddNodeToList(nextSiblings, node);
+                node = GetNextSibling(node);
             }
             return nextSiblings;
         }
 
-        public List<HtmlNode> GetAllPreviousSiblingsUntilNode(HtmlNode currentNode, HtmlNode untilNode)
+        public HtmlNodeList GetAllNextSiblingsUntilNode(HtmlNode currentNode, HtmlNode untilNode)
         {
-            var previousSiblings = new List<HtmlNode>();
-            HtmlNode node = currentNode.PreviousSibling;
+            var nextSiblings = new HtmlNodeList(Direction);
+            HtmlNode node = GetNextSibling(currentNode);
             while (node != null && node != untilNode)
             {
-                previousSiblings.Insert(0, node);
-                node = node.PreviousSibling;
-            }
-            return previousSiblings;
-        }
-
-        public List<HtmlNode> GetAllNextSiblingsUntilNode(HtmlNode currentNode, HtmlNode untilNode)
-        {
-            var nextSiblings = new List<HtmlNode>();
-            HtmlNode node = currentNode.NextSibling;
-            while (node != null && node != untilNode)
-            {
-                nextSiblings.Add(node);
-                node = node.NextSibling;
+                AddNodeToList(nextSiblings, node);
+                node = GetNextSibling(node);
             }
             return nextSiblings;
         }
 
-        public List<HtmlNode> GetAllNonTopLevelNextSiblings(HtmlNode currentNode)
+        public HtmlNodeList GetAllNonTopLevelNextSiblings(HtmlNode currentNode)
         {
-            var nextSiblings = new List<HtmlNode>();
-            HtmlNode node = currentNode.NextSibling;
+            var nextSiblings = new HtmlNodeList(Direction);
+            HtmlNode node = GetNextSibling(currentNode);
             while (node != null && !_topLevelTags.Contains(node.Name))
             {
-                nextSiblings.Add(node);
-                node = node.NextSibling;
+                AddNodeToList(nextSiblings, node);
+                node = GetNextSibling(node);
             }
             return nextSiblings;
-        }
-
-        public List<HtmlNode> GetAllNonTopLevelPreviousSiblings(HtmlNode currentNode)
-        {
-            var previousSiblings = new List<HtmlNode>();
-            HtmlNode node = currentNode.PreviousSibling;
-            while (node != null && !_topLevelTags.Contains(node.Name))
-            {
-                previousSiblings.Insert(0, node);
-                node = node.PreviousSibling;
-            }
-            return previousSiblings;
         }
 
         public HtmlNode GetNextTopLevelSibling(HtmlNode currentNode)
         {
-            HtmlNode node = currentNode.NextSibling;
+            HtmlNode node = GetNextSibling(currentNode);
 
             while (node != null && !_topLevelTags.Contains(node.Name))
             {
-                node = node.NextSibling;
-            }
-
-            if (node == null || !_topLevelTags.Contains(node.Name))
-                return null;
-
-            return node;
-        }
-
-        public HtmlNode GetPreviousTopLevelSibling(HtmlNode currentNode)
-        {
-            HtmlNode node = currentNode.PreviousSibling;
-
-            while (node != null && !_topLevelTags.Contains(node.Name))
-            {
-                node = node.PreviousSibling;
+                node = GetNextSibling(node);
             }
 
             if (node == null || !_topLevelTags.Contains(node.Name))
@@ -121,39 +85,17 @@ namespace StuSherwin.Domain.Importing
             if (currentNode == stopNode)
                 return null;
 
-            HtmlNode node = currentNode.NextSibling;
+            HtmlNode node = GetNextSibling(currentNode);
 
             while (node != null && !_topLevelTags.Contains(node.Name) && node != stopNode)
             {
-                node = node.NextSibling;
+                node = GetNextSibling(node);
             }
 
             if (node == null || !_topLevelTags.Contains(node.Name) || node == stopNode)
                 return null;
             
             return node;
-        }
-
-        public HtmlNode GetPreviousTopLevelSiblingBefore(HtmlNode currentNode, HtmlNode stopNode)
-        {
-            if (currentNode == stopNode)
-                return null;
-
-            HtmlNode node = currentNode.PreviousSibling;
-            while (node != null && !_topLevelTags.Contains(node.Name) && node != stopNode)
-            {
-                node = node.PreviousSibling;
-            }
-
-            if (node == null || !_topLevelTags.Contains(node.Name) || node == stopNode)
-                return null;
-
-            return node;
-        }
-
-        public string GetNodesHtml(IEnumerable<HtmlNode> nodes)
-        {
-            return nodes.Aggregate("", (a, n) => a += n.OuterHtml);
         }
     }
 }

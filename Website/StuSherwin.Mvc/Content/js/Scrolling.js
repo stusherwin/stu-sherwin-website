@@ -21,7 +21,7 @@
     function setPreviousAndNextPosts() {
         previousPost = getPreviousPost();
         if (previousPost.length) {
-            $('#previous').attr('title', previousPost.html());
+            $('#previous').attr('title', $('a', previousPost).html());
             $('#previous').fadeIn();
         }
         else {
@@ -29,7 +29,7 @@
         }
         nextPost = getNextPost();
         if (nextPost.length) {
-            $('#next').attr('title', nextPost.html());
+            $('#next').attr('title', $('a', nextPost).html());
             $('#next').fadeIn();
         }
         else {

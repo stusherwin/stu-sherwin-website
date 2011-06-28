@@ -70,6 +70,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CodeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -83,8 +84,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Admin\LoginModel.cs" />
-    <Compile Include="Models\Post\AddCommentModel.cs" />
+    <Compile Include="Models\Account\Login.cs" />
+    <Compile Include="Models\Admin\Login.cs" />
+    <Compile Include="Models\Post\AddComment.cs" />
+    <Compile Include="Models\Post\DisplayPost.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -794,6 +797,9 @@
     <Content Include="Views\Shared\Navigation\_PhilosophySelected.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_Post.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Post\_Recaptcha.cshtml" />
+    <Content Include="Views\Post\_AddComment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\StuSherwin.Data\StuSherwin.Data.csproj">

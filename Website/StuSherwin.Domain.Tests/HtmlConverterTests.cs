@@ -119,6 +119,17 @@ namespace StuSherwin.Domain.Tests
         }
 
         [Fact]
+        public void RemoveSpanTags_removes_span_tags_keeping_inner_html()
+        {
+            var html = "<p>This is a test <span style=\"font-weight: bold; font-style: italic;\">Some bold and italic text</span><span style=\"font-weight: bold; font-style: italic;\">Some more bold and italic text</span></p>";
+            var converter = new HtmlConverter();
+            converter.LoadHtml(html);
+            converter.RemoveSpanTagsKeepingInnerHtml();
+            var expectedHtml = "<p>This is a test Some bold and italic textSome more bold and italic text</p>";
+            Assert.Equal(expectedHtml, converter.GetConvertedHtml());
+        }
+
+        [Fact]
         public void DoubleBrTagsRemovedAndPreviousAndNextTextWrappedInParagraphTags()
         {
             var html = "This is some text.<br /><br />This is some more text.<br /><br />Even more text.";
@@ -170,6 +181,28 @@ namespace StuSherwin.Domain.Tests
             converter.LoadHtml(html);
             converter.ConvertDoubleBrTagsToParagraphTags();
             var expectedHtml = "<p>This is some text.</p><p>This is some more text.</p><blockquote>This is a blockquote</blockquote><p>Some more text.</p><ul><li>List item</li></ul><p>Some more text.</p>";
+            Assert.Equal(expectedHtml, converter.GetConvertedHtml());
+        }
+
+        [Fact]
+        public void ConvertDoubleBrTagsToParagraphTags_when_no_double_br_tags_does_nothing()
+        {
+            var html = "This is some text. <br />This is some more text.<blockquote>This is a blockquote</blockquote>Some more text.<ul><li>List item</li></ul>Some more text.";
+            var converter = new HtmlConverter();
+            converter.LoadHtml(html);
+            converter.ConvertDoubleBrTagsToParagraphTags();
+            Assert.Equal(html, converter.GetConvertedHtml());
+        }
+
+        [Fact]
+        public void RemoveSpanTags_followed_by_ConvertDoubleBrTagsToParagraphTags_removes_spans_and_converts_to_paragraphs()
+        {
+            var html = "This is a test <span style=\"font-weight: bold; font-style: italic;\">Some bold and italic text</span><blockquote>Blockquote</blockquote><span style=\"font-weight: bold; font-style: italic;\">Some more bold and italic text</span>";
+            var converter = new HtmlConverter();
+            converter.LoadHtml(html);
+            converter.RemoveSpanTagsKeepingInnerHtml();
+            converter.ConvertDoubleBrTagsToParagraphTags();
+            var expectedHtml = "<p>This is a test Some bold and italic text</p><blockquote>Blockquote</blockquote><p>Some more bold and italic text</p>";
             Assert.Equal(expectedHtml, converter.GetConvertedHtml());
         }
     }

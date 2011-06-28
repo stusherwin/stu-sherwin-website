@@ -1,12 +1,11 @@
 ﻿@{
-    ViewBag.Title = "_Layout";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div id="content" class="post">
     <div class="margin-fix">
         <h1>Site Administration</h1>
         @if(User.Identity.IsAuthenticated) { 
-            <p>@Html.ActionLink("Log out", "Logout")</p>
+            <p>@Html.ActionLink("Log out", "Logout", "Account", new { returnUrl = Request.RawUrl }, new { })</p>
         }
         @RenderBody()
     </div>

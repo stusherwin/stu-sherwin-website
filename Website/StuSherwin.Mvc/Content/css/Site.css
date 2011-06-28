@@ -138,13 +138,25 @@ h2 {
     text-shadow:0 0 1px #D8C5C5;
 }
 
-p, ul, ol {
+p, ul, ol, blockquote {
     margin-bottom:1em;
 }
 
-li {
+ul li {
     margin-left:30px;
     list-style-type:disc;
+}
+
+ol li {
+    margin-left:30px;
+    list-style-type:decimal;
+}
+
+blockquote {
+    margin-left:10px;
+    margin-right:10px;
+    padding:10px;
+    background:rgba(225, 225, 225, 0.5);
 }
 
 a {
@@ -153,6 +165,16 @@ a {
 
 a:hover {
     color:#E52427;
+}
+
+h1 a {
+    color:inherit;
+    text-decoration:none;
+}
+
+h1 a:hover {
+    color:inherit;
+    text-decoration:none;
 }
 
 strong {
@@ -705,25 +727,28 @@ abbr, acronym {
     padding-top:20px;
 }
 
-#comment-form {
-    background:rgba(225, 225, 225, 0.5);
-    padding:10px;   
+form {
     margin-bottom:20px;
     display:block;
     margin-top:10px;
     position:relative;
 }
 
-#comment-form label {
+#comment-form {
+    background:rgba(225, 225, 225, 0.5);
+    padding:10px;   
+}
+
+form label {
     display:block;
     margin-top:20px;
 }
 
-#comment-form label:first-of-type {
+form label:first-of-type {
     margin-top:0;
 }
 
-#comment-form input, #comment-form textarea {
+form input, form textarea {
     width:300px;
     margin:0px;
     margin-left:0;
@@ -734,16 +759,16 @@ abbr, acronym {
     border-bottom:1px solid #eee;
 }
 
-#comment-form textarea {
+form textarea {
     height:200px;
     width:100%;
 }
 
-#comment-form .long {
+form .long {
     width:100%;
 }
 
-#comment-form .button {
+form .button {
     margin:0;
     margin-top:10px;
     padding:3px 10px;
@@ -760,8 +785,8 @@ abbr, acronym {
     cursor:pointer;
 }
 
-#comment-form .button:hover,
-#comment-form .button:active {
+form .button:hover,
+form .button:active {
     background:#ecdbdb;   
     background:#fff; 
 }
@@ -812,6 +837,7 @@ abbr, acronym {
 
 .field-validation-error {
     margin-top:5px;
+    margin-bottom:0px;
     display:block;
 }
 
@@ -895,7 +921,7 @@ abbr, acronym {
     margin:10px 0;
     position:relative;    
     width:100%;
-    height:337px;
+    xheight:337px;
 }
 
 .html-content-text {
