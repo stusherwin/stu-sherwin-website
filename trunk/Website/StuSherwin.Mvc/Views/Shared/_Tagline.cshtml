@@ -1,32 +1,33 @@
-﻿<div id="tagline">
-    @if (ViewBag.Category == "Code")
+﻿@model StuSherwin.Mvc.Models.Shared.Layout
+<div id="tagline">
+    @if (Model.Category == "Code")
     {
-        <span class="selected">Developer</span>
+        <span id="developer" class="selected">Developer</span>
     }
     else 
     {
-        @Html.ActionLink("Developer", "Index", "Post", new { category = "Code" }, new { })
+        @Html.ActionLink("Developer", "Index", "Post", new { category = "Code" }, new { id="developer" })
     }
 
     :
 
-    @if (ViewBag.Category == "Music")
+    @if (Model.Category == "Music")
     {
-        <span class="selected">Musician</span>
+        <span id="musician" class="selected">Musician</span>
     }
     else 
     {
-        @Html.ActionLink("Musician", "Index", "Post", new { category = "Music" }, new { })
+        @Html.ActionLink("Musician", "Index", "Post", new { category = "Music" }, new { id="musician" })
     }
 
     :
 
-    @if (ViewBag.Category == "Philosophy")
+    @if (Model.Category == "Philosophy")
     {
-        <span class="selected">Atheist</span>
+        <span id="atheist" class="selected">Atheist</span>
     }
     else 
     {
-        @Html.ActionLink("Atheist", "Index", "Post", new { category = "Philosophy" }, new { })
+        @Html.ActionLink("Atheist", "Index", "Post", new { category = "Philosophy" }, new { id="atheist" })
     }
 </div>

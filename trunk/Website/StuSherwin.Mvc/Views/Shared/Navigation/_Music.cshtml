@@ -1,7 +1,36 @@
-﻿<li id="music">
-    <a href="@Url.Action("Index", "Post", new { category = "Music" })">        
+﻿@using StuSherwin.Mvc.Core
+@model StuSherwin.Mvc.Models.Shared.Layout
+@{
+    Func<bool, string, string, string, object, HelperResult> linkLi =
+        (cond, text, act, cont, rv) =>
+        @Html.ActionLinkIf(
+                cond,
+                text,
+                act, cont, rv,
+                @<li>@item</li>,
+                @<li class="selected">@item</li>);
+}
+@if (Model.Category == "Music")
+{
+    <li id="music" class="selected">
         <div></div>
         <h2>Music</h2>
         <p>Experiments in playing and writing music</p>
-    </a>
-</li>
+        <ul>
+            @linkLi(
+                Model.Page != null || Model.PostId != null,
+                "All posts",
+                "Index", "Post", new { category = "Music" })
+        </ul>
+    </li>
+}
+else
+{
+    <li id="music">
+        <a href="@Url.Action("Index", "Post", new { category = "Music" })">        
+            <div></div>
+            <h2>Music</h2>
+            <p>Experiments in playing and writing music</p>
+        </a>
+    </li>
+}

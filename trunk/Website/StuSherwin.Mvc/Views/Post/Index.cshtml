@@ -1,18 +1,18 @@
-﻿@using StuSherwin.Domain.Entities
-@model IEnumerable<Post>
+﻿@using StuSherwin.Mvc.Models.Post
+@model List
 @{
-    ViewBag.Title = ViewBag.Category;
+    ViewBag.Title = Model.Layout.Category;
     Layout = "~/Views/Shared/_Post.cshtml";
 }
 
-@foreach (var post in Model) {
+@foreach (var post in Model.Posts) {
     <h1 id="@post.Id">@Html.ActionLink(post.Title, "Display", new { code = post.Code })</h1>
     <div class="post-date">@(post.Published.HasValue ? post.Published.Value.ToLongDateString() : "")</div>
     <div class="post-body">@Html.Raw(post.Body)</div>
-    <div class="post-info">@Html.ActionLink(post.Comments.Count() + " comments", "Display", new { code = post.Code })</div>
+    <div class="post-info">@Html.ActionLink(post.CommentCount + " comments", "Display", new { code = post.Code })</div>
 }
 
-@if (!Model.Any())
+@if (!Model.Posts.Any())
 {
     <p>There doesn't seem to be anything here.</p>
 }

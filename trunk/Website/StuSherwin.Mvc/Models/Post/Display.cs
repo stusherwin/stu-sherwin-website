@@ -5,7 +5,7 @@ using System.Web;
 
 namespace StuSherwin.Mvc.Models.Post
 {
-    public class DisplayPost
+    public class Display : Model
     {
         public string Title { get; set; }
         public DateTime? Published { get; set; }
@@ -22,9 +22,9 @@ namespace StuSherwin.Mvc.Models.Post
             public string Body { get; set; }
         }
 
-        public static DisplayPost CreateFromPost(StuSherwin.Domain.Entities.Post post, bool redirectToFragment)
+        public static Display CreateFromPost(StuSherwin.Domain.Entities.Post post, bool redirectToFragment)
         {
-            return new DisplayPost
+            return new Display
             {
                 Title = post.Title,
                 Published = post.Published,

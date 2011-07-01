@@ -391,10 +391,8 @@ abbr, acronym {
     text-decoration:none;
 }
 
-#tagline a:hover {
-    color:#fff;
-}
-
+#tagline a:hover,
+#tagline a.hover,
 #tagline .selected {
     color:#fff;
 }
@@ -845,31 +843,88 @@ form .button:active {
            Home 
 \*************************/
 
+.home-div {
+    xbackground:#fff;
+    border-radius:5px;
+    padding:10px;
+    x-moz-box-shadow: inset 1px 1px 5px;
+    color:#aaa;
+    width:250px;
+    xtext-align:justify;
+}
+
+.home-div h2 {
+    color:#fff;
+    xtext-shadow:none;
+    float:left;
+    padding-top:10px;
+    xmargin-bottom:5px;
+}
+
+.home-div h2 a,
+.home-div h2 a:hover {
+    color:#fff;
+    text-decoration:none;
+}
+
+.home-div:before {
+    display:block;
+    float:left;
+    width:25px;
+    height:30px;
+    background:url(/Content/img/sprites.png) no-repeat;
+    content:' ';
+}
+
+.home-div p {
+    clear:left;
+    margin-bottom:0;
+}
+
+/*.home-div p:first-line {
+    xtext-transform:uppercase;
+}
+
+.home-div p:first-letter {
+    font-size:48px;
+    float:left;
+    display:block;
+    margin-top:5px;
+    margin-right:3px;
+}*/
+
 #home-code {
-    width:300px;
     position:absolute;
-    top:120px;
-    left:40px;
-    text-align:justify;
-    background:url(/Content/img/code-back.png) 100px 10px no-repeat;
+    top:97px;
+    left:30px;
+    xbackground:url(/Content/img/code-back.png) 100px 10px no-repeat;
+}
+
+#home-code:before {
+    margin-top:3px;
+    background-position:0px 0px;
 }
 
 #home-philosophy {
-    width:300px;
     position:absolute;
-    top:330px;
-    left:40px;
-    text-align:justify;
-    background:url(/Content/img/philosophy-back.png) 100px 20px no-repeat;
+    top:200px;
+    right:30px;
+    xbackground:url(/Content/img/philosophy-back.png) 100px 20px no-repeat;
+}
+
+#home-philosophy:before {
+    background-position:-80px 0px;
 }
 
 #home-music {
-    width:200px;
     position:absolute;
-    top:375px;
-    right:40px;
-    text-align:justify;
-    background:url(/Content/img/music-back.png) 60px 20px no-repeat;
+    top:377px;
+    left:30px;
+    xbackground:url(/Content/img/music-back.png) 60px 20px no-repeat;
+}
+
+#home-music:before {
+    background-position:-40px 0px;
 }
 
 #home-philosophy:hover, 
@@ -878,15 +933,16 @@ form .button:active {
 #home-music.hover, 
 #home-code:hover,
 #home-code.hover {
-    color:#191919;
+    xcolor:#191919;
+    background:#050505;
 }
 
 #content #home-photo {
     margin:0;
     float:right;
     position:absolute;
-    top:125px;
-    right:40px;
+    top:110px;
+    left:-224px;
 }
 
 #home-me-arrow {
@@ -894,19 +950,53 @@ form .button:active {
     width:64px;
     height:59px;
     position:absolute;
+    top:334px;
+    left:-180px;
+    xdisplay:none;
+}
+
+#home-me-arrow2 {
+    background:url(/Content/img/home-me-arrow2.png) no-repeat;
+    position:absolute;
+    width:64px;
+    height:59px;
     top:100px;
-    right:50px;
+    right:260px;
+    display:none;
+}
+
+#home-me-arrow3 {
+    background:url(/Content/img/home-me-arrow3.png) no-repeat;
+    position:absolute;
+    width:64px;
+    height:59px;
+    top:470px;
+    right:260px;
+    display:none;
 }
 
 #me {
     position:absolute;
-    top:85px;
-    right:55px;
+    top:367px;
+    left:-197px;
     color:#aa1b1f;
+    xdisplay:none;
 }
 
-#content.home h1, #content.home #intro {
-    margin-left:20px;
+#content.home {
+    background:#090909;
+    overflow:visible;
+    border:0;
+}
+
+#content.home #intro {
+    color:#fff;
+    position:absolute;
+    xwidth:200px;
+    top:392px;
+    left:-224px;
+    top:40px;
+    left:40px;
 }
 
 

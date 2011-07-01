@@ -86,8 +86,11 @@
     </Compile>
     <Compile Include="Models\Account\Login.cs" />
     <Compile Include="Models\Admin\Login.cs" />
+    <Compile Include="Models\Model.cs" />
     <Compile Include="Models\Post\AddComment.cs" />
-    <Compile Include="Models\Post\DisplayPost.cs" />
+    <Compile Include="Models\Post\Display.cs" />
+    <Compile Include="Models\Post\List.cs" />
+    <Compile Include="Models\Shared\Layout.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -792,9 +795,6 @@
     <Content Include="Views\Shared\_Tagline.cshtml" />
     <Content Include="Views\Shared\_Contact.cshtml" />
     <Content Include="Views\Shared\_Scroll.cshtml" />
-    <Content Include="Views\Shared\Navigation\_CodeSelected.cshtml" />
-    <Content Include="Views\Shared\Navigation\_MusicSelected.cshtml" />
-    <Content Include="Views\Shared\Navigation\_PhilosophySelected.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_Post.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />

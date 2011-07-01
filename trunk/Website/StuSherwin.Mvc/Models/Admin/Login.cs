@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace StuSherwin.Mvc.Models.Admin
 {
-    public class Login
+    public class Login : Model
     {
         public string Username { get; set; }
         [UIHint("Password")]

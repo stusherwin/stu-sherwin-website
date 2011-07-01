@@ -1,31 +1,11 @@
-﻿<ul id="nav">
+﻿@model StuSherwin.Mvc.Models.Shared.Layout
+<ul id="nav">
+    
+    @Html.Partial("Navigation\\_Code", Model)
 
-    @if (ViewBag.Category == "Code")
-    {
-        @Html.Partial("Navigation\\_CodeSelected")
-    }
-    else
-    {
-        @Html.Partial("Navigation\\_Code")
-    }
+    @Html.Partial("Navigation\\_Music", Model)
 
-    @if (ViewBag.Category == "Music")
-    {
-        @Html.Partial("Navigation\\_MusicSelected")
-    }
-    else
-    {
-        @Html.Partial("Navigation\\_Music")
-    }
-
-    @if (ViewBag.Category == "Philosophy")
-    {
-        @Html.Partial("Navigation\\_PhilosophySelected")
-    }
-    else
-    {
-        @Html.Partial("Navigation\\_Philosophy")
-    }
+    @Html.Partial("Navigation\\_Philosophy", Model)
 
 </ul>
  

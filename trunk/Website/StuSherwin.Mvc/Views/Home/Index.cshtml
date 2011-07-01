@@ -1,20 +1,23 @@
 ﻿@{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Home page";
 }
 
         <div id="content" class="home">
             <div class="margin-fix">
                 <img id="home-photo" src="/Content/img/me.jpg" />
-                <h1>Hi.</h1>
-                <p id="intro">I'm Stu, and this is a collection of my thoughts on various subjects.</p>
-                <div id="home-code" class="home-div">                    
+                <!--<h1>Hi.</h1>-->
+                <p id="intro">Hi, I'm Stu, and this is a collection of my thoughts on various subjects:</p>
+                <div id="home-code" class="home-div"> 
+                    <h2>@Html.ActionLink("Code", "Index", "Post", new { category = "Code" }, new { })</h2>                   
                     <p>
                         I've been a .NET web developer for 7 years now, and I'm constantly learning new things.  
                         There's so many new technologies and techniques emerging that it's a challenge to keep up with it all.
                         <a href="@Url.Action("Index", "Post", new { category = "Code" })">Here are some of my discoveries</a> in the quest for better software, and useful resources I've found along the way.
                     </p>
                 </div>
+                <div id="home-me-arrow2"></div>
                 <div id="home-music" class="home-div">
+                    <h2>@Html.ActionLink("Music", "Index", "Post", new { category = "Music" }, new { })</h2>                   
                     <p>
                         Music is a big part of my life - I've been playing the piano for about 25 years.
                         I was trained classically but I now mainly play rock and jazz/funk.  
@@ -22,7 +25,9 @@
                         Find out what I'm up to <a href="@Url.Action("Index", "Post", new { category = "Music" })">here</a>.
                     </p>
                 </div>
+                <div id="home-me-arrow3"></div>
                 <div id="home-philosophy" class="home-div">
+                    <h2>@Html.ActionLink("Philosophy", "Index", "Post", new { category = "Philosophy" }, new { })</h2>                   
                     <p>
                         I was raised in a very religious Christian family, but I have since come to the conclusion that God doesn't exist.
                         However, I'm still fascinated by religion and by what makes people believe the things they do.
@@ -34,47 +39,47 @@
                 <div id="me">me</div>
             </div>
         </div>
-        <div class="shadow-left"></div>
-        <div class="shadow-right"></div>
+        <!--div class="shadow-left"></div>
+        <div class="shadow-right"></div-->
 
 <script>
     $(document).ready(function () {
         $('#home-philosophy').hover(
         function () {
-            $('#philosophy > a').addClass('hover');
+            $('#atheist').addClass('hover');
         },
         function () {
-            $('#philosophy > a').removeClass('hover');
+            $('#atheist').removeClass('hover');
         });
         $('#home-code').hover(
         function () {
-            $('#code > a').addClass('hover');
+            $('#developer').addClass('hover');
         },
         function () {
-            $('#code > a').removeClass('hover');
+            $('#developer').removeClass('hover');
         });
         $('#home-music').hover(
         function () {
-            $('#music > a').addClass('hover');
+            $('#musician').addClass('hover');
         },
         function () {
-            $('#music > a').removeClass('hover');
+            $('#musician').removeClass('hover');
         });
-        $('#philosophy').hover(
+        $('#atheist').hover(
         function () {
             $('#home-philosophy').addClass('hover');
         },
         function () {
             $('#home-philosophy').removeClass('hover');
         });
-        $('#code').hover(
+        $('#developer').hover(
         function () {
             $('#home-code').addClass('hover');
         },
         function () {
             $('#home-code').removeClass('hover');
         });
-        $('#music').hover(
+        $('#musician').hover(
         function () {
             $('#home-music').addClass('hover');
         },

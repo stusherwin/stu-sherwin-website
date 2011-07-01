@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace StuSherwin.Mvc.Models.Post
 {
-    public class AddComment
+    public class AddComment : Model
     {
         public int PostId { get; set; }
         public string Title { get; set; }

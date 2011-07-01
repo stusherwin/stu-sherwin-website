@@ -19,7 +19,6 @@ using StuSherwin.Domain.Repositories;
 
 namespace StuSherwin.Mvc.Controllers
 {
-    [MasterPageDataFilter]
     public class PostController : Controller
     {
         IRecaptchaService _recaptchaService;
@@ -37,13 +36,14 @@ namespace StuSherwin.Mvc.Controllers
         public ActionResult Index(string category)
         {
             var posts = _postRepository.FindAllByCategoryCode(category);
-            return View(posts);
+            var model = Models.Post.List.CreateFromPosts(posts);
+            return View(model);
         }
 
         public ActionResult Display(string code)
         {
             var post = _postRepository.FindByCode(code);
-            var model = DisplayPost.CreateFromPost(post, false);
+            var model = Models.Post.Display.CreateFromPost(post, false);
             return View(model);
         }
 
@@ -87,7 +87,7 @@ namespace StuSherwin.Mvc.Controllers
             }
             else
             {
-                var model = DisplayPost.CreateFromPost(post, true);
+                var model = Models.Post.Display.CreateFromPost(post, true);
                 return View("Display", model);
             }
         }
