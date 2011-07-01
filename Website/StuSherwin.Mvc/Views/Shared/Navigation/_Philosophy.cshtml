@@ -1,7 +1,36 @@
-﻿<li id="philosophy">
-    <a href="@Url.Action("Index", "Post", new { category = "Philosophy" })">
+﻿@using StuSherwin.Mvc.Core
+@model StuSherwin.Mvc.Models.Shared.Layout
+@{
+    Func<bool, string, string, string, object, HelperResult> linkLi =
+        (cond, text, act, cont, rv) =>
+        @Html.ActionLinkIf(
+                cond,
+                text,
+                act, cont, rv,
+                @<li>@item</li>,
+                @<li class="selected">@item</li>);
+}
+@if (Model.Category == "Philosophy")
+{
+    <li id="philosophy" class="selected">
         <div></div>
         <h2>Philosophy</h2>
         <p>Ponderings on religion and the meaning of life</p>
-    </a>
-</li>
+        <ul>
+            @linkLi(
+                Model.Page != null || Model.PostId != null,
+                "All posts",
+                "Index", "Post", new { category = "Philosophy" })
+        </ul>
+    </li>
+}
+else
+{
+    <li id="philosophy">
+        <a href="@Url.Action("Index", "Post", new { category = "Philosophy" })">
+            <div></div>
+            <h2>Philosophy</h2>
+            <p>Ponderings on religion and the meaning of life</p>
+        </a>
+    </li>
+}

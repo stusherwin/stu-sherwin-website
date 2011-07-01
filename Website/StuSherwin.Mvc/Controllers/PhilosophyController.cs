@@ -7,7 +7,6 @@ using StuSherwin.Mvc.Core;
 
 namespace StuSherwin.Mvc.Controllers
 {
-    [MasterPageDataFilter]
     public class PhilosophyController : Controller
     {
         //

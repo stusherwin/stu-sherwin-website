@@ -3,20 +3,34 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using StuSherwin.Mvc.Models;
 
 namespace StuSherwin.Mvc.Core
 {
     public class MasterPageDataFilterAttribute : ActionFilterAttribute
     {
-        public override void OnActionExecuting(ActionExecutingContext filterContext)
+        public override void OnActionExecuted(ActionExecutedContext filterContext)
         {
-            filterContext.Controller.ViewBag.Category = FindCategory(filterContext);
-            filterContext.Controller.ViewBag.Page = FindPage(filterContext);
-            filterContext.Controller.ViewBag.PostId = FindPostId(filterContext);
-            base.OnActionExecuting(filterContext);
+            Model model = filterContext.Controller.ViewData.Model as Model;
+
+            if (model == null)
+            {
+                model = new Model();
+                filterContext.Controller.ViewData.Model = model;
+            }
+
+            model.Layout = new Models.Shared.Layout
+            {
+                Category = FindCategory(filterContext),
+                Page = FindPage(filterContext),
+                PostId = FindPostId(filterContext),
+                IsHomePage = IsHomePage(filterContext)
+            };
+
+            base.OnActionExecuted(filterContext);
         }
 
-        private string FindCategory(ActionExecutingContext filterContext)
+        private string FindCategory(ActionExecutedContext filterContext)
         {
             string controller = GetRouteValue("controller", filterContext);
 
@@ -32,7 +46,7 @@ namespace StuSherwin.Mvc.Core
             return null;
         }
 
-        private string FindPage(ActionExecutingContext filterContext)
+        private string FindPage(ActionExecutedContext filterContext)
         {
             string controller = GetRouteValue("controller", filterContext);
 
@@ -44,7 +58,7 @@ namespace StuSherwin.Mvc.Core
             return null;
         }
 
-        private int? FindPostId(ActionExecutingContext filterContext)
+        private int? FindPostId(ActionExecutedContext filterContext)
         {
             string controller = GetRouteValue("controller", filterContext);
 
@@ -59,7 +73,14 @@ namespace StuSherwin.Mvc.Core
             return null;
         }
 
-        private string GetRouteValue(string routeValueKey, ActionExecutingContext filterContext)
+        private bool IsHomePage(ActionExecutedContext filterContext)
+        {
+            string controller = GetRouteValue("controller", filterContext);
+
+            return controller == "Home";
+        }
+
+        private string GetRouteValue(string routeValueKey, ActionExecutedContext filterContext)
         {
             if(!filterContext.Controller.ControllerContext.RouteData.Values.ContainsKey(routeValueKey))
                 return null;

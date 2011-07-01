@@ -1,7 +1,15 @@
-﻿<!DOCTYPE html>
+﻿@model StuSherwin.Mvc.Models.Model
+<!DOCTYPE html>
 <html>
 <head>
-    <title>@ViewBag.Title - Stu Sherwin</title>
+    <title>
+        @if(Model.Layout.IsHomePage) {
+            <text>Stu Sherwin</text>
+        }
+        else {
+            @(ViewBag.Title)<text> - Stu Sherwin</text>
+        }
+    </title>
     
     <link href="@Url.Content("~/Content/css/Site.css")" rel="stylesheet" type="text/css" />
     <link  href="http://fonts.googleapis.com/css?family=Vollkorn:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css" >
@@ -21,9 +29,12 @@
         <div id="sidebar">
             <div id="header">
                 <h1><a href="/">Stu Sherwin</a></h1>
-                @Html.Partial("_Tagline")
+                @Html.Partial("_Tagline", Model.Layout)
             </div>
-            @Html.Partial("Navigation\\_Navigation")
+            @if(!Model.Layout.IsHomePage)
+            {
+                @Html.Partial("Navigation\\_Navigation", Model.Layout)
+            }
             @Html.Partial("_Contact")
         </div>
         @RenderBody()
