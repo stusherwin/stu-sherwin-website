@@ -22,20 +22,32 @@ namespace StuSherwin.Mvc.Controllers
         public ActionResult Index()
         {
             var context = new Entities();
-            var posts = context.Posts.ToArray();
-            return View(posts);
+            var categories = context.Categories.Include("Posts").ToArray();
+            var model = StuSherwin.Mvc.Models.Admin.Index.CreateFromCategories(categories);
+            return View(model);
         }
 
         public ActionResult Create()
         {
-            return View(new Post());
+            var context = new Entities();
+            var categories = context.Categories.ToArray();
+            var model = CreatePost.CreateFromCategories(categories);
+            return View(model);
         }
 
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult Create(Post post)
+        public ActionResult Create(CreatePost model)
         {
             var context = new Entities();
+            var category = context.Categories.FirstOrDefault(c => c.Id == model.CategoryId);
+            var post = new Post
+            {
+                Title = model.Title,
+                Category = category,
+                Code = model.Code,
+                Body = model.Body
+            };
             context.Posts.Add(post);
             context.SaveChanges();
             return RedirectToAction("Index");
@@ -45,14 +57,24 @@ namespace StuSherwin.Mvc.Controllers
         {
             var context = new Entities();
             var post = context.Posts.FirstOrDefault(p => p.Id == id);
-            return View(post);
+            var categories = context.Categories.ToArray();
+            var model = EditPost.CreateFromPostAndCategories(post, categories);
+            return View(model);
         }
 
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult Edit(Post post)
+        public ActionResult Edit(EditPost model)
         {
             var context = new Entities();
+            var category = context.Categories.FirstOrDefault(c => c.Id == model.CategoryId);
+            var post = context.Posts.FirstOrDefault(p => p.Id == model.Id);
+            
+            post.Title = model.Title;
+            post.Category = category;
+            post.Code = model.Code;
+            post.Body = model.Body;
+
             context.Entry(post).State = EntityState.Modified;
             context.SaveChanges();
             return RedirectToAction("Index");
@@ -62,14 +84,34 @@ namespace StuSherwin.Mvc.Controllers
         {
             var context = new Entities();
             var post = context.Posts.FirstOrDefault(p => p.Id == id);
-            return View(post);
+            var model = StuSherwin.Mvc.Models.Admin.Delete.CreateFromPost(post);
+            return View(model);
         }
 
         [HttpPost]
-        public ActionResult Delete(Post post)
+        public ActionResult Delete(StuSherwin.Mvc.Models.Admin.Delete model)
         {
             var context = new Entities();
+            var post = context.Posts.FirstOrDefault(p => p.Id == model.Id);
             context.Entry(post).State = EntityState.Deleted;
+            context.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Publish(int id)
+        {
+            var context = new Entities();
+            var post = context.Posts.FirstOrDefault(p => p.Id == id);
+            var model = StuSherwin.Mvc.Models.Admin.Publish.CreateFromPost(post);
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Publish(StuSherwin.Mvc.Models.Admin.Publish model)
+        {
+            var context = new Entities();
+            var post = context.Posts.FirstOrDefault(p => p.Id == model.Id);
+            post.Published = model.PublishDate;
             context.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -1,6 +1,6 @@
 ﻿@using StuSherwin.Domain.Entities
 
-@model Post
+@model StuSherwin.Mvc.Models.Admin.Delete
 
 @{
     ViewBag.Title = "Delete post";
@@ -12,5 +12,5 @@
 @using (Html.BeginForm())
 {
     @Html.HiddenFor(m => m.Id)
-    <input type="submit" value="Delete" />
+    <input type="submit" value="Delete" class="button" />
 }

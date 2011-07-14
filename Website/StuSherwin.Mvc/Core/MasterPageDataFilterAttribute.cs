@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using StuSherwin.Mvc.Models;
+using StuSherwin.Mvc.Models.Shared;
 
 namespace StuSherwin.Mvc.Core
 {
@@ -19,13 +20,16 @@ namespace StuSherwin.Mvc.Core
                 filterContext.Controller.ViewData.Model = model;
             }
 
-            model.Layout = new Models.Shared.Layout
+            if (model != null)
             {
-                Category = FindCategory(filterContext),
-                Page = FindPage(filterContext),
-                PostId = FindPostId(filterContext),
-                IsHomePage = IsHomePage(filterContext)
-            };
+                model.Layout = new Models.Shared.Layout
+                {
+                    Category = FindCategory(filterContext),
+                    Page = FindPage(filterContext),
+                    PostCode = FindPostCode(filterContext),
+                    Type = FindLayoutType(filterContext)
+                };
+            }
 
             base.OnActionExecuted(filterContext);
         }
@@ -58,26 +62,32 @@ namespace StuSherwin.Mvc.Core
             return null;
         }
 
-        private int? FindPostId(ActionExecutedContext filterContext)
+        private string FindPostCode(ActionExecutedContext filterContext)
         {
             string controller = GetRouteValue("controller", filterContext);
 
             if (controller == "Post")
             {
-                int parsedPostId;
-                string postIdString = GetRouteValue("id", filterContext);
-                if (postIdString != null && int.TryParse(postIdString, out parsedPostId))
-                    return parsedPostId;
+                return GetRouteValue("code", filterContext);
             }
 
             return null;
         }
 
-        private bool IsHomePage(ActionExecutedContext filterContext)
+        private Layout.LayoutType FindLayoutType(ActionExecutedContext filterContext)
         {
             string controller = GetRouteValue("controller", filterContext);
 
-            return controller == "Home";
+            switch (controller)
+            {
+                case "Home":
+                    return Layout.LayoutType.Home;
+                case "Admin":
+                case "Account":
+                    return Layout.LayoutType.Admin;
+                default:
+                    return Layout.LayoutType.Post;
+            }
         }
 
         private string GetRouteValue(string routeValueKey, ActionExecutedContext filterContext)

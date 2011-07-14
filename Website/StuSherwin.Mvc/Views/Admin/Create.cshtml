@@ -1,4 +1,4 @@
-﻿@model StuSherwin.Domain.Entities.Post
+﻿@model StuSherwin.Mvc.Models.Admin.CreatePost
 
 @{
     ViewBag.Title = "Create post";
@@ -9,11 +9,17 @@
 
 @using (Html.BeginForm())
 {
-    @Html.LabelFor(m => m.Title)<br />
-    @Html.EditorFor(m => m.Title)<br />
+    @Html.LabelFor(m => m.CategoryId)
+    @Html.DropDownListFor(m => m.CategoryId, Model.Categories)
+    
+    @Html.LabelFor(m => m.Title)
+    @Html.EditorFor(m => m.Title)
 
-    @Html.LabelFor(m => m.Body)<br />
-    @Html.EditorFor(m => m.Body)<br />
+    @Html.LabelFor(m => m.Code)
+    @Html.EditorFor(m => m.Code)
 
-    <input type="submit" value="Save" />
+    @Html.LabelFor(m => m.Body)
+    @Html.EditorFor(m => m.Body)
+
+    <input type="submit" value="Save" class="button" />
 }

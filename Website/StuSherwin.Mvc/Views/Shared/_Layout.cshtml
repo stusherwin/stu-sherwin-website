@@ -1,9 +1,9 @@
-﻿@model StuSherwin.Mvc.Models.Model
+﻿@model StuSherwin.Mvc.Models.Model      
 <!DOCTYPE html>
-<html>
+<html class="@Model.Layout.Type.ToString().ToLower()">
 <head>
     <title>
-        @if(Model.Layout.IsHomePage) {
+        @if (Model.Layout.Type == StuSherwin.Mvc.Models.Shared.Layout.LayoutType.Home) {
             <text>Stu Sherwin</text>
         }
         else {
@@ -25,20 +25,6 @@
 </head>
 
 <body>
-    <div id="container">
-        <div id="sidebar">
-            <div id="header">
-                <h1><a href="/">Stu Sherwin</a></h1>
-                @Html.Partial("_Tagline", Model.Layout)
-            </div>
-            @if(!Model.Layout.IsHomePage)
-            {
-                @Html.Partial("Navigation\\_Navigation", Model.Layout)
-            }
-            @Html.Partial("_Contact")
-        </div>
-        @RenderBody()
-    </div>
-    <script type="text/javascript" src="/Content/js/Scrolling.js"></script>
+    @RenderBody()
 </body>
 </html>

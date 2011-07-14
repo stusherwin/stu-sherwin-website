@@ -13,7 +13,7 @@ namespace StuSherwin.Mvc.Models.Post
         [Required(ErrorMessage = "Did you forget to write your comment?")]
         public string Body { get; set; }
         public string Author { get; set; }
-        //[RegularExpression(@"https?\://.+", ErrorMessage = "You may have typed your website address incorrectly")]
+        [RegularExpression(@"^[^\.\:]+(\.[^\.\:]+)+(/[^/:]+)*/?$", ErrorMessage = "You may have typed your website address incorrectly")]
         public string Website { get; set; }
         public string recaptcha_challenge_field { get; set; }
         [Required(ErrorMessage = "You didn't do the robot filter thingy")]

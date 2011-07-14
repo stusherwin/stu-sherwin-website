@@ -1,23 +1,46 @@
 ﻿@using StuSherwin.Domain.Entities
-@model IEnumerable<Post>
+@model StuSherwin.Mvc.Models.Admin.Index
 @{
     ViewBag.Title = "Site Administration";
     Layout = "~/Views/Admin/_Layout.cshtml";
 }
 
-<h2>Actions</h2>
+<div class="actions">
+    @Html.ActionLink("Create new post", "Create")
+    &nbsp;
+    @Html.ActionLink("Import blog from XML file", "Import")
+</div>
 
-@Html.ActionLink("New Post", "Create")
-
-@Html.ActionLink("Import blog from XML file", "Import")
-
-@foreach (var post in Model) {
-    <h2>@post.Title</h2>
-    <div class="post-date">15th April 2010</div>
-    @Html.ActionLink("View", "Display", new { id = post.Id }) 
-    <text>&nbsp;</text>
-    @Html.ActionLink("Edit", "Edit", new { id = post.Id }) 
-    <text>&nbsp;</text>
-    @Html.ActionLink("Delete", "Delete", new { id = post.Id })
+@foreach (var category in Model.Categories)
+{
+    <h1>@category.Name posts</h1>
+    if (category.Posts.Any())
+    {
+        <ul>
+        @foreach (var post in category.Posts)
+        {
+            <li>
+                <h2>@post.Title</h2>
+                <div class="post-date">@(post.Published.HasValue? post.Published.Value.ToLongDateString() : "")</div>
+                <div class="actions">
+                    @Html.ActionLink("View", "Display", "Post", new { code = post.Code, category = category.Name }, new { }) 
+                    &nbsp;
+                    @Html.ActionLink("Edit", "Edit", new { id = post.Id }) 
+                    &nbsp;
+                    @Html.ActionLink("Delete", "Delete", new { id = post.Id })
+                    @if(!post.Published.HasValue)
+                    {
+                        <text>&nbsp;</text>
+                        @Html.ActionLink("Publish", "Publish", new { id = post.Id })                       
+                    }
+                </div>
+            </li>
+        }
+        </ul>
+    }
+    else
+    {
+        <p>There are no posts in this category.</p>
+    }
 }
 

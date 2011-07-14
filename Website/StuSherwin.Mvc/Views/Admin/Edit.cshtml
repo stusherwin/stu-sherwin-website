@@ -1,4 +1,4 @@
-﻿@model StuSherwin.Domain.Entities.Post
+﻿@model StuSherwin.Mvc.Models.Admin.EditPost
 
 @{
     ViewBag.Title = "Edit post";
@@ -8,8 +8,14 @@
 <h2>Edit</h2>
 
 <form method="post" action="" class="clear-fix">
+    @Html.LabelFor(m => m.CategoryId)
+    @Html.DropDownListFor(m => m.CategoryId, Model.Categories)
+
     @Html.LabelFor(m => m.Title)
     @Html.EditorFor(m => m.Title)
+
+    @Html.LabelFor(m => m.Code)
+    @Html.EditorFor(m => m.Code)
 
     @Html.LabelFor(m => m.Body)
     @Html.EditorFor(m => m.Body)

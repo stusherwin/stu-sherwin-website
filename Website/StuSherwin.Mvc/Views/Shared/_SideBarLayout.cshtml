@@ -1,0 +1,19 @@
+﻿@model StuSherwin.Mvc.Models.Model
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="container">
+    <div id="sidebar">
+        <div id="header">
+            <h1><a href="/">Stu Sherwin</a></h1>
+            @Html.Partial("_Tagline", Model.Layout)
+        </div>
+        @if (Model.Layout.Type != StuSherwin.Mvc.Models.Shared.Layout.LayoutType.Home)
+        {
+            @Html.Partial("Navigation\\_Navigation", Model.Layout)
+        }
+        @Html.Partial("_Contact")
+    </div>
+    @RenderBody()
+</div>
+<script type="text/javascript" src="/Content/js/Scrolling.js"></script>
