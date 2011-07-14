@@ -95,7 +95,7 @@ body {
 }
 
 #container {
-    width:924px;
+    width:880px;
     margin:0 auto;
     padding:0px;
     height:100%;
@@ -212,16 +212,7 @@ abbr, acronym {
 \*************************/
 
 #content {
-    width:600px;
-    padding:0px 20px 0px 20px;
-    height:100%;
-    position:absolute;
-    left:230px;
-    overflow:auto;
-    border-left: 1px solid #333;
-    border-right:1px solid #fff;
-    overflow-y:scroll;
-    background:#fff url(/Content/img/pb-05.jpg);
+    padding: 0 20px;
 }
 
 .margin-fix {
@@ -279,7 +270,7 @@ abbr, acronym {
     width:30px;
     position:absolute;
     height:100%;
-    right:0px;
+    right:-35px;
     top:0px;
 }
 
@@ -367,14 +358,16 @@ abbr, acronym {
     margin-top:30px;
 }
 
-#header h1 {
+#header h1, 
+#header h2 {
     border:none;
     margin:0;
     color:#fff;
     text-shadow: 0px 0px 1px #fff, 0px 0px 3px #000;
 }
 
-#header h1 a {
+#header h1 a,
+#header h2 a {
     color:#fff;
     text-decoration:none;
 }
@@ -382,8 +375,9 @@ abbr, acronym {
 #tagline {
     font-size:12px;
     text-transform:uppercase;
-    margin-left:2px;
     text-shadow: 0px 0px 3px #000;
+    width:100%;
+    text-align:center;
 }
 
 #tagline a {
@@ -625,11 +619,25 @@ abbr, acronym {
            Post 
 \*************************/
 
-#content.post h1 {
+html.post #content {
+    width:600px;
+    padding:0px 20px 0px 20px;
+    height:100%;
+    position:absolute;
+    left:230px;
+    overflow:auto;
+    border-left: 1px solid #333;
+    border-right:1px solid #fff;
+    overflow-y:scroll;
+    xbackground:#fff url(/Content/img/pb-05.jpg);
+    background:#fff;
+}
+
+html.post #content h1 {
     margin-top:70px;
 }
 
-#content.post h1:first-of-type {
+html.post #content h1:first-of-type {
     margin-top:0px;
 }
 
@@ -843,13 +851,39 @@ form .button:active {
            Home 
 \*************************/
 
+html.home #container {
+    width:880px;
+}
+
+html.home #content {
+    width:665px;
+    padding:0px;
+    height:100%;
+    position:absolute;
+    left:215px;
+    overflow-y:scroll;
+    xbackground:#090909;
+    overflow:visible;
+    border:0;
+}
+
+#home-intro {
+    color:#fff;
+    position:absolute;
+    xwidth:200px;
+    top:392px;
+    left:-224px;
+    top:40px;
+    left:40px;
+}
+
 .home-div {
     xbackground:#fff;
     border-radius:5px;
     padding:10px;
     x-moz-box-shadow: inset 1px 1px 5px;
     color:#aaa;
-    width:250px;
+    width:280px;
     xtext-align:justify;
 }
 
@@ -908,7 +942,7 @@ form .button:active {
 #home-philosophy {
     position:absolute;
     top:200px;
-    right:30px;
+    right:0px;
     xbackground:url(/Content/img/philosophy-back.png) 100px 20px no-repeat;
 }
 
@@ -918,7 +952,7 @@ form .button:active {
 
 #home-music {
     position:absolute;
-    top:377px;
+    top:357px;
     left:30px;
     xbackground:url(/Content/img/music-back.png) 60px 20px no-repeat;
 }
@@ -942,7 +976,7 @@ form .button:active {
     float:right;
     position:absolute;
     top:110px;
-    left:-224px;
+    left:-209px;
 }
 
 #home-me-arrow {
@@ -951,7 +985,7 @@ form .button:active {
     height:59px;
     position:absolute;
     top:334px;
-    left:-180px;
+    left:-165px;
     xdisplay:none;
 }
 
@@ -978,29 +1012,88 @@ form .button:active {
 #me {
     position:absolute;
     top:367px;
-    left:-197px;
+    left:-182px;
     color:#aa1b1f;
     xdisplay:none;
 }
 
-#content.home {
+
+
+/*************************\
+          Admin 
+\*************************/
+html.admin, html.admin body, html.admin #container, html.admin #content {
+    height:inherit;
+    min-height:0;
+    background:#fff;
+}
+
+html.admin #header-container {
     background:#090909;
-    overflow:visible;
-    border:0;
 }
 
-#content.home #intro {
-    color:#fff;
+html.admin #header {
+    width:880px;
+    margin:0 auto;
+    position:relative;
+    overflow:hidden;
+}
+
+html.admin #header h1 {
+    margin-top:30px;
+}
+
+html.admin #header h2 {
     position:absolute;
-    xwidth:200px;
-    top:392px;
-    left:-224px;
-    top:40px;
-    left:40px;
+    bottom:5px;
+    right:0px;
 }
 
+html.admin #header p {
+    position:absolute;
+    top:5px;
+    right:0px;
+    color:#fff;
+}
 
+html.admin #header a {
+    color:#fff;
+}
 
+html.admin #container {
+    padding: 0 10px;
+    margin-top:30px;
+}
+
+html.admin #content {
+    padding:0;
+}
+
+html.admin .post-date {
+    margin:0;
+}
+
+html.admin .actions {
+    margin-bottom:30px;
+}
+
+html.admin #content h1 {
+    margin-bottom:10px;
+    margin-top:30px;
+}
+
+html.admin #content h2 {
+    margin-top:30px;
+}
+
+html.admin ul, html.admin li {
+    margin:0;
+    padding:0;
+}
+
+html.admin li {
+    list-style:none;
+}
 
 
 /*************************\

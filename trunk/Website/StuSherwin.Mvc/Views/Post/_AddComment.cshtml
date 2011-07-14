@@ -8,13 +8,16 @@
         @Html.ValidationSummary(false, "Sorry, I couldn't add your comment just yet, please check the following things:")
         <label for="author">Your name</label>
         @Html.TextBox("AddComment.Author", "", new { id = "author" })
+        @Html.ValidationMessage("AddComment.Author")
         <label for="website">Your website (if you have one)</label>
-        @Html.TextBox("AddComment.Website", "http://", new { id = "website" })
+        <text>http://</text> @Html.TextBox("AddComment.Website", "", new { id = "website", style = "width:254px;" })
+        @Html.ValidationMessage("AddComment.Website")
         <label for="body" class="mandatory">Now put me in my place!</label>
         @Html.TextArea("AddComment.Body", "", new { id = "body", @class = "long" })
         @Html.ValidationMessage("AddComment.Body")
         <label for="title">Can you summarise that in 10 words or less? (for the attention-deficit among us)</label>
         @Html.TextBox("AddComment.Title", "", new { id = "title", @class = "long" })
+        @Html.ValidationMessage("AddComment.Title")
         <label class="mandatory">Finally, until robots attain sentience we must discriminate against them by posing little puzzles that only humans can solve. Are you a robot?</label>
         @Html.Partial("_Recaptcha", "AddComment")
         @Html.ValidationMessage("captcha")

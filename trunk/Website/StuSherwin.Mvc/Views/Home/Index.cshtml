@@ -1,12 +1,13 @@
 ﻿@{
     ViewBag.Title = "Home page";
+    Layout = "~/Views/Shared/_SideBarLayout.cshtml";
 }
 
-        <div id="content" class="home">
+        <div id="content">
             <div class="margin-fix">
                 <img id="home-photo" src="/Content/img/me.jpg" />
                 <!--<h1>Hi.</h1>-->
-                <p id="intro">Hi, I'm Stu, and this is a collection of my thoughts on various subjects:</p>
+                <p id="home-intro">Hi, I'm Stu, and this is a collection of my thoughts on various subjects:</p>
                 <div id="home-code" class="home-div"> 
                     <h2>@Html.ActionLink("Code", "Index", "Post", new { category = "Code" }, new { })</h2>                   
                     <p>

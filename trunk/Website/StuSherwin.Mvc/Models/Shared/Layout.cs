@@ -7,9 +7,16 @@ namespace StuSherwin.Mvc.Models.Shared
 {
     public class Layout
     {
+        public enum LayoutType
+        {
+            Home,
+            Post,
+            Admin
+        }
+
         public string Category { get; set; }
         public string Page { get; set; }
-        public int? PostId { get; set; }
-        public bool IsHomePage { get; set; }
+        public string PostCode { get; set; }
+        public LayoutType Type { get; set; }
     }
 }

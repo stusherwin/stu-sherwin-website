@@ -25,7 +25,7 @@ namespace StuSherwin.Mvc.Controllers
                 Username = username,
                 Password = password,
             };
-            return View();
+            return View(model);
         }
 
         [HttpPost]

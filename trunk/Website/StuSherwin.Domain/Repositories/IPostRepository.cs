@@ -8,7 +8,7 @@ namespace StuSherwin.Domain.Repositories
 {
     public interface IPostRepository : IRepository<Post>
     {
-        IEnumerable<Post> FindAllByCategoryCode(string categoryCode);
+        IEnumerable<Post> FindAllPublishedByCategoryCode(string categoryCode);
         Post FindByOldUrl(string oldUrl);
         Post FindByCode(string code);
     }

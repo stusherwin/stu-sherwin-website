@@ -85,7 +85,11 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Account\Login.cs" />
-    <Compile Include="Models\Admin\Login.cs" />
+    <Compile Include="Models\Admin\Publish.cs" />
+    <Compile Include="Models\Admin\CreatePost.cs" />
+    <Compile Include="Models\Admin\Delete.cs" />
+    <Compile Include="Models\Admin\EditPost.cs" />
+    <Compile Include="Models\Admin\Index.cs" />
     <Compile Include="Models\Model.cs" />
     <Compile Include="Models\Post\AddComment.cs" />
     <Compile Include="Models\Post\Display.cs" />
@@ -747,6 +751,7 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="x.htm" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Post\Index.cshtml" />
@@ -800,6 +805,8 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Post\_Recaptcha.cshtml" />
     <Content Include="Views\Post\_AddComment.cshtml" />
+    <Content Include="Views\Shared\_SideBarLayout.cshtml" />
+    <Content Include="Views\Admin\Publish.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\StuSherwin.Data\StuSherwin.Data.csproj">

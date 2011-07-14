@@ -1,0 +1,20 @@
+﻿@using StuSherwin.Domain.Entities
+
+@model StuSherwin.Mvc.Models.Admin.Publish
+
+@{
+    ViewBag.Title = "Publish post";
+    Layout = "~/Views/Admin/_Layout.cshtml";
+}
+@Html.ActionLink("Posts", "Index")
+<h2>@Model.Title</h2>
+<p>Are you sure you want to publish this post?</p>
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(m => m.Id)
+
+    @Html.LabelFor(m => m.PublishDate)
+    @Html.EditorFor(m => m.PublishDate)
+
+    <input type="submit" value="Publish" class="button" />
+}

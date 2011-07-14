@@ -35,7 +35,7 @@ namespace StuSherwin.Mvc.Controllers
 
         public ActionResult Index(string category)
         {
-            var posts = _postRepository.FindAllByCategoryCode(category);
+            var posts = _postRepository.FindAllPublishedByCategoryCode(category);
             var model = Models.Post.List.CreateFromPosts(posts);
             return View(model);
         }
@@ -58,7 +58,7 @@ namespace StuSherwin.Mvc.Controllers
 
                 if (validationResponse == RecaptchaValidationResponse.Failure)
                 {
-                    ModelState.AddModelError("captcha", "You appear to be a robot!");
+                    ModelState.AddModelError("captcha", "Google thinks you're a robot!  Do you want to try again?");
                 }
             }
 
@@ -83,7 +83,7 @@ namespace StuSherwin.Mvc.Controllers
                 post.Comments.Add(comment);
                 _postRepository.SaveChanges();
 
-                return RedirectToAction("Display", new { code = post.Code });
+                return RedirectToAction("Display", new { code = post.Code, category = post.Category.Name });
             }
             else
             {
@@ -105,7 +105,7 @@ namespace StuSherwin.Mvc.Controllers
             if (post == null)
                 throw new HttpException(404, "Page not found");
             
-            return new PermanentRedirectResult(Url.Action("Display", new { id = post.Id }));
+            return new PermanentRedirectResult(Url.Action("Display", new { code = post.Code, category="Philosophy" }));
         }
 
         /*public ActionResult Test()
