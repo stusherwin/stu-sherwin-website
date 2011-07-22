@@ -43,6 +43,10 @@ namespace StuSherwin.Mvc.Controllers
         public ActionResult Display(string code)
         {
             var post = _postRepository.FindByCode(code);
+
+            if (post == null)
+                throw new HttpException(404, "Page not found");
+
             var model = Models.Post.Display.CreateFromPost(post, false);
             return View(model);
         }
@@ -51,6 +55,9 @@ namespace StuSherwin.Mvc.Controllers
         public ActionResult AddComment(AddComment addComment)
         {
             var post = _postRepository.FindById(addComment.PostId);
+
+            if (post == null)
+                throw new HttpException(404, "Page not found");
 
             if (!String.IsNullOrEmpty(addComment.recaptcha_response_field))
             {
@@ -107,13 +114,5 @@ namespace StuSherwin.Mvc.Controllers
             
             return new PermanentRedirectResult(Url.Action("Display", new { code = post.Code, category="Philosophy" }));
         }
-
-        /*public ActionResult Test()
-        {
-            var converter = new HtmlConverter();
-            converter.LoadHtml("This is some text.<br /><br />This is some more text.");
-            converter.ConvertDoubleBrTagsToParagraphTags();
-            return new RedirectResult("/");
-        }*/
     }
 }

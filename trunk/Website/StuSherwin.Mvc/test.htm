@@ -3,6 +3,10 @@
 <head>
     <title></title>
     <style  type="text/css">
+        html {
+                        overflow-y:scroll;
+
+        }
         html, body {
             height:100%;
             background:black;
@@ -16,6 +20,7 @@
             margin:0 auto;
             height:100%;
             position:relative;
+            xborder:1px solid red;
         }
         
         #fixed {
@@ -23,6 +28,7 @@
             width:800px;
             height:100%;
             background:yellow;
+            xborder:1px solid blue;
         }
         
         /*#f2 {
@@ -55,6 +61,27 @@
             position:absolute;
             left:700px;
             top:0;
+        }
+        
+        @media all and (max-width:799px) {
+            #content {
+                position:absolute;
+                overflow:auto;
+                height:100%;
+            }
+            
+            #fixed {
+                position:absolute;
+                overflow:hidden;
+            }
+            
+            #container {
+                position:absolute;
+                xoverflow:scroll;
+                overflow:hidden;
+            }
+            
+            
         }
     </style>
 </head>
