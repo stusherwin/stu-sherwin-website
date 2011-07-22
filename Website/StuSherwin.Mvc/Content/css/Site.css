@@ -641,6 +641,14 @@ html.post #content h1:first-of-type {
     margin-top:0px;
 }
 
+html.post #content iframe {
+    max-width:100%;
+    border:10px solid white;
+    border-radius:5px;
+    box-shadow:0 0 5px 0 #000;
+    margin:20px;
+}
+
 .post-body {
     padding-bottom:20px;
     border-bottom:1px dashed #771314;
@@ -1022,6 +1030,7 @@ html.home #content {
 /*************************\
           Admin 
 \*************************/
+
 html.admin, html.admin body, html.admin #container, html.admin #content {
     height:inherit;
     min-height:0;
@@ -1093,6 +1102,69 @@ html.admin ul, html.admin li {
 
 html.admin li {
     list-style:none;
+}
+
+
+
+
+/*************************\
+          Errors 
+\*************************/
+
+html.error, html.error body, html.error #container, html.error #content {
+    height:inherit;
+    min-height:0;
+    background:#090909;
+}
+
+html.error #header-container {
+    background:#090909;
+}
+
+html.error #header {
+    width:880px;
+    margin:0 auto;
+    position:relative;
+    overflow:hidden;
+}
+
+html.error #header h1 {
+    margin-top:30px;
+}
+
+html.error #header a {
+    color:#fff;
+}
+
+html.error #container {
+    padding: 0 10px;
+    margin-top:30px;
+}
+
+html.error #content {
+    padding:0;
+}
+
+html.error #content img {
+    margin:0;
+    float:left;
+    margin-left:-5px;
+}
+
+html.error #content h1 {
+    border:none;
+    margin:0;
+    color:#fff;
+    text-shadow: 0px 0px 1px #fff, 0px 0px 3px #000;
+}
+
+html.error #content p {
+    color:#aaa;
+}
+
+html.error #content #error {
+    margin-left:50px;
+    float:left;
 }
 
 

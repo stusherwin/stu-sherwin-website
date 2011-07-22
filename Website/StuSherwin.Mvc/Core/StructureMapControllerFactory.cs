@@ -28,6 +28,10 @@ namespace StuSherwin.Mvc.Core
 
                 controller = ObjectFactory.GetInstance(controllerType) as IController;
             }
+            else
+            {
+                controller = base.GetControllerInstance(requestContext, controllerType);
+            }
 
             return controller;
         }
