@@ -144,7 +144,12 @@ h2 {
     text-shadow:0 0 1px #D8C5C5;
 }
 
-p, ul, ol, blockquote {
+h3 {
+    font-size:18px;
+    xtext-shadow:0 0 1px #D8C5C5;
+}
+
+p, ul, ol, blockquote, pre {
     margin-bottom:1em;
 }
 
@@ -159,8 +164,7 @@ ol li {
 }
 
 blockquote {
-    margin-left:10px;
-    margin-right:10px;
+    xmargin:10px 0;
     padding:10px;
     background:rgba(225, 225, 225, 0.5);
 }
@@ -195,6 +199,13 @@ em {
     xfont-size:smaller;
     xfont-variant:small-caps;
     xcolor:#191919;
+}
+
+pre {
+    font-family: Consolas, Monospace;
+    margin:10px 0;
+    padding:10px;
+    background:rgba(225, 225, 225, 0.5);    
 }
 
 abbr, acronym {
