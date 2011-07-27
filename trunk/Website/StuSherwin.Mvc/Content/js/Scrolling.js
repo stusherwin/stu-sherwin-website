@@ -1,71 +1,92 @@
-﻿Scrolling = function () {
-    var previousPost;
-    var nextPost;
+﻿(function ($, document, window, undefined) {
+    
+    var Scrolling = {
+        previousPost: null,
+        nextPost: null,
 
-    function getPreviousPost() {
-        return $('#content h1')
-                    .filter(function () {
-                        return $(this).offset().top < 30;
-                    })
-                    .last();
-    }
+        previousLink: $('#previous'),
+        nextLink: $('#next'),
 
-    function getNextPost() {
-        return $('#content h1')
-                    .filter(function () {
-                        return $(this).offset().top > 31;
-                    })
-                    .first();
-    }
+        htmlDecode: function (value) {
+            return $('<div/>').html(value).text();
+        },
 
-    function setPreviousAndNextPosts() {
-        previousPost = getPreviousPost();
-        if (previousPost.length) {
-            $('#previous').attr('title', $('a', previousPost).html());
-            $('#previous').fadeIn();
+        scrollTop: function () {
+            var scrollTop = $('body,html,document').scrollTop();
+
+            if(scrollTop == 0)
+                scrollTop = $(window).scrollTop();
+
+            return scrollTop;
+        },
+
+        setLink: function (postLink, post) {
+            if (post.length) {
+                postLink.attr('title', this.htmlDecode(('a', post).html()));
+                postLink.fadeIn();
+            }
+            else {
+                postLink.fadeOut();
+            }
+        },
+
+        setPreviousPost: function () {
+            var self = this;
+            this.previousPost = $('#content h1')
+                .filter(function () {
+                    return $(this).offset().top < self.scrollTop() + 30;
+                })
+                .last();
+
+            this.setLink(this.previousLink, this.previousPost);
+        },
+
+        setNextPost: function () {
+            var self = this;
+            this.nextPost = $('#content h1')
+                .filter(function () {
+                    return $(this).offset().top > self.scrollTop() + 31;
+                })
+                .first();
+
+            this.setLink(this.nextLink, this.nextPost);
+        },
+
+        scrollToPost: function (post) {
+            var self = this;
+            if (post.length) {
+                (function (scrollTo) {
+                    $('body,html,document').animate({
+                        scrollTop: scrollTo - 30
+                    }, Math.abs(self.scrollTop() - scrollTo) / 2);
+                })(post.offset().top);
+            }
+        },
+
+        init: function () {
+            var self = this;
+            $(document).ready(function () {
+                self.setPreviousPost();
+                self.setNextPost();
+
+                $(document).scroll(function () {
+                    self.setPreviousPost();
+                    self.setNextPost();
+                });
+
+                self.previousLink.click(function (e) {
+                    self.scrollToPost(self.previousPost);
+                    e.preventDefault();
+                });
+
+                self.nextLink.click(function (e) {
+                    self.scrollToPost(self.nextPost);
+                    e.preventDefault();
+                });
+            });            
         }
-        else {
-            $('#previous').fadeOut();
-        }
-        nextPost = getNextPost();
-        if (nextPost.length) {
-            $('#next').attr('title', $('a', nextPost).html());
-            $('#next').fadeIn();
-        }
-        else {
-            $('#next').fadeOut();
-        }
-    }
+    };
 
-    setPreviousAndNextPosts();
+    Scrolling.init();
 
-    $('#content').scroll(function () {
-        setPreviousAndNextPosts();
-    });
-
-    $('#previous').click(function (e) {
-        if (previousPost.length) {
-            (function (scrollTo) {
-                $('#content').animate({
-                    scrollTop: $('#content').scrollTop() + scrollTo - 30
-                }, Math.abs(scrollTo) / 2);
-            })(previousPost.offset().top);
-        }
-        e.preventDefault();
-    });
-
-    $('#next').click(function (e) {
-        if (nextPost.length) {
-            (function (scrollTo) {
-                $('#content').animate({
-                    scrollTop: $('#content').scrollTop() + scrollTo - 30
-                }, Math.abs(scrollTo) / 2);
-            })(nextPost.offset().top);
-        }
-        e.preventDefault();
-    });
-};
-
-$(document).ready(function () {
-    Scrolling();
-});
+})(jQuery, document, window);

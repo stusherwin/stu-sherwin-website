@@ -2,11 +2,17 @@
 @{
     Layout = "~/Views/Shared/_SideBarLayout.cshtml";
 }
-        <div id="content">
-            <div class="margin-fix">
-                @RenderBody()
-            </div>
-        </div>
-        <div class="shadow-left"></div>
-        <div class="shadow-right"></div>
-        @Html.Partial("_Scroll", Model.Layout)
+<div id="content">
+    <div class="margin-fix">
+        @RenderBody()
+    </div>
+</div>
+<div class="fixed">
+    <div class="shadow-left"></div>
+    <div class="shadow-right"></div>
+    @Html.Partial("_Scroll", Model.Layout)
+</div>
+
+@section sidebar {
+    @Html.Partial("Navigation\\_Navigation", Model.Layout)
+}

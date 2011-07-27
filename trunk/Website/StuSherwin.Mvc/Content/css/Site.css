@@ -92,15 +92,21 @@ body {
   letter-spacing: 0.019em;
   word-spacing: 0em;
   line-height: 21px;
+  overflow-y:scroll;
 }
 
 #container {
-    width:880px;
+    width:890px;
     margin:0 auto;
     padding:0px;
     height:100%;
     position:relative;
     min-height:550px;
+}
+
+.fixed {
+    position:fixed;
+    height:100%;
 }
 
 ::selection {
@@ -213,27 +219,12 @@ abbr, acronym {
 
 #content {
     padding: 0 20px;
+    min-height:100%;
 }
 
 .margin-fix {
     padding:1px 0px;
     padding-top:30px;
-}
-
-.shadow-left {
-    background:url(/Content/img/shadow-left.png) repeat-y;
-    position:absolute;
-    left:231px;
-    width:20px;
-    height:100%;
-}
-
-.shadow-right {
-    background:url(/Content/img/shadow-right.png) repeat-y;
-    position:absolute;
-    left:834px;
-    width:20px;
-    height:100%;
 }
 
 #content img {
@@ -270,7 +261,7 @@ abbr, acronym {
     width:30px;
     position:absolute;
     height:100%;
-    right:-35px;
+    left:885px;
     top:0px;
 }
 
@@ -311,30 +302,38 @@ abbr, acronym {
 }
 
 #scroll a:after, #scroll a:before {
+	width:100px;
+	display:block;
+	position:absolute;
+	height:14px;
+}
+
+.csstransforms #scroll a:after, .csstransforms #scroll a:before {
     -webkit-transform-origin: 0 0;
     -webkit-transform:rotate(90deg);
     -moz-transform-origin: 0 0;
 	-moz-transform:rotate(90deg);	
     -o-transform-origin: 0 0;
 	-o-transform: rotate(90deg);
-	width:100px;
-	display:block;
-	position:absolute;
-	height:14px;
+    -ms-transform-origin: 0 0;
+	-ms-transform: rotate(90deg);
 	left:21px;  
 }
 
 #scroll a#previous:after {
-	top:20px;  
     content:'Previous post';
+    top:20px;
 }
 
 #scroll a#next:before {
-    bottom:104px;
-    text-align:right;
     content:'Next post';
+    bottom:22px;
 }
 
+.csstransforms #scroll a#next:before {
+    bottom:104px;
+    text-align:right;
+}
 
 
 
@@ -350,12 +349,14 @@ abbr, acronym {
     width:192px;
     line-height:1.2;
     xtext-shadow: 0px 0px 3px #000;
+    min-height:500px;
 }
 
 /* Header */
 
 #header {
     margin-top:30px;
+    width:193px;
 }
 
 #header h1, 
@@ -622,15 +623,31 @@ abbr, acronym {
 html.post #content {
     width:600px;
     padding:0px 20px 0px 20px;
-    height:100%;
+    xheight:100%;
     position:absolute;
     left:230px;
     overflow:auto;
     border-left: 1px solid #333;
-    border-right:1px solid #fff;
-    overflow-y:scroll;
+    border-right:1px solid #333;
+    xoverflow-y:scroll;
     xbackground:#fff url(/Content/img/pb-05.jpg);
     background:#fff;
+}
+
+.shadow-left {
+    background:url(/Content/img/shadow-left.png) repeat-y;
+    position:absolute;
+    left:231px;
+    width:20px;
+    height:100%;
+}
+
+.shadow-right {
+    background:url(/Content/img/shadow-right.png) repeat-y;
+    position:absolute;
+    left:851px;
+    width:20px;
+    height:100%;
 }
 
 html.post #content h1 {
@@ -869,7 +886,7 @@ html.home #content {
     height:100%;
     position:absolute;
     left:215px;
-    overflow-y:scroll;
+    xoverflow-y:scroll;
     xbackground:#090909;
     overflow:visible;
     border:0;
@@ -923,18 +940,6 @@ html.home #content {
     margin-bottom:0;
 }
 
-/*.home-div p:first-line {
-    xtext-transform:uppercase;
-}
-
-.home-div p:first-letter {
-    font-size:48px;
-    float:left;
-    display:block;
-    margin-top:5px;
-    margin-right:3px;
-}*/
-
 #home-code {
     position:absolute;
     top:97px;
@@ -979,12 +984,15 @@ html.home #content {
     background:#050505;
 }
 
-#content #home-photo {
+#home-photo {
     margin:0;
     float:right;
     position:absolute;
     top:110px;
-    left:-209px;
+    left:-3px;
+    padding:10px;
+    border-radius:5px;
+    background:#fff;
 }
 
 #home-me-arrow {
@@ -993,34 +1001,14 @@ html.home #content {
     height:59px;
     position:absolute;
     top:334px;
-    left:-165px;
+    left:50px;
     xdisplay:none;
-}
-
-#home-me-arrow2 {
-    background:url(/Content/img/home-me-arrow2.png) no-repeat;
-    position:absolute;
-    width:64px;
-    height:59px;
-    top:100px;
-    right:260px;
-    display:none;
-}
-
-#home-me-arrow3 {
-    background:url(/Content/img/home-me-arrow3.png) no-repeat;
-    position:absolute;
-    width:64px;
-    height:59px;
-    top:470px;
-    right:260px;
-    display:none;
 }
 
 #me {
     position:absolute;
     top:367px;
-    left:-182px;
+    left:33px;
     color:#aa1b1f;
     xdisplay:none;
 }
@@ -1198,4 +1186,29 @@ html.error #content #error {
 
 .html-content-loader-text {
     margin:20px;
+}
+
+@media all and (max-width:970px) {
+    #scroll {
+        display:none;
+    }
+}
+
+@media all and (max-width:906px) {
+    .fixed {
+        position:absolute;
+    }
+    
+    #content {
+        height:100%;
+    }
+    
+    .shadow-right {
+        left:834px;
+        background-image:url(/content/img/shadow-right-scroll.png);
+    }
+    
+    body {
+        overflow-y:hidden;
+    }
 }
