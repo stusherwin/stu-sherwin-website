@@ -1,92 +1,99 @@
 ﻿(function ($, document, window, undefined) {
-    
-    var Scrolling = {
-        previousPost: null,
-        nextPost: null,
+    var ScrollLink = function (link, currentPost, pageScrollTop) {
+        var link = link;
+        var currentPost = currentPost;
+        var pageScrollTop = pageScrollTop;
 
-        previousLink: $('#previous'),
-        nextLink: $('#next'),
-
-        htmlDecode: function (value) {
+        var htmlDecode = function (value) {
             return $('<div/>').html(value).text();
-        },
+        };
 
-        scrollTop: function () {
-            var scrollTop = $('body,html,document').scrollTop();
-
-            if(scrollTop == 0)
-                scrollTop = $(window).scrollTop();
-
-            return scrollTop;
-        },
-
-        setLink: function (postLink, post) {
-            if (post.length) {
-                postLink.attr('title', this.htmlDecode(('a', post).html()));
-                postLink.fadeIn();
+        var showLink = function () {
+            if (currentPost.length) {
+                link.attr('title', htmlDecode(('a', currentPost).html()));
+                link.fadeIn();
             }
             else {
-                postLink.fadeOut();
+                link.fadeOut();
             }
-        },
+        };
 
-        setPreviousPost: function () {
-            var self = this;
-            this.previousPost = $('#content h1')
-                .filter(function () {
-                    return $(this).offset().top < self.scrollTop() + 30;
-                })
-                .last();
-
-            this.setLink(this.previousLink, this.previousPost);
-        },
-
-        setNextPost: function () {
-            var self = this;
-            this.nextPost = $('#content h1')
-                .filter(function () {
-                    return $(this).offset().top > self.scrollTop() + 31;
-                })
-                .first();
-
-            this.setLink(this.nextLink, this.nextPost);
-        },
-
-        scrollToPost: function (post) {
-            var self = this;
-            if (post.length) {
+        var scroll = function () {
+            if (currentPost.length) {
                 (function (scrollTo) {
                     $('body,html,document').animate({
                         scrollTop: scrollTo - 30
-                    }, Math.abs(self.scrollTop() - scrollTo) / 2);
-                })(post.offset().top);
+                    }, Math.abs(pageScrollTop() - scrollTo) / 2);
+                })(currentPost.offset().top);
             }
-        },
+        };
 
-        init: function () {
-            var self = this;
-            $(document).ready(function () {
-                self.setPreviousPost();
-                self.setNextPost();
+        this.setCurrentPost = function (post) {
+            currentPost = post;
+            showLink();
+        };
 
-                $(document).scroll(function () {
-                    self.setPreviousPost();
-                    self.setNextPost();
-                });
-
-                self.previousLink.click(function (e) {
-                    self.scrollToPost(self.previousPost);
-                    e.preventDefault();
-                });
-
-                self.nextLink.click(function (e) {
-                    self.scrollToPost(self.nextPost);
-                    e.preventDefault();
-                });
-            });            
+        this.init = function () {
+            link.click(function (e) {
+                scroll();
+                e.preventDefault();
+            });
         }
     };
 
-    Scrolling.init();
+    var Scrolling = function () {
+        var currentScrollPosition = function () {
+            var currentScrollPosition = $('body,html,document').scrollTop();
+
+            if (currentScrollPosition == 0)
+                currentScrollPosition = $(window).scrollTop();
+
+            return currentScrollPosition;
+        };
+
+        var previousPostLink = new ScrollLink($('#previous'), $(null), currentScrollPosition);
+        var nextPostLink = new ScrollLink($('#next'), $(null), currentScrollPosition);
+
+        var setPreviousPost = function () {
+            var previousPost = $('#content h1')
+                .filter(function () {
+                    var postScrollPosition = $(this).offset().top
+                    return postScrollPosition < currentScrollPosition() + 30;
+                })
+                .last();
+
+            previousPostLink.setCurrentPost(previousPost);
+        };
+
+        var setNextPost = function () {
+            var nextPost = $('#content h1')
+                .filter(function () {
+                    var postScrollPosition = $(this).offset().top
+                    return postScrollPosition > currentScrollPosition() + 31;
+                })
+                .first();
+
+            nextPostLink.setCurrentPost(nextPost);
+        };
+
+        this.init = function () {
+            previousPostLink.init();
+            nextPostLink.init();
+
+            $(document).scroll(function () {
+                setPreviousPost();
+                setNextPost();
+            });
+
+            setPreviousPost();
+            setNextPost();
+        };
+    };
+
+    var s = new Scrolling();
+
+    $(document).ready(function () {
+        s.init();
+    });
 
 })(jQuery, document, window);
