@@ -7,7 +7,7 @@
                     $('.html-content-loader').hide();
                 },
                 {
-                    height: (contentText.parent().height() - 137) + 'px',
+                    height: (contentText.height() - 137) + 'px',
                     resize_enabled: false
                 });
     });
