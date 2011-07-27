@@ -8,36 +8,38 @@
 <h1>@Model.Title</h1>
 <div class="post-date">@(Model.Published.HasValue ? Model.Published.Value.ToLongDateString() : "")</div>
 <div class="post-body">@Html.Raw(Model.Body)</div>
-<h2 id="comments-h2">Comments</h2>
-@if (Model.Comments.Any())
-{
-    <ol id="comments">
-    @foreach (var comment in Model.Comments)
+<div id="comments">
+    <h2>Comments</h2>
+    @if (Model.Comments.Any())
     {
-        <li>
-            <h3>@comment.Title</h3>
-            <div class="comment-date">
-                by 
-                @if (comment.Website != null)
-                {
-                    <a href="@(comment.Website)">@(comment.Author != null ? comment.Author.ToUpper() : "")</a>        
-                }
-                else
-                {
-                    @(comment.Author != null ? comment.Author.ToUpper() : "") 
-                }
-                on 
-                @comment.Date.ToLongDateString().ToUpper() 
-                at 
-                @comment.Date.ToString("h:mmtt")
-            </div>
-            @Html.Raw(comment.Body)
-        </li>
+        <ol>
+        @foreach (var comment in Model.Comments)
+        {
+            <li>
+                <h3>@comment.Title</h3>
+                <div class="comment-date">
+                    by 
+                    @if (comment.Website != null)
+                    {
+                        <a href="@(comment.Website)">@(comment.Author != null ? comment.Author.ToUpper() : "")</a>        
+                    }
+                    else
+                    {
+                        @(comment.Author != null ? comment.Author.ToUpper() : "") 
+                    }
+                    on 
+                    @comment.Date.ToLongDateString().ToUpper() 
+                    at 
+                    @comment.Date.ToString("h:mmtt")
+                </div>
+                @Html.Raw(comment.Body)
+            </li>
+        }
+        </ol>
     }
-    </ol>
-}
-else
-{
-    <p>There are no comments yet.</p>
-}
-@Html.Partial("_AddComment", Model.AddComment)
+    else
+    {
+        <p class="no-comments">There are no comments yet.</p>
+    }
+    @Html.Partial("_AddComment", Model.AddComment)
+</div>
