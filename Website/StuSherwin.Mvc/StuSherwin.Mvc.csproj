@@ -743,6 +743,7 @@
     <Content Include="500.htm" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Content\js\lib\modernizr-2.0.6-development-only.js" />
     <Content Include="test.htm" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
