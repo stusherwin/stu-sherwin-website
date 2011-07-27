@@ -516,7 +516,7 @@ abbr, acronym {
     margin:0;
     padding:0;
     list-style:none;
-    background:url(/Content/img/sprites.png) -200px -36px no-repeat;
+    background:url(/Content/img/sprites.png) -200px -37px no-repeat;
     margin-left:0px;
     padding-left:10px;
 }
@@ -534,7 +534,7 @@ abbr, acronym {
 #nav > li > ul > li.selected, 
 #nav > li > ul > li:hover {
     color:#fff;
-    background-position:-200px 4px;
+    background-position:-200px 3px;
 }
 
 /* Contact */
@@ -680,7 +680,6 @@ html.post #content iframe {
 .post-body {
     padding-bottom:20px;
     border-bottom:1px dashed #771314;
-    margin-bottom:10px;
 }
 
 .post-info {
@@ -688,6 +687,7 @@ html.post #content iframe {
     text-align:right;
     text-transform:uppercase;
     font-size:12px;
+    padding-top:10px;
 }
 
 .post-date {
@@ -698,18 +698,18 @@ html.post #content iframe {
     margin-bottom:2em;
 }
 
-#comments-h2 {
-    margin-top:20px;
+#comments {
+    padding-top:20px;
 }
 
-#comments {
+#comments > ol {
     margin:0;
     padding:0;
     counter-reset:comments 0;
     margin-bottom:20px;
 }
 
-#comments > li {
+#comments > ol > li {
     margin:0;
     padding:0;
     list-style:none;
@@ -722,11 +722,11 @@ html.post #content iframe {
     min-height:50px;
 }
 
-#comments > li:nth-child(odd) {
+#comments > ol > li:nth-child(odd) {
     background:rgba(190, 190, 190, 0.5);
 }
 
-#comments > li:before {
+#comments > ol > li:before {
     float:right;
     margin:10px;
     margin-right:0px;
@@ -743,25 +743,29 @@ html.post #content iframe {
     margin-bottom:1em;
 }
 
-#comments > li:nth-child(6) {
+#comments > ol > li:nth-child(6) {
     background:rgba(0, 0, 0, 0.8);
     color:#fff;
 }
 
-#comments > li:nth-child(6) h3 {
+#comments > ol > li:nth-child(6) h3 {
     color:#fff;
 }
 
-#comments > li:nth-child(6) .comment-date {
+#comments > ol > li:nth-child(6) .comment-date {
     color:#aaa;
 }
 
-#comments > li:nth-child(6) a {
+#comments > ol > li:nth-child(6) a {
     color:#aaa;
 }
 
-#comments > li:nth-child(6) a:hover {
+#comments > ol > li:nth-child(6) a:hover {
     color:#fff;
+}
+
+.no-comments {
+    margin-bottom:20px;
 }
 
 #add-comment {
